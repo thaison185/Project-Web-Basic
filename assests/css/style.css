@@ -1,0 +1,196 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+#header {
+	width: 100%;
+	height: 46px;
+	color: white;
+	background: black;
+	position: fixed;
+	top: 0;
+	z-index: 9;
+}
+
+#logo {
+	display: inline-block;
+	margin-left: 50px;
+}
+
+#logo img{
+	width: 75px;
+	height: 75px;
+}
+
+#header .nav {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 200px;
+}
+
+#header .nav a {
+	width: 80px;
+	height: 46px;
+	line-height: 46px;
+	text-decoration: none;
+	color: white;
+	font-size: 20px;
+	display: inline-block;
+
+}
+
+#header .login-register {
+	width: 46px;
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	right: 300px;
+}
+
+#header .cart {
+	width: 46px;
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	right: 100px;
+}
+
+#header .cart .cart-icon {
+
+}
+
+#header .search {
+	width: 46px;
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#slider {
+	margin: 46px 174px 20px;
+	overflow: auto;
+}
+
+#slider .slides {
+	width: 1000px;
+	margin: 25px auto 0;
+}
+
+#slider .slides .slide img {
+	width: 100%;
+	border-radius: 10px;
+}
+
+#slider .radio {
+	position: absolute;
+	margin-left: 50px;
+}
+
+#slider .radio .radio-btn {
+	width: 8px;
+	height: 8px;
+	border: 2px solid brown;
+	border-radius: 50%;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#slider .radio .radio-btn:hover {
+	cursor: pointer;
+}
+
+#slider .radio .radio-btn:first-child {
+	background: brown;
+}
+
+#items {
+	margin: 30px 150px;
+	overflow: auto;
+}
+
+#items .item {
+	width: 300px;
+	height: 325px;
+	display: inline-block;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #888888;
+	position: relative;
+	float: left;
+	margin: 10px 30px;
+}
+
+#items .item:hover {
+	box-shadow: 0 0 10px #888888;
+}
+
+#items .item img {
+	width: 100%;
+}
+
+#items .item .item-body {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin-left: 10px;
+}
+
+#items .item .order-btn {
+	width: 50px;
+	height: 25px;
+	color: black;
+	background: #44F041;
+	text-decoration: none;
+	text-align: center;
+	line-height: 25px;
+	box-sizing: border-box;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+#footer {
+	width: 100%;
+	height: 200px;
+	background: grey;
+	position: relative;
+	bottom: 0;
+}
+
+#footer .title {
+	font-weight: bold;
+}
+
+#footer .content {
+	padding-top: 10px;
+}
+
+#footer > div:not(:last-child) {
+	width: 33%;
+	height: 180px;
+	padding: 50px 30px;
+	position: relative;
+	float: left;
+}
+
+#footer .contact .social .icon {
+	font-size: 25px;
+	padding-right: 10px;
+}
+
+#footer #copy-right {
+	font-size: 12px;
+	color: #ccc;
+	position: absolute;
+	bottom: 0;
+	left: 25px;
+}
