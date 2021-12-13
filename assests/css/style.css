@@ -114,48 +114,94 @@
 }
 
 #items {
-	margin: 30px 150px;
+	width: 1000px;
+	position: relative;
+	margin: 50px auto;
 	overflow: auto;
 }
 
-#items .item {
-	width: 300px;
-	height: 325px;
+.item {
+	width: 250px;
+	height: 350px;
+	/*background: rgba(0, 0, 0, 0.3);
+	border: 3px solid rgba(0, 0, 0, 0.3);*/
+	border-radius: 10px;
+	box-shadow: 0 0 1px 1px #888888;
 	display: inline-block;
-	border-radius: 5px;
-	box-shadow: 0 0 5px #888888;
 	position: relative;
 	float: left;
-	margin: 10px 30px;
+	margin: 10px 40px;
 }
 
-#items .item:hover {
-	box-shadow: 0 0 10px #888888;
+.item:hover {
+	box-shadow: 0 0 5px 1px #888888;
 }
 
-#items .item img {
-	width: 100%;
-}
-
-#items .item .item-body {
+.item img {
+	width: 200px;
 	position: absolute;
-	bottom: 0;
-	left: 0;
-	margin-left: 10px;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
-#items .item .order-btn {
-	width: 50px;
-	height: 25px;
-	color: black;
-	background: #44F041;
-	text-decoration: none;
-	text-align: center;
-	line-height: 25px;
-	box-sizing: border-box;
+.item .item-body {
 	position: absolute;
-	bottom: 0;
-	right: 0;
+	bottom: 30px;
+	margin: 10px 15px;
+	/*transition: visibility 1s;
+	visibility: hidden;*/
+}
+
+.item .item-body div {
+	margin: 0 0;
+}
+
+.item .item-body input {
+	display: none;
+}
+
+.item .item-body .item-name {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.item .item-body .radio-box {
+	height: 26px;
+	border: 3px solid #000;
+	border-radius: 50px;
+	background: grey;
+	display: inline-block;
+	margin: 2px 0;
+	overflow: hidden;
+}
+
+.item .item-body .radio-label {
+	height: 20px;
+	float: left;
+	padding: 3px;
+}
+
+.item .item-body .radio-label:not(:last-child) {
+	border-right: 1px solid #000;
+}
+
+.item .item-body .radio-box input:checked + .radio-label {
+	background: lightcyan;
+}
+
+.item .btn {
+	position: absolute;
+	bottom: 0px;
+	margin: 10px 20px;
+	/*visibility: hidden;
+	transition: visibility 1s;*/
+}
+
+.item .btn button {
+	width: 100px;
+	height: 20px;
+	background: lightcyan;
 }
 
 #footer {
@@ -190,7 +236,8 @@
 #footer #copy-right {
 	font-size: 12px;
 	color: #ccc;
-	position: absolute;
+	position: relative;
+	float: left;
 	bottom: 0;
 	left: 25px;
 }

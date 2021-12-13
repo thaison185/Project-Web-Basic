@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>item</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			font-family: 'Readex Pro', sans-serif;
+		}
+
+		#main {
+			height: 100vh;
+			background: linear-gradient(90deg,blue,lightblue);
+		}
+
+		.item {
+			width: 300px;
+			height: 350px;
+			background: rgba(0, 0, 0, 0.3);
+			border: 3px solid rgba(0, 0, 0, 0.3);
+			border-radius: 10px;
+			position: relative;		}
+
+		.item img {
+			width: 200px;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		.item .item-body {
+			position: absolute;
+			bottom: 30px;
+			margin: 10px 20px;
+			/*transition: visibility 1s;
+			visibility: hidden;*/
+		}
+
+		.item .item-body div {
+			margin: 0 0;
+		}
+
+		.item .item-body input {
+			display: none;
+		}
+
+		.item .item-body .item-name {
+			font-size: 20px;
+			font-weight: bold;
+		}
+
+		.item .item-body .radio-box {
+			height: 26px;
+			border: 3px solid #000;
+			border-radius: 50px;
+			background: grey;
+			display: inline-block;
+			margin: 2px 0;
+			overflow: hidden;
+		}
+
+		.item .item-body .radio-label {
+			height: 20px;
+			float: left;
+			padding: 3px;
+		}
+
+		.item .item-body .radio-label:not(:last-child) {
+			border-right: 1px solid #000;
+		}
+
+		.item .item-body .radio-box input:checked + .radio-label {
+			background: lightcyan;
+		}
+
+		.item .btn {
+			position: absolute;
+			bottom: 0px;
+			margin: 10px 20px;
+			/*visibility: hidden;
+			transition: visibility 1s;*/
+		}
+
+		.item .btn button {
+			width: 100px;
+			height: 20px;
+			background: lightcyan;
+		}
+/*
+		.item:hover .item-body {
+			bottom: 30px;
+			visibility: visible;
+		}
+
+		.item:hover .btn {
+			bottom: 0;
+			visibility: visible;
+		}*/
+	</style>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="main">
+	<div class="item">
+		<img src="./assests/img/items/capuchino.png">
+		<div class="item-body">
+			<div class="item-name">Capuchino</div>
+			<div class="item-price">$9</div>
+			<div class="item-size radio-box">
+				<input type="radio" id="1-size-l" name="1-size">
+				<label for="1-size-l" class="radio-label">Large</label>
+				<input type="radio" id="1-size-m" name="1-size">
+				<label for="1-size-m" class="radio-label">Medium</label>
+				<input type="radio" id="1-size-s" name="1-size">
+				<label for="1-size-s" class="radio-label">Small</label>
+			</div>
+			<div class="item-ice radio-box">
+				<input type="radio" id="1-hot" name="1-iced">
+				<label for="1-hot" class="radio-label">Hot</label>
+				<input type="radio" id="1-0-ice" name="1-iced">
+				<label for="1-0-ice" class="radio-label">0% ice</label>
+				<input type="radio" id="1-50-ice" name="1-iced">
+				<label for="1-50-ice" class="radio-label">50% ice</label>
+				<input type="radio" id="1-100-ice" name="1-iced">
+				<label for="1-100-ice" class="radio-label">100% ice</label>
+			</div>
+		</div>
+		<div class="btn">
+			<button class="buy-now">Buy now</button>
+			<button class="add-to-cart">Add to cart</button>
+		</div>
+	</div>
+	<div class="item">
+		<img src="./assests/img/items/capuchino.png">
+		<div class="item-body">
+			<div class="item-name">Capuchino</div>
+			<div class="item-price">$9</div>
+			<div class="item-size radio-box">
+				<input type="radio" id="2-size-l" name="2-size">
+				<label for="2-size-l" class="radio-label">Large</label>
+				<input type="radio" id="2-size-m" name="2-size">
+				<label for="2-size-m" class="radio-label">Medium</label>
+				<input type="radio" id="2-size-s" name="2-size">
+				<label for="2-size-s" class="radio-label">Small</label>
+			</div>
+			<div class="item-ice radio-box">
+				<input type="radio" id="2-hot" name="2-iced">
+				<label for="2-hot" class="radio-label">Hot</label>
+				<input type="radio" id="2-0-ice" name="2-iced">
+				<label for="2-0-ice" class="radio-label">0% ice</label>
+				<input type="radio" id="2-50-ice" name="2-iced">
+				<label for="2-50-ice" class="radio-label">50% ice</label>
+				<input type="radio" id="2-100-ice" name="2-iced">
+				<label for="2-100-ice" class="radio-label">100% ice</label>
+			</div>
+		</div>
+		<div class="btn">
+			<button class="buy-now">Buy now</button>
+			<button class="add-to-cart">Add to cart</button>
+		</div>
+	</div>
+</div>
+</body>
+</html>
