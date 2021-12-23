@@ -4,32 +4,19 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="./assests/css/style.css">
-	<link rel="stylesheet" type="text/css" href=".\assests\font\themify-icons\themify-icons.css">
+	<link rel="stylesheet" type="text/css" href="./assests/css/index_style.css">
+	<link rel="stylesheet" type="text/css" href="./assests/css/header.css">
+	<link rel="stylesheet" type="text/css" href="./assests/css/footer.css">
+	<link rel="stylesheet" type="text/css" href="./assests/font/themify-icons/themify-icons.css">
 	<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="main">
+	<?php session_start(); ?>
 	<!-- header-start -->
-	<div id="header">
-		<div id="logo">
-			<img src="./assests/img/logo/logo.png">
-		</div>
-		<div class="nav">
-			<a href="#">Menu</a>
-			<a href="#">Store</a>
-			<a href="#">About us</a>
-		</div>
-		<div class="login-register">
-			login/register
-		</div>
-		<div class="cart">
-			<i class="ti-shopping-cart cart-icon"></i>
-		</div>
-		<div class="search">
-			<i class="ti-search search-icon"></i>
-		</div>
-	</div>
+	<?php
+		require_once('header.php');
+	?>
 	<!-- header-end -->
 	<!-- slider-start -->
 	<div id="slider">
@@ -45,7 +32,6 @@
 		</div>
 	</div>
 	<!-- slider-end -->
-	<!-- <div class="temp" style="height: 1000px;">temp content</div> -->
 	<!-- items-start -->
 	<div id="items">
 		<!-- item start -->
@@ -70,7 +56,7 @@
 							<div>Small</div>
 						</label>
 					</div>
-					<div class="item-ice radio-box">
+					<div class="item-ice radio-box" style="display: none;">
 						<label>
 							<input type="radio" name="iced" value="Hot">
 							<div>Hot</div>
@@ -247,38 +233,9 @@
 	</div>
 	<!-- items-end -->
 	<!-- footer-start -->
-	<div id="footer">
-		<div class="about-us">
-			<div class="title">About us</div>
-			<div class="content">
-				From 1998.
-			</div>
-		</div>      
-		<div class="address">
-			<div class="title">Address</div>
-			<div class="content">
-				- 529 30/4 street Ho Chi Minh city
-				<br>
-				- 1125 Hung Dao street Can Tho city
-			</div>
-		</div>
-		<div class="contact">
-			<div class="title">Contact</div>
-			<div class="content">
-				Phone: 09308910JQK
-				<br>
-				<br>
-				Email: starwarcoffe@gmail.com
-			</div>
-			<br>
-			<div class="social">
-				<i class="ti-facebook icon"></i>
-				<i class="ti-instagram icon"></i>
-				<i class="ti-pinterest icon"></i>
-			</div>
-		</div>
-		<div id="copy-right">© 2019 Starwar Coffee Company. All rights reserved.</div>
-	</div>
+	<?php
+		require_once('footer.php');
+	?>
 	<!-- footer-end -->
 </div>
 </body>

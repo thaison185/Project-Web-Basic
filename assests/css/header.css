@@ -1,0 +1,100 @@
+#header {
+	width: 100%;
+	height: 46px;
+	color: white;
+	background: black;
+	position: fixed;
+	top: 0;
+	z-index: 9;
+}
+
+/*common*/
+#header a {
+	text-decoration: none;
+}
+
+.sub-menu {
+	background: white;
+	box-shadow: 0 0 3px black;
+}
+
+.sub-menu a {
+	color: black;
+	display: block;
+}
+
+/*header start*/
+#logo {
+	display: inline-block;
+	margin-left: 50px;
+}
+
+#logo img{
+	width: 75px;
+	height: 75px;
+}
+
+#header .nav {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 200px;
+}
+
+#header .nav a {
+	width: 80px;
+	height: 46px;
+	line-height: 46px;
+	text-decoration: none;
+	color: white;
+	font-size: 20px;
+	display: inline-block;
+
+}
+
+#header .login-register {
+	/*width: 46px;*/
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	right: 300px;
+}
+
+#header .login-register > a {
+	color: white;
+}
+
+#header .login-register .sub-menu {
+	display: none;
+}
+
+#header .login-register:hover .sub-menu {
+	display: block;
+}
+
+#header .cart {
+	width: 46px;
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	right: 100px;
+}
+
+#header .cart .cart-icon {
+
+}
+
+#header .search {
+	width: 46px;
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+/*header end*/

@@ -1,0 +1,10 @@
+table tr {
+	position: relative;
+}
+
+table tr span {
+	background: #868686;
+	/*border: 1px solid #999999;*/
+	position: fixed;
+	box-sizing: border-box;
+}
