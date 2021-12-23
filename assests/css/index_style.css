@@ -142,7 +142,7 @@
 
 .item .btn {
 	position: absolute;
-	bottom: 0px;
+	bottom: -30px;
 	right: 20px;
 	margin: 10px 20px;
 	opacity: 0;
