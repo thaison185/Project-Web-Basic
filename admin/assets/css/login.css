@@ -1,0 +1,97 @@
+.container {
+    background-image: url(../img/bg-login.png);
+    background-repeat:no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-area{
+    padding:5rem;
+    width: 50rem;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    min-height:  70rem;
+    border-radius: 1rem;
+    animation-name: slide-down;
+    animation-duration: 1s;
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
+    transform: translateY(-20rem); 
+    opacity:0;
+}
+
+.form-area__title{
+    margin: 3rem 0;
+    font-size: 2rem;
+    color: var(--primary-color);
+    font-weight: bolder;
+}
+
+.form-area__warn{
+    margin: 0 2rem 3rem;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    line-height: 2rem;
+    text-align: center;
+}
+
+.form-area__warn a{
+    text-decoration: none;
+    color:var(--dark-color);
+    font-weight: bolder;
+}
+
+.form-area__login-form {
+    flex-direction: column;
+    font-size: 1.6rem;
+}
+
+.form-area__login-form p{
+    margin-bottom: 2rem;
+}
+
+.form-area__login-form label{
+    display: block;
+}
+
+.form-area__login-form input{
+    width: 35rem;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    padding: .8rem 1.5rem;
+    display: block;
+    margin: .6rem 0 3rem;
+}
+
+.form-area__login-form button{
+    width: 20rem;
+    padding:1.5rem 2rem;
+    border-radius: 2rem;
+    margin: auto 8rem;
+    background-color: var(--sub-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+ 
+.form-area__login-form button:hover{
+    background-color: var(--primary-color);
+}
+
+@keyframes slide-down {
+    0%{
+        transform: translateY(-20rem); 
+        opacity:0;
+    }
+
+    100%{
+        Transform: translateY(0rem);
+        opacity: 1;
+    }
+}
