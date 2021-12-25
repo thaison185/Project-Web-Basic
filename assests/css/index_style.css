@@ -9,6 +9,10 @@
 	color: red !important;
 }
 
+.item input {
+	display: none;
+}
+
 /*slider start*/
 #slider {
 	margin: 46px 174px 20px;
@@ -33,7 +37,7 @@
 #slider .radio .radio-btn {
 	width: 8px;
 	height: 8px;
-	border: 2px solid brown;
+	border: 2px solid black;
 	border-radius: 50%;
 	display: inline-block;
 	margin-right: 10px;
@@ -44,12 +48,12 @@
 }
 
 #slider .radio .radio-btn:first-child {
-	background: brown;
+	background: black;
 }
 /*slider end*/
 
 #items {
-	width: 950px;
+	width: 1000px;
 	font-family: 'Readex Pro', sans-serif;
 	position: relative;
 	margin: 50px auto;
@@ -59,13 +63,15 @@
 
 /*item start*/
 .item {
-	width: 270px;
+	width: 290px;
 	height: 350px;
+	color: black !important;
 	border-radius: 30px;
 	box-shadow: 0 0 5px;
 	display: inline-block;
 	position: relative;		
 	margin: 20px;
+	overflow: hidden;
 }
 
 .item:hover {
@@ -89,31 +95,39 @@
 
 .item .item-body {
 	position: absolute;
-	bottom: -20px;
+	top: 200px;
 	margin: 10px 10px;
 	/*opacity: 0;*/
 	transition: 1s;
 }
 
 .item:hover .item-body {
-	bottom: 30px;
+	top: 150px;
 	/*opacity: 1;*/
-}
-
-.item .item-body input {
-	display: none;
 }
 
 .item .item-body .item-name {
 	font-size: 20px;
 	font-weight: bold;
+	/*margin-bottom: 25px;*/
 }
+
+/*.item .item-body .item-price {
+	display: none;
+	float: left;
+	position: relative;
+	top: -60px;
+}*/
+
+/*.item .item-body input:checked.price-s + span.price-s {
+	display: block;
+}*/
 
 .item .item-body .radio-box {
 	border-radius: 50px;
 	background: #CACFD2;
 	display: inline-block;
-	margin: 5px 0;
+	margin: 2px 0;
 	overflow: hidden;
 	opacity: 0;
 	transition: 1s;
@@ -140,6 +154,10 @@
 	font-weight: bold;
 }
 
+.item .item-body .radio-box input:disabled + div {
+	color: #95A5A6;
+}
+
 .item .btn {
 	position: absolute;
 	bottom: -30px;
@@ -154,13 +172,11 @@
 	opacity: 1;
 }
 
-.item .btn button {
+.item .btn label {
 	background: #CCD1D1;
 	padding: 3px;
+	margin-right: 1px;
 }
 
-.item .btn button:active {
-	background: #34495E;
-}
 /*item end*/
 
