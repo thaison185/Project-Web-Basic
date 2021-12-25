@@ -3,7 +3,7 @@
     $password = $_POST['password'];
     require 'connect.php';
 
-    $valid = "select * from staffs 
+    $valid = "select * from staff 
     where email='$email'";
     $result =$connect->query($valid);
     if($result->num_rows==1){

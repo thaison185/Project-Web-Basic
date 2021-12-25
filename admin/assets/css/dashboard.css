@@ -1,0 +1,45 @@
+.dashboard__head{
+    padding:10rem;
+    background-color: var(--sub-color);
+    font-size: 2rem;
+    color: var(--text-color);
+    font-weight: bolder;
+    margin-bottom: 5rem;
+}
+
+.dashboard__items{
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.dashboard__items a{
+    text-decoration: none;
+}
+
+.dashboard__part{
+    padding: 5rem;
+    background-image: linear-gradient(90deg,var(--sub-color),var(--primary-color));
+    min-width: 25rem;
+    border-radius: 2rem;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.dashboard__part:hover{
+    animation-name: kira;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes kira {
+    0%{
+        background-image: none;
+        background-color:var(--sub-color);
+    }
+    100%{
+        background-image: none;
+        background-color:var(--primary-color);
+    }
+}
