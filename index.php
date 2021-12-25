@@ -3,10 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>Starwar coffee</title>
+	<link rel="icon" type="text/css" href="https://cdn-icons-png.flaticon.com/512/184/184483.png">
+
 	<link rel="stylesheet" type="text/css" href="./assests/css/index_style.css">
 	<link rel="stylesheet" type="text/css" href="./assests/css/header.css">
 	<link rel="stylesheet" type="text/css" href="./assests/css/footer.css">
+
 	<link rel="stylesheet" type="text/css" href="./assests/font/themify-icons/themify-icons.css">
 	<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
 </head>
@@ -54,18 +57,22 @@
 					<img src="<?php echo $each['image'];  ?>">
 					<div class="item-body">
 						<div class="item-name"><?php echo $each['name'] ?></div>
-						<div class="item-price">$9</div>
+						<div class="item-price">
+							<span class="price-s"><?php if ($each['price_s'] != 0) echo '$' . $each['price_s'] ?></span>
+							<span class="price-m"><?php if ($each['price_m'] != 0) echo '$' . $each['price_m'] ?></span>
+							<span class="price-l"><?php if ($each['price_l'] != 0) echo '$' . $each['price_l'] ?></span>
+						</div>
 						<div class="item-size radio-box">
 							<label>
-								<input type="radio" name="size" value="small"<?php if($each['price_s'] == 0) echo ' disabled'?>>
+								<input type="radio" class="price-s" name="size" value="small"<?php if($each['price_s'] == 0) echo ' disabled'?>>
 								<div>Small</div>
 							</label>
 							<label>
-								<input type="radio" name="size" value="medium" checked<?php if($each['price_m'] == 0) echo ' disabled'?>>
+								<input type="radio" class="price-m" name="size" value="medium" checked<?php if($each['price_m'] == 0) echo ' disabled'?>>
 								<div>Medium</div>
 							</label>
 							<label>
-								<input type="radio" name="size" value="large"<?php if($each['price_l'] == 0) echo ' disabled'?>>
+								<input type="radio" class="price-l" name="size" value="large"<?php if($each['price_l'] == 0) echo ' disabled'?>>
 								<div>Large</div>
 							</label>
 						</div>

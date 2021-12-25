@@ -90,8 +90,8 @@ body {
 
 .item .btn {
 	position: absolute;
-	bottom: 0;
-	right: 20px;
+	bottom: 20px;
+	right: 40px;
 	margin: 10px 20px;
 }
 

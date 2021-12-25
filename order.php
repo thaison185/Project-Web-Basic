@@ -1,7 +1,10 @@
 <?php 
 session_start();
-
-$id = $_SESSION['id'];
+if(isset($_SESSION['id']))
+	$customer_id = $_SESSION['id'];
+else
+	$customer_id = '';
+// die($id);
 
 require_once('connect.php');
 
@@ -30,12 +33,12 @@ foreach ($cart as $each) {
 }
 
 $sql = "INSERT INTO orders(customer_id, description, price, status) 
-VALUES ('$id','','$total','0')";
-// echo $sql;
+VALUES ('$customer_id','','$total','0')";
+echo $sql;
 $result = mysqli_query($connect,$sql);
 
 $sql = "select max(id) from orders 
-where customer_id = '$id'";
+where customer_id = '$customer_id'";
 // echo $sql;
 $result = mysqli_query($connect,$sql);
 $order_id = mysqli_fetch_array($result)['max(id)'];

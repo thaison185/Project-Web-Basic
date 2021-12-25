@@ -44,5 +44,5 @@ if($action == 'add_to_cart') {
 	}
 	// echo json_encode($item);
 	echo json_encode($cart);
-	setcookie('cart',json_encode($cart));
+	setcookie('cart',json_encode($cart),time() + (86400 * 30));
 }

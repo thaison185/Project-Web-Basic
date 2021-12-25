@@ -12,6 +12,7 @@
 			Xin chào <?php echo $_SESSION['name'] ?>!
 			<div class="sub-menu">
 				<a href="update_info.php">Update info</a>
+				<a href="orders_log.php">Orders</a>
 				<a href="logout.php">Đăng xuất!</a>
 			</div>
 		<?php } else { ?>

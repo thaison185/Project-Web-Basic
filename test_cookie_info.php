@@ -1,2 +1,4 @@
 <?php 
-echo $_COOKIE['cart'];
+$cokie = '5555';
+
+setcookie('tets',$cokie,time() + 86400);

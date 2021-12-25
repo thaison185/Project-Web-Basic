@@ -18,6 +18,6 @@ if($action == 'del') {
 		$cart[$id]->{'quantity'}--;
 }
 
-setcookie('cart',json_encode($cart));
+setcookie('cart',json_encode($cart),time() + (86400 * 30));
 
 header('location:cart.php');
