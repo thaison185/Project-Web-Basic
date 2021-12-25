@@ -6,14 +6,25 @@
 	<title>Cart</title>
 </head>
 <body>
-	<?php 
-	$cart = json_decode($_COOKIE['cart']);
-
-	require_once('connect.php');
-
-	$total = 0;
-	 ?>
 <h1>CART</h1>
+<?php 
+if(!isset($_COOKIE['cart'])) { 
+	?>
+	<h2>Cart is Empty!</h2>
+<?php
+die();
+ } 
+$cart = json_decode($_COOKIE['cart']);
+if(count($cart) == 0) { ?>
+	<h2>Cart is Empty!</h2>
+<?php
+die();
+ }
+
+require_once('connect.php');
+
+$total = 0;
+ ?>
 <table border="1px" width="100%">
 	<tr>
 		<td><h3>Name</h3></td>
@@ -60,7 +71,7 @@
 				<?php echo $each->{'quantity'} ?>
 				<a href="progress_update_cart.php?id=<?php echo $index ?>&action=inc">+</a>
 			</td>
-			<td><?php echo $each->{'quantity'}*$price ?></td>
+			<td>$<?php echo $each->{'quantity'}*$price ?></td>
 			<td>
 				<a href="progress_update_cart.php?id=<?php echo $index ?>&action=del" style="color: red;">Delete</a>
 
@@ -68,7 +79,9 @@
 		</tr>
 	<?php } ?>
 </table>
-<h2 style="position: absolute; bottom: -120px; left: 0; padding-bottom: 20px;">Total: $<?php echo $total ?></h2>
-<h2 style="position: absolute; bottom: -120px; right: 0; padding-bottom: 20px;"><a href="order.php">Order</a></h2>
+<h2 >Total: $<?php echo $total ?></h2>
+<!-- style="position: absolute; bottom: -120px; left: 0; padding-bottom: 20px;" -->
+<h2><a href="order.php">Order</a></h2>
+ <!-- style="position: absolute; bottom: -120px; right: 0; padding-bottom: 20px;" -->
 </body>
 </html>

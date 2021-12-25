@@ -1,54 +1,26 @@
+<?php 
+$id = $_GET['id'];
+
+require_once('connect.php');
+
+$sql = "select * from items
+where id = '$id'";
+$result = mysqli_query($connect,$sql);
+$each = mysqli_fetch_array($result);
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="./assests/css/index_style.css">
-	<link rel="stylesheet" type="text/css" href="./assests/css/header.css">
-	<link rel="stylesheet" type="text/css" href="./assests/css/footer.css">
-	<link rel="stylesheet" type="text/css" href="./assests/font/themify-icons/themify-icons.css">
+	<title><?php echo $each['name'] ?> - Starwar Coffee</title>
+
+	<link rel="stylesheet" type="text/css" href="./assests/css/item_detail_style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
-<div id="main">
-	<?php session_start(); ?>
-	<!-- header-start -->
-	<?php
-		require_once('header.php');
-	?>
-	<!-- header-end -->
-	<!-- slider-start -->
-	<div id="slider">
-		<div class="slides">
-			<div class="slide">
-				<img src="./assests/img/slides/slide1.jpg">
-			</div>
-		</div>
-		<div class="radio">
-			<div class="radio-btn"></div>
-			<div class="radio-btn"></div>
-			<div class="radio-btn"></div>
-		</div>
-	</div>
-	<!-- slider-end -->
-	<!-- items-start -->
-	<div id="items">
-		<?php 
-		require_once('connect.php');
-
-		$sql = "select count(*) from items";
-		$result = mysqli_query($connect,$sql);
-		$n_items = mysqli_fetch_array($result)['count(*)'];
-
-		$sql = "select * from items";
-		$result = mysqli_query($connect,$sql);
-		// echo json_encode($result[0]);
-		?>
-
-		<?php foreach ($result as $each) { ?>
-			<!-- item start -->
-			<a href="item_detail.php?id=<?php echo$each['id'] ?>" class="item">
+	<!-- item start -->
+			<div href="item_detail.php?id=<?php echo$each['id'] ?>" class="item">
 				<form method="post" action="progress_process_items.php">
 					<input type="text" name="id" value="<?php echo $each['id'] ?>" style="display: none;">
 					<img src="<?php echo $each['image'];  ?>">
@@ -115,18 +87,8 @@
 						</label>
 					</div>
 				</form>
-			</a>
+			</div>
 			<!-- item end -->
-		<?php }  ?>
-	</div>
-	<!-- items end -->
-	<!-- footer-start -->
-	<?php
-		require_once('footer.php');
-	?>
-	<!-- footer-end -->
 
-	<?php mysqli_close($connect) ?>
-</div>
 </body>
 </html>

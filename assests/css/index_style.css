@@ -65,6 +65,7 @@
 .item {
 	width: 290px;
 	height: 350px;
+	color: black !important;
 	border-radius: 30px;
 	box-shadow: 0 0 5px;
 	display: inline-block;
@@ -141,12 +142,8 @@
 	font-weight: bold;
 }
 
-.item .item-body .radio-box div {
+.item .item-body .radio-box input:disabled + div {
 	color: #95A5A6;
-}
-
-.item .item-body .radio-box input + div {
-	color: black;
 }
 
 .item .btn {

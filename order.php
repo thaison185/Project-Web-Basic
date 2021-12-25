@@ -62,15 +62,28 @@ foreach ($cart as $each) {
 	$price = $price*$each->{'quantity'};
 	$ice = $each->{'ice'};
 	$sugar = $each->{'sugar'};
-	$option = "$ice, $sugar";
+	if($ice != -1) {
+		if ($sugar != -1) {
+			$option = "$ice, $sugar";
+		} else {
+			$option = "$ice";
+		}
+	} else {
+		if ($sugar != -1) {
+			$option = "$sugar";
+		} else {
+			$option = '';
+		}
+	}
 	$size = $each->{'size'};
 
-	$sql = "INSERT INTO order_detail(order_id, item_id, quantity, price, option, size) 
+	$sql = "INSERT INTO `order_detail`(`order_id`, `item_id`, `quantity`, `price`, `option`, `size`)
 	VALUES ('$order_id','$item_id','$quantity','$price','$option','$size')";
 	echo $sql;
 	$result = mysqli_query($connect,$sql);
 
 }
+require_once('delete_cart.php');
 
 // Order_Details
 // order_id
