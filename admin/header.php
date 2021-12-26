@@ -12,13 +12,13 @@
                         <?php if($_SESSION['role']==1){echo("Administrator");}else{echo("Staff");} ?>
                     </p>
                     <p class="header__account-name">
-                        <?php echo($_SESSION['user_name']);?>
+                        <?php echo($_SESSION['username']);?>
                         <i class="fas fa-chevron-down header__down-icon"></i>
                     </p>
                 </div>
                 <div class="header__sub-menu">
                     <div class="header__sub-menu-header">
-                        <p class="header__account-name" style="color:#333;"> <?php echo($_SESSION['user_name']);?></p>
+                        <p class="header__account-name" style="color:#333;"> <?php echo($_SESSION['username']);?></p>
                         <p class="header__account-sub-info" style="color: #fff;"><?php echo($_SESSION['email']);?></p>
                     </div>
                     <div class="header__sub-menu-body">

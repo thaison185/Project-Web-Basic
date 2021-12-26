@@ -52,6 +52,10 @@
         </div> 
         <div class="orders__order-table">
             <?php 
+            if (isset($_SESSION['error'])){
+                $err=$_SESSION['error'];
+                echo "Error: $err";
+            }
                 if(!isset($_GET['status'])){
                     $sql="select orders.id,date,status,price, name
                     from orders join customers
@@ -81,6 +85,8 @@
                     <tbody>
                         <?php
                             while($row = mysqli_fetch_array($result)){
+                                $stat=$row['status'];
+                                $id=$row['id'];
                         ?>
                         <tr class="float-z">
                             <td style="color: darkblue;"><?php echo($row['id']); ?></td>
@@ -92,16 +98,17 @@
                             </td>
                             <td><?php echo($row['name']); ?></td>
                             <td>
-                                <span><?php echo($row['price']); ?></span>
+                                <span>$ <?php echo($row['price']); ?></span>
                             </td>
                             <td  class="orders__more-btn">
                                     <i class="fas fa-ellipsis-h"></i>
                                         <ul class="orders__table-sub-menu hidden">
-                                            <li><a href="#"><i class="fas fa-eye"></i></i> Order Details</a></li>
+                                            <li><a href="./order_details.php?id=<?php echo $id; ?>"><i class="fas fa-eye"></i></i> Order Details</a></li>
+                                            <?php
+                                            if ($row['status']!="Rejected"){
+                                            ?>
                                             <li>
                                                 <a href="<?php
-                                                    $stat=$row['status'];
-                                                    $id=$row['id'];
                                                     switch ($row['status']){
                                                         case "Pending":
                                                             echo "./update-order.php?id='$id'&status=Accepted";
@@ -125,8 +132,9 @@
                                                  ?>
                                                 </a>
                                             </li>
-                                            <li><a href="./update-order.php?id=<?php echo($id);?>"><i class="fas fa-money-bill-wave-alt"></i> Update Order</a></li>
-                                            <li><a href="#"><i class="fas fa-trash-alt"></i> Remove Order</a></li>
+                                            <li><a href="./update-order.php?id=<?php echo($id);?>&status=Rejected"><i class="fas fa-money-bill-wave-alt"></i> Reject Order</a></li>
+                                            <?php } ?>
+                                            <li><a href="./delete-order.php?id=<?php echo($id);?>"><i class="fas fa-trash-alt"></i> Remove Order</a></li>
                                      </ul>
                             </td>
                         </tr>

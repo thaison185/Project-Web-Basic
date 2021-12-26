@@ -24,7 +24,7 @@
         <!-- Container Begin -->
         <div class="container">
             <div class="dashboard__head">
-                <p>Welcome back, <?php echo($_SESSION['user_name']);?>!</p>
+                <p>Welcome back, <?php echo($_SESSION['username']);?>!</p>
             </div>
             <div class="dashboard__items">
                 <a href="./orders.php">

@@ -12,7 +12,7 @@
         if(password_verify($password,$hashed)){
             session_start();
             $_SESSION['id']= $cre['id'];
-            $_SESSION['user_name'] = $cre['user_name'];
+            $_SESSION['username'] = $cre['username'];
             $_SESSION['role']= $cre['role'];
             $_SESSION['avatar'] = $cre['avatar'];
             $_SESSION['email'] = $cre['email'];
