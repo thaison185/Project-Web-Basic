@@ -1,6 +1,8 @@
 <?php 
     session_start();
+    require 'check-role.php';
     $_SESSION['cur']="Dashboard";
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">

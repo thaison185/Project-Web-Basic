@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    require 'check-role.php';
     $_SESSION['cur']="Products";
     if(!isset($_GET['id'])){
         session_start();
@@ -47,6 +48,9 @@
                          }
                      ?>
                 </div>
+                <?php
+                    if($_SESSION['role']==1){
+                ?>
                 <form action="./product-handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
                     <div>
                         <label for="name">Name: </label>
@@ -105,6 +109,23 @@
                     </div>
                     <button type="submit">Update</button>
                 </form>
+                <?php }
+                    else{
+                ?>
+                 <div>
+                 <form action="./product-handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
+                        <label>Price: </label>
+                        <br>
+                        <label for="s">Size S: </label>
+                        <input type="number" name="s_price" id="s" value="<?php echo $item['s_price'] ?>">
+                        <label for="m">Size M: </label>
+                        <input type="number" name="m_price" id="m" value="<?php echo $item['m_price'] ?>">
+                        <label for="l">Size L: </label>
+                        <input type="number" name="l_price" id="l" value="<?php echo $item['l_price'] ?>">
+                    </div>
+                    <button type="submit">Update</button>
+                </form>
+                <?php } ?>
             </div>
         </div>
     </div>

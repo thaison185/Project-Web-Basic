@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    require 'check-role.php';
     $_SESSION['cur']="Products";
  ?>
 <!DOCTYPE html>
@@ -31,12 +32,16 @@
             <input type="text" class="products__search" placeholder="Quick search by ID">
             <i class="fas fa-search products__search-icon"></i>
         </div>
+        <?php
+                        if ($_SESSION['role']==1){
+        ?>
         <div class="products__right-side">
             <a href="./product-insert.php" class="products__add-product">
                 <i class="fas fa-plus"></i>
                 Add Product
             </a>
         </div>
+        <?php } ?>
     </div>
     <div class="products__product-table">
         <?php 
@@ -78,7 +83,21 @@
                     <td><?php echo $option; ?></td>
                     <td class="actions">
                         <div><a href="./product-update.php?id=<?php echo $id; ?>">Update</a></div>
-                        <div><a href="./product-delete.php?id=<?php echo $id; ?>">Delete</a></div>
+                    <?php
+                        if ($_SESSION['role']==1){
+                    ?>
+                        <script>
+                            function Delete() {
+                            window.location.href="./product-delete.php?id=<?php echo $id?>";
+                            }
+                            function confirmDelete() {
+                                if (confirm("Do you really want to delete this product?") == true) {
+                                    Delete();
+                                }
+                            }
+                        </script>
+                        <button class="confirm" onclick="confirmDelete()">Delete</button>
+                    <?php } ?>
                     </td>
                 </tr>
                 <?php } ?>

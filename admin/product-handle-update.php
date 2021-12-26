@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require 'check-role.php';
     $_SESSION['cur']="Products";
     if(!isset($_GET['id'])){
         $_SESSION['error']="No product selected!";
@@ -7,7 +8,8 @@
         exit;
     }
     unset($_SESSION['error']);
-    
+
+if($_SESSION['role']==1){
     $id=$_GET['id'];
     $name=addslashes($_POST['name']);
     $s_price=$_POST['s_price']==''?0:$_POST['s_price'];
@@ -47,5 +49,22 @@
         $res=$connect->query($sql);
         if($connect->error != '') {$_SESSION['error'] = $connect->error;}
     }
+}
+else{
+    $s_price=$_POST['s_price']==''?0:$_POST['s_price'];
+    $m_price=$_POST['m_price']==''?0:$_POST['m_price'];
+    $l_price=$_POST['l_price']==''?0:$_POST['l_price'];
+
+    require 'connect.php';
+    $sql="update items
+    set
+    s_price=$s_price,
+    m_price=$m_price,
+    l_price=$l_price,
+    where id=$id";
+    $res=$connect->query($sql);
+    if($connect->error != '') {$_SESSION['error'] = $connect->error;}
+    else {unset($_SESSION['error']);}
+}
     mysqli_close($connect);
     header("location:product-update.php?id=$id");

@@ -28,7 +28,18 @@
                         </ul>
                     </div>
                     <div class="header__sub-menu-footer">
-                        <button><i class="fas fa-sign-out-alt"></i>  Sign out</button>
+                        <script>
+                                function signOut() {
+                                    window.location.href="./sign-out.php";
+                                }
+                                function confirmSignOut() {
+                                    if (confirm("Do you really want to Sign out?") == true) {
+                                        signOut();
+                                    }
+                                }
+                        </script>
+                        <button onclick="confirmSignOut()"><i class="fas fa-sign-out-alt"></i>  Sign out</button>
+                       
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    require 'check-role.php';
     $_SESSION['cur']="Shipping Orders";
 ?>
 <!DOCTYPE html>
@@ -133,8 +134,21 @@
                                                 </a>
                                             </li>
                                             <li><a href="./update-order.php?id=<?php echo($id);?>&status=Rejected"><i class="fas fa-money-bill-wave-alt"></i> Reject Order</a></li>
+                                            <?php } 
+                                                if ($_SESSION['role'] == 1){
+                                            ?>
+                                            <script>
+                                                function Delete() {
+                                                    window.location.href="./delete-order.php?id=<?php echo $id?>";
+                                                }
+                                                function confirmDelete() {
+                                                    if (confirm("Do you really want to delete this order?") == true) {
+                                                        Delete();
+                                                    }
+                                                }
+                                            </script>
+                                            <li class="confirm" onclick="confirmDelete()"><i class="fas fa-trash-alt"></i> Remove Order</li>
                                             <?php } ?>
-                                            <li><a href="./delete-order.php?id=<?php echo($id);?>"><i class="fas fa-trash-alt"></i> Remove Order</a></li>
                                      </ul>
                             </td>
                         </tr>

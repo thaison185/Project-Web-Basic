@@ -1,5 +1,10 @@
 <?php
     session_start();
+    require 'check-role.php';
+    if($_SESSION['role'] != 1) {
+        header('location:products.php');
+        exit;
+    }
     $name=addslashes($_POST['name']);
     $s_price=$_POST['s_price']==''?0:$_POST['s_price'];
     $m_price=$_POST['m_price']==''?0:$_POST['m_price'];

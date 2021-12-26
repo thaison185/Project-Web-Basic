@@ -1,6 +1,11 @@
 <?php
 require "connect.php";
 session_start();
+require 'check-role.php';
+if($_SESSION['role'] != 1) {
+    header('location:orders.php');
+    exit;
+}
 if(!isset($_GET['id'])){
     session_start();
     $_SESSION['error']="No order selected!";

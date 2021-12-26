@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    require 'check-role.php';
     $_SESSION['cur']="Shipping Orders";
     if(!isset($_GET['id'])){
         session_start();

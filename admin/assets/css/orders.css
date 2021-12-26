@@ -158,36 +158,6 @@
     opacity:1;
 }
 
-.orders__table-icon{
-    display: inline;
-    padding: 2rem;
-    border-radius: 50%;
-    opacity:0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    text-align: center;
-}
-
-.orders__table-icon:hover{
-    background-color: #bbb;
-}
-
-.orders__table-icon:hover .orders__tooltip{
-    display:inline-block;
-}
-.orders__tooltip{
-    position:absolute;
-    top:0;
-    left:-2rem;
-    line-height: 1.6rem;
-    min-width: 10rem;
-    font-size: 1rem;
-    font-weight: 700;
-    display: none;
-}
-
-
 .orders__table-status{
     padding: 0 .5rem 0 1rem;
     line-height: 3rem;
@@ -252,6 +222,7 @@ tbody .orders__more-btn:hover{
     list-style: none;
 }
 
+.confirm,
 .orders__table-sub-menu a{
     display: block;
     color:var(--primary-color);
@@ -263,6 +234,11 @@ tbody .orders__more-btn:hover{
 }
 
 .orders__table-sub-menu li:hover a{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.orders__table-sub-menu .confirm:hover{
     background-color: var(--primary-color);
     color: var(--text-color);
 }

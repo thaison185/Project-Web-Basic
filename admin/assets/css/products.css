@@ -98,6 +98,19 @@
     text-align: center;
 }
 
+.confirm{
+    display: block!important; 
+    margin: 2rem 0;
+    text-align: center;
+    border:none;
+    width: 10rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 0;
+    cursor: pointer;
+}
+
 .actions a{
     display: block;
     width: 10rem;

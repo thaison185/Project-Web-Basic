@@ -1,5 +1,10 @@
 <?php
     session_start();
+    require 'check-role.php';
+    if($_SESSION['role'] != 1) {
+        header('location:products.php');
+        exit;
+    }
     $_SESSION['cur']="Products";
     if(!isset($_GET['id'])){
         $_SESSION['error']="No product selected!";
