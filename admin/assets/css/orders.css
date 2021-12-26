@@ -143,7 +143,6 @@
 }
 
 .orders__table tbody tr:hover {
-    transform: scaleY(1.05);
     opacity: 1!important;
     z-index: 2;
     position: relative;

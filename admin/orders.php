@@ -52,20 +52,20 @@
         </div> 
         <div class="orders__order-table">
             <?php 
-                if(!isset($_GET['statsus'])){
-                    $sql="select id,date,status,price, name
+                if(!isset($_GET['status'])){
+                    $sql="select orders.id,date,status,price, name
                     from orders join customers
                     on orders.customer_id=customers.id";
                 }
                 else{
                     $status=$_GET['status'];
-                    $sql="select id,date,status,price,name
+                    $sql="select orders.id,date,status,price,name
                     from orders join customers
                     on orders.customer_id=customers.id
                     where status='$status'";                
                 }
                 require 'connect.php';
-                $res=$connect->query($sql);
+                $result = $connect->query($sql);
             ?>
              <table class="orders__table">
                     <thead>
@@ -80,7 +80,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            while($row = $res->fetch_assoc()){
+                            while($row = mysqli_fetch_array($result)){
                         ?>
                         <tr class="float-z">
                             <td style="color: darkblue;"><?php echo($row['id']); ?></td>
@@ -98,9 +98,34 @@
                                     <i class="fas fa-ellipsis-h"></i>
                                         <ul class="orders__table-sub-menu hidden">
                                             <li><a href="#"><i class="fas fa-eye"></i></i> Order Details</a></li>
-                                            <li><a href="#"><i class="fas fa-truck"></i> Mark as Delivered</a></li>
-                                            <li><a href="#"><i class="fas fa-money-bill-wave-alt"></i> Mark as Paid</a></li>
-                                            <li><a href="#"><i class="fas fa-file-invoice"></i> Send Invoice</a></li>
+                                            <li>
+                                                <a href="<?php
+                                                    $stat=$row['status'];
+                                                    $id=$row['id'];
+                                                    switch ($row['status']){
+                                                        case "Pending":
+                                                            echo "./update-order.php?id='$id'&status=Accepted";
+                                                            break;
+                                                        case "Accepted":
+                                                            echo "./update-order.php?id='$id'&status=Delivered";
+                                                            break;
+                                                        default:
+                                                            echo '#';
+                                                    }
+                                                 ?>">
+                                                <i class="fas fa-truck"></i>
+                                                 <?php
+                                                    switch ($row['status']){
+                                                        case "Pending":
+                                                            echo ' Accept Order';
+                                                            break;
+                                                        default:
+                                                            echo 'Mark as Delivered'; 
+                                                    }
+                                                 ?>
+                                                </a>
+                                            </li>
+                                            <li><a href="./update-order.php?id=<?php echo($id);?>"><i class="fas fa-money-bill-wave-alt"></i> Update Order</a></li>
                                             <li><a href="#"><i class="fas fa-trash-alt"></i> Remove Order</a></li>
                                      </ul>
                             </td>
@@ -108,7 +133,30 @@
                         <?php } ?>
                     </tbody>
              </table>
+             <?php 
+                echo '<script type="text/javascript">
+                let moreBtns=document.querySelectorAll("tbody .orders__more-btn");
+                document.addEventListener(\'click\',function(e){
+                    console.log(e.target)
+                    for (let moreBtn of moreBtns){
+                        let menu=moreBtn.querySelector(".orders__table-sub-menu");
+                        let displayStyle = window.getComputedStyle(menu).getPropertyValue("display");
+                        if (!moreBtn.contains(e.target)) {
+                            if(displayStyle===\'block\') {
+                                menu.classList.toggle("hidden");
+                                moreBtn.parentElement.classList.toggle("float-z");
+                            }
+                        }
+                        else{
+                            menu.classList.toggle("hidden");
+                            moreBtn.parentElement.classList.toggle("float-z");
+                        }
+                    }
+                })
+             </script>'; 
+             ?>
         </div>
+
     </div>
     <!-- Container End -->
     <?php include './footer.php'; ?>

@@ -8,7 +8,7 @@
     $result =$connect->query($valid);
     if($result->num_rows==1){
         $cre=mysqli_fetch_array($result);
-        $hashed = $cre['hashedpwd'];
+        $hashed = $cre['hashed_password'];
         if(password_verify($password,$hashed)){
             session_start();
             $_SESSION['id']= $cre['id'];
