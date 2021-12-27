@@ -174,7 +174,7 @@
 
 .header__sub-menu-body li:hover a,
 .header__sub-menu-footer button:hover{
-    color:#fff;
+    color:#fff!important;
     background-color: var(--primary-color);
 }
 

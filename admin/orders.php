@@ -52,26 +52,28 @@
             </div>
         </div> 
         <div class="orders__order-table">
-            <?php 
-            if (isset($_SESSION['error'])){
-                $err=$_SESSION['error'];
-                echo "Error: $err";
-            }
-                if(!isset($_GET['status'])){
-                    $sql="select orders.id,date,status,price, name
-                    from orders join customers
-                    on orders.customer_id=customers.id";
+            <div class="err">
+                <?php
+                if (isset($_SESSION['error'])){
+                    $err=$_SESSION['error'];
+                    echo "Error: $err";
                 }
-                else{
-                    $status=$_GET['status'];
-                    $sql="select orders.id,date,status,price,name
-                    from orders join customers
-                    on orders.customer_id=customers.id
-                    where status='$status'";                
-                }
-                require 'connect.php';
-                $result = $connect->query($sql);
-            ?>
+                    if(!isset($_GET['status'])){
+                        $sql="select orders.id,date,status,price, name
+                        from orders join customers
+                        on orders.customer_id=customers.id";
+                    }
+                    else{
+                        $status=$_GET['status'];
+                        $sql="select orders.id,date,status,price,name
+                        from orders join customers
+                        on orders.customer_id=customers.id
+                        where status='$status'";
+                    }
+                    require 'connect.php';
+                    $result = $connect->query($sql);
+                ?>
+            </div>
              <table class="orders__table">
                     <thead>
                         <tr>
@@ -181,7 +183,7 @@
 
     </div>
     <!-- Container End -->
-    <?php include './footer.php'; ?>
+    <?php include './footer.php'; $connect->close()?>
 </div>
 </body>
 </html>

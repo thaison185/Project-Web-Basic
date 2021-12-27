@@ -3,7 +3,6 @@
     require 'check-role.php';
     $_SESSION['cur']="Products";
     if(!isset($_GET['id'])){
-        session_start();
         $_SESSION['error']="No product selected!";
         header('location:products.php');
         exit;
@@ -13,7 +12,12 @@
     require 'connect.php';
     $sql="select * from items where id=$id";
     $res=$connect->query($sql);
-    if($res->num_rows>0) $item=$res->fetch_array();
+    if(!$res->num_rows>0){
+        $_SESSION['error']="Can't find product which id=$id!";
+        header('location:products.php');
+        exit;
+    }
+    $item=$res->fetch_array();
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,10 +131,11 @@
                 </form>
                 <?php } ?>
             </div>
+            <a href="./products.php" class="back"><i class="fas fa-chevron-left"></i>     Back to Products</a>
         </div>
     </div>
     <!-- Container End -->
-    <?php include './footer.php'; ?>
+    <?php include './footer.php'; $connect->close()?>
 </div>
 </body>
 </html>

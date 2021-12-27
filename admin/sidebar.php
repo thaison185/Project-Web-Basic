@@ -27,7 +27,7 @@
                     <li class="<?php echo($_SESSION['cur'] =="Customers"?"checked":""); ?>">
                         <a href="./customers.php">
                             <i class="fas fa-users"></i>
-                            <span class="sidebar__func-name">Customer</span>
+                            <span class="sidebar__func-name">Customers</span>
                         </a>
                     </li>
                     <li class="<?php echo($_SESSION['cur'] =="Staffs"?"checked":""); ?>">

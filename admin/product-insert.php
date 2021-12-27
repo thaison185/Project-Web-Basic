@@ -24,7 +24,6 @@
 <?php 
         include './sidebar.php';
         include './header.php';
-        require './connect.php';
 ?>
 <div class="app">
     <!-- Container Begin -->
@@ -76,6 +75,7 @@
                     <button type="submit">Insert</button>
                 </form>
             </div>
+            <a href="./products.php" class="back"><i class="fas fa-chevron-left"></i>     Back to Products</a>
         </div>
     </div>
     <!-- Container End -->

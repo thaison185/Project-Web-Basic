@@ -39,7 +39,7 @@
                         Products
                     </div>
                 </a>
-                <a href="./users.php">
+                <a href="./customers.php">
                     <div class="dashboard__part">
                         Users
                     </div>

@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    $_SESSION['cur']="Shipping Orders";
+    $_SESSION['cur']="Customers";
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/orders.css">
+    <link rel="stylesheet" href="./assets/css/customers.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" >
-    <title>Q Coffee | Orders Control</title>
+    <title>Q Coffee | Customers Control</title>
 </head>
 <body>
 <?php 

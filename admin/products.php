@@ -44,12 +44,14 @@
         <?php } ?>
     </div>
     <div class="products__product-table">
-        <?php 
-            if (isset($_SESSION['error'])){
-                $err=$_SESSION['error'];
-                echo "Error: $err";
-            }
-        ?>
+        <div class="err">
+            <?php
+                if (isset($_SESSION['error'])){
+                    $err=$_SESSION['error'];
+                    echo "Error: $err";
+                }
+            ?>
+        </div>
         <table class="products__table">
             <thead>
                 <tr>
@@ -91,7 +93,7 @@
                             window.location.href="./product-delete.php?id=<?php echo $id?>";
                             }
                             function confirmDelete() {
-                                if (confirm("Do you really want to delete this product?") == true) {
+                                if (confirm("All orders include this product will be deleted too, do you want to continue?") == true) {
                                     Delete();
                                 }
                             }
@@ -105,7 +107,7 @@
         </table>
     </div>
     <!-- Container End -->
-    <?php include './footer.php'; ?>
+    <?php include './footer.php'; $connect->close()?>
 </div>
 </body>
 </html>

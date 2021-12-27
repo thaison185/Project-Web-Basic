@@ -296,6 +296,7 @@ tbody .orders__more-btn:hover{
 .details h1{
     color:var(--primary-color);
     font-size: 2.4rem;
+    margin-top: 2rem;
 }
 
 .p__details{
@@ -308,4 +309,22 @@ tbody .orders__more-btn:hover{
     font-size: 2.2rem!important;
     font-weight: bolder;
     color: var(--dark-color);
+}
+
+a.back{
+    display: block;
+    text-decoration: none;
+    color: var(--dark-color);
+    font-size: 3rem;
+    line-height: 5rem;
+}
+
+a.back:hover{
+    color:var(--primary-color)
+}
+
+.err{
+    font-size: 1.6rem;
+    color: red;
+    margin-bottom: .5rem;
 }

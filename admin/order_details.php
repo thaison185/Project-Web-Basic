@@ -38,6 +38,7 @@
     <div class="container">
         <div class="orders__details">
             <div class="details">
+            <a href="./orders.php" class="back"><i class="fas fa-chevron-left"></i> Back to Orders</a>
             <h1>Details of Order #<?php echo $id;?></h1>
             <?php
                 $sql="select orders.*,customers.name,customers.address, customers.phone 
