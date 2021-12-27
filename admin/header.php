@@ -6,7 +6,8 @@
                 </span>
             </div>
             <div class="header__account">
-                <img src=<?php echo($_SESSION['avatar']);?> alt="Avatar" class="header__account-avatar">
+                <?php $avatar=$_SESSION['avatar']==''?'./data/default.png':$_SESSION['avatar']; ?>
+                <img src=<?php echo $avatar;?> alt="Avatar" class="header__account-avatar">
                 <div class="header__account-info">
                     <p class="header__account-sub-info">
                         <?php if($_SESSION['role']==1){echo("Administrator");}else{echo("Staff");} ?>

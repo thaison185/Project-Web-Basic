@@ -28,4 +28,5 @@
     if($connect->error != '') {$_SESSION['error'] = $connect->error;}
     else {unset($_SESSION['error']);}
     mysqli_close($connect);
+    $_SESSION['success']="Product has been Added!";
     header('location:product-insert.php');

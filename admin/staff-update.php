@@ -2,26 +2,32 @@
     session_start();
     require 'check-role.php';
     if($_SESSION['role'] != 1) {
-        header('location:customers.php');
+        header('location:dashboard.php');
         exit;
     }
-    $_SESSION['cur']="Customers";
+    $_SESSION['cur']="Staff";
     if(!isset($_GET['id'])){
-        $_SESSION['error']="No customer selected!";
-        header('location:customers.php');
+        $_SESSION['error']="No staff selected!";
+        header('location:staff.php');
         exit;
     }
     unset($_SESSION['error']);
     $id=$_GET['id'];
     require 'connect.php';
-    $sql="select * from customers where id=$id";
+    $sql="select * from staff where id=$id";
     $res=$connect->query($sql);
     if(!$res->num_rows>0){
-        $_SESSION['error']="Can't find customer whom id=$id!";
-        header('location:customers.php');
+        $_SESSION['error']="Can't find staff whom id=$id!";
+        header('location:staff.php');
         exit;
     }
-    $customer=$res->fetch_array();
+    $staff=$res->fetch_array();
+    if($staff['role']==1){
+        $_SESSION['error']="Can't modify Administrator!";
+        $connect->close();
+        header('location:staff.php');
+        exit;
+    }
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,9 +38,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/customers.css">
+    <link rel="stylesheet" href="./assets/css/staff.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" >
-    <title>Q Coffee | Customers Control</title>
+    <title>Q Coffee | Staff Control</title>
 </head>
 <body>
 <?php 
@@ -68,35 +74,27 @@
                      ?>
                 </div>
 
-                <form action="./customer-handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
+                <form id="myForm" action="./staff-handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
                     <div>
                         <label for="username">Username: </label>
-                        <input type="text" name="username"  id="username" value="<?php echo $customer['username'] ?>">
+                        <input type="text" name="username"  id="username" value="<?php echo $staff['username'] ?>">
                     </div>
                     <div>
                         <label for="name">Name: </label>
-                        <input type="text" name="name"  id="name" value="<?php echo $customer['name'] ?>">
+                        <input type="text" name="name"  id="name" value="<?php echo $staff['name'] ?>">
                     </div>
                     <div>
                         <label for="email">Email: </label>
-                        <input type="text" name="email"  id="email" value="<?php echo $customer['email'] ?>">
+                        <input type="text" name="email"  id="email" value="<?php echo $staff['email'] ?>">
                     </div>
                     <div>
                         <label for="phone">Phone Number: </label>
-                        <input type="text" name="phone"  id="phone" value="<?php echo $customer['phone'] ?>">
-                    </div>
-                    <div>
-                        <label for="DOB">DOB: </label>
-                        <input type="text" name="DOB"  id="DOB" value="<?php echo $customer['DOB'] ?>">
-                    </div>
-                    <div>
-                        <label for="address">Address: </label>
-                        <input type="text" name="address"  id="address" value="<?php echo $customer['address'] ?>">
+                        <input type="text" name="phone"  id="phone" value="<?php echo $staff['phone'] ?>">
                     </div>
                     <div>
                         <label>Gender: </label>
                         <?php 
-                            switch($customer['gender']){
+                            switch($staff['gender']){
                                 case 0:
                         ?>
                             <input type="radio" name="gender" value="0" checked>Male
@@ -110,13 +108,32 @@
                     <?php break; } ?>
                     </div>
                     <div>
+                        <label>Role: </label>
+                            <input type="radio" name="role" value="0" checked>Staff
+                            <input type="radio" name="role" value="1" id="admin">Administrator
+                    </div>
+                    <div>
                         <label>Avatar: </label>
-                        <?php if ($customer['avatar']==''){echo 'No Avatar';}else{?> <img src=".<?php echo $customer['avatar']; ?>" alt="Avatar" width="200px"><?php }?>
+                        <?php if ($staff['avatar']==''){echo 'No Avatar';}else{?> <img src="<?php echo $staff['avatar']; ?>" alt="Avatar" width="200px"><?php }?>
                         <input type="file" name="photo" >
                     </div>
-                    <button type="submit">Update</button>
+                    <script>
+                            function Submit() {
+                                document.getElementById("myForm").submit();
+                            }
+                            
+                            function checkSubmit() {     
+                                if (document.getElementById("admin").checked == false){Submit();}
+                                else{
+                                    if (confirm("Do you really want to give this staff Administrator permission?") == true) {
+                                        Submit();
+                                    }
+                                } 
+                            }
+                        </script>
+                    <button onclick="checkSubmit()">Update</button>
                 </form>
-            <a href="./customers.php" class="back"><i class="fas fa-chevron-left"></i>     Back to Customers</a>
+            <a href="./staff.php" class="back"><i class="fas fa-chevron-left"></i>     Back to Staff</a>
         </div>
    
     <!-- Container End -->

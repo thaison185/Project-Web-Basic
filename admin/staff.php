@@ -1,7 +1,11 @@
 <?php 
     session_start();
     require 'check-role.php';
-    $_SESSION['cur']="Customers";
+    if($_SESSION['role'] != 1) {
+        header('location:dashboard.php');
+        exit;
+    }
+    $_SESSION['cur']="Staff";
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,17 +16,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/customers.css">
+    <link rel="stylesheet" href="./assets/css/staff.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" >
-    <title>Q Coffee | Customers Control</title>
+    <title>Q Coffee | Staff Control</title>
 </head>
 <body>
 <?php 
         include './sidebar.php';
         include './header.php';
         require './connect.php';
-        $sql="select * from customers";
-        $customers=$connect->query($sql);
+        $sql="select * from staff";
+        $staff=$connect->query($sql);
 
 ?>  
 <div class="app">
@@ -32,6 +36,12 @@
         <div class="customers__search">
             <input type="text" class="customers__search" placeholder="Quick search by ID">
             <i class="fas fa-search customers__search-icon"></i>
+        </div>
+        <div class="staff__right-side">
+            <a href="./staff-add.php" class="staff__add-staff">
+                <i class="fas fa-plus"></i>
+                Create New Staff Account
+            </a>
         </div>
     </div>
     <div class="customers__product-table">
@@ -62,28 +72,22 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone Number</th>
-                    <th>DOB</th>
-                    <th>Address</th>   
                     <th>Gender</th>   
+                    <th>Role</th>
                     <th>Avatar</th> 
-                    <?php
-                        if ($_SESSION['role']==1){
-                    ?>  
                     <th>Actions</th> 
-                    <?php } ?>  
                 </tr>
             </thead>
             <tbody>
             <?php
-                while($row = mysqli_fetch_array($customers)){
+                while($row = mysqli_fetch_array($staff)){
                         $id=$row['id'];
                         $username=$row['username'];
                         $name=$row['name'];
                         $email=$row['email'];
                         $phone=$row['phone'];
-                        $DOB=$row['DOB'];
-                        $address=$row['address'];
                         $gender=$row['gender']==0?"Male":"Female";
+                        $role=$row['role']==0?"Staff":"Administrator";
                         $avatar= $row['avatar'];        
             ?>
                 <tr class="float-z">
@@ -92,22 +96,31 @@
                     <td><?php echo $name; ?></td>
                     <td><?php echo $email; ?></td>
                     <td><?php echo $phone; ?></td>
-                    <td><?php echo $DOB; ?></td>
-                    <td><?php echo $address; ?></td>
                     <td><?php echo $gender; ?></td>
-                    <td><?php if ($avatar==''){echo 'No Avatar';}else{?> <img src=".<?php echo $avatar; ?>" alt="Avatar" width="100px"><?php }?></td>
-                    <?php
-                        if ($_SESSION['role']==1){
-                    ?>
+                    <td><?php echo $role; ?></td>
+                    <td><?php if ($avatar==''){echo 'No Avatar';}else{?> <img src="<?php echo $avatar; ?>" alt="Avatar" width="100px"><?php }?></td>
                     <td class="actions">
-                        <div><a href="./customer-update.php?id=<?php echo $id; ?>">Update</a></div>
+                    <?php
+                        if ($role=='Staff'){
+                    ?>
+                        <div><a href="./staff-update.php?id=<?php echo $id; ?>">Update</a></div>
                         <script>
                             function Delete() {
-                            window.location.href="./customer-delete.php?id=<?php echo $id?>";
+                            window.location.href="./staff-delete.php?id=<?php echo $id?>";
+                            }
+                            function secondLayerConfirm(){
+                                if (confirm("Ты точно хочешь удалить этого сотрудника? Подумайте!") == true) {
+                                    thirdLayerConfirm();
+                                }
+                            }
+                            function thirdLayerConfirm() {
+                                if (confirm("Honto ni? Doshite?") == true) {
+                                    Delete();
+                                }
                             }
                             function confirmDelete() {
-                                if (confirm("All orders made by this customer will be deleted too! Do you really want to delete this customer?") == true) {
-                                    Delete();
+                                if (confirm("Do you really want to delete this staff?") == true) {
+                                    secondLayerConfirm();
                                 }
                             }
                         </script>

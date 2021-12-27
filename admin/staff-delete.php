@@ -1,0 +1,40 @@
+<?php
+    session_start();
+    require 'check-role.php';
+    if($_SESSION['role'] != 1) {
+        header('location:dashboard.php');
+        exit;
+    }
+    $_SESSION['cur']="Staff";
+    if(!isset($_GET['id'])){
+        $_SESSION['error']="No staff selected!";
+        header('location:staff.php');
+        exit;
+    }
+    unset($_SESSION['error']);
+    $id=$_GET['id'];
+
+    require 'connect.php';
+    $sql="select * from staff where id=$id";
+    $res=$connect->query($sql);
+    if(!$res->num_rows>0){
+        $_SESSION['error']="Can't find staff whom id=$id!";
+        header('location:staff.php');
+        exit;
+    }
+    $staff=$res->fetch_array();
+    if($staff['role']==1){
+        $_SESSION['error']="Can't Delete Administrator!";
+        $connect->close();
+        header('location:staff.php');
+        exit;
+    }
+
+    $sql="delete from staff where id=$id";
+    $res=$connect->query($sql);
+    if($connect->error != '') {$_SESSION['error'] = $connect->error;}
+    mysqli_close($connect);
+    $_SESSION['success']="Staff #$id has been Deleted!";
+    header("location:staff.php");
+?>
+

@@ -30,12 +30,14 @@
                             <span class="sidebar__func-name">Customers</span>
                         </a>
                     </li>
-                    <li class="<?php echo($_SESSION['cur'] =="Staffs"?"checked":""); ?>">
+                    <?php  if($_SESSION['role']==1){ ?>
+                    <li class="<?php echo($_SESSION['cur'] =="Staff"?"checked":""); ?>">
                         <a href="./staff.php">
                             <i class="fas fa-users-cog sidebar__icon"></i>
                             <span class="sidebar__func-name">Staff</span>
                         </a>
                     </li>
+                    <?php } ?>
                 </ul>
             </div>
 </div>

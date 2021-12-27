@@ -33,6 +33,7 @@
     $res=$connect->query($sql);
     if($connect->error != '') {$_SESSION['error'] = $connect->error;}
     mysqli_close($connect);
+    $_SESSION['success']="Customer #$id has been Deleted!";
     header("location:customers.php");
 ?>
 

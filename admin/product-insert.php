@@ -33,6 +33,17 @@
             <div class="form">
                 <div class="err">
                     <?php 
+                    if (isset($_SESSION['success'])){
+                        $success=$_SESSION['success'];
+                    ?>
+                    <p style="color:#4BB543!important;"><?php echo "Success: $success"; ?></p>
+                    <?php
+                        unset($_SESSION['success']);
+                    }
+                    if (isset($_SESSION['error'])){
+                        $err=$_SESSION['error'];
+                        echo "Error: $err";
+                    }
                         if (isset($_SESSION['error'])){
                              $err=$_SESSION['error'];
                              echo "Error: $err";

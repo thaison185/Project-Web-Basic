@@ -46,11 +46,12 @@
         move_uploaded_file($photo['tmp_name'],'.'.$image);
         $sql="update customers
         set
-        avatar=$image
+        avatar='$image'
         where id=$id";
         $res=$connect->query($sql);
         if($connect->error != '') {$_SESSION['error'] = $connect->error;}
     }
 
     mysqli_close($connect);
+    $_SESSION['success']="Customer #$id has been Updated!";
     header("location:customer-update.php?id=$id");

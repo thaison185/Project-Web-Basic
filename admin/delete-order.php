@@ -25,4 +25,5 @@ if(!$connect->query($sql)){
     exit;
 }
 $connect->close();
+$_SESSION['success']="Order #id Deleted!";
 header('location:orders.php');

@@ -44,11 +44,13 @@
                         Users
                     </div>
                 </a>
+                <?php if($_SESSION['role']==1){ ?>
                 <a href="./staff.php">
                     <div class="dashboard__part">
                         Staff
                     </div>
                 </a>
+                <?php } ?>
             </div>
         </div>
         <!-- Container End -->

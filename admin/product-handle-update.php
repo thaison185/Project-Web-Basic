@@ -44,7 +44,7 @@ if($_SESSION['role']==1){
         move_uploaded_file($photo['tmp_name'],'.'.$image);
         $sql="update items
         set
-        image=$image
+        image='$image'
         where id=$id";
         $res=$connect->query($sql);
         if($connect->error != '') {$_SESSION['error'] = $connect->error;}
@@ -66,5 +66,6 @@ else{
     if($connect->error != '') {$_SESSION['error'] = $connect->error;}
     else {unset($_SESSION['error']);}
 }
+    $_SESSION['success']="Product #$id has been Updated!";
     mysqli_close($connect);
     header("location:product-update.php?id=$id");
