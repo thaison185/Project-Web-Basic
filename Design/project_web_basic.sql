@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 26, 2021 at 07:24 PM
+-- Generation Time: Dec 27, 2021 at 06:49 PM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -77,7 +77,8 @@ INSERT INTO `items` (`id`, `name`, `image`, `s_price`, `m_price`, `l_price`, `de
 (1, 'Capuchino', '	\r\n./assests/img/items/capuchino.png', 6, 8, 10, '', 0, 0),
 (2, 'Cold brew', '	\n./assests/img/items/cold-brew.png', 0, 9, 0, '', 1, 0),
 (3, 'Milk shake', './assests/img/items/milk-shake.png', 3, 5, 7, '', 0, 1),
-(4, 'White chocolate mocha', './assests/img/items/white-chocolate-mocha.png', 7, 9, 10, '', 1, 1);
+(4, 'White chocolate mocha', './assests/img/items/white-chocolate-mocha.png', 7, 9, 10, '', 1, 1),
+(6, 'Tiramisu', './assests/img/items/1640630753.png', 0, 8, 15, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -161,7 +162,9 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`id`, `username`, `name`, `email`, `hashed_password`, `phone`, `gender`, `role`, `avatar`) VALUES
 (1, 'BigBoss', 'NguyenTS', 'assmin@qcoffee.com', '$2y$10$IRyk1M3Z2JtREnLbKCYRAu6wacWYjRlR3YIWoz0RKDcAAbosYXzEi', '+79627824127', 0, 1, './data/1/avatar.jpg'),
-(2, 'Slave_1', 'Staff no.1', 'staff1@qcoffee.com', '$2y$10$guZwF2v8ALBAqJj3fnuJSutdPCEwyqBuXjBSTE3Gh/30XFaNL.CeG', '+84987654321', 0, 0, '');
+(2, 'Slave1', 'Staff no.1', 'staff1@qcoffee.com', '$2y$10$guZwF2v8ALBAqJj3fnuJSutdPCEwyqBuXjBSTE3Gh/30XFaNL.CeG', '+84987654321', 0, 0, ''),
+(3, 'Slave 2', 'slave2', 'staff2@qcoffee.com', '$2y$10$MiiSGdpEG8g5uufqeKeJOObNTRwHwKdkq4lNnrcHzHEzwT5uyK7LC', '+84987654321', 0, 0, './data/3/1640629705.png'),
+(12, 'staff3', 'Staff no.3', 'staff3@qcoffee.com', '$2y$10$NrSwoJR0IXmn21RWuRbQSuJpZ0AKXeU2IIdxJaKT6Chp3eaUh5UFC', '0987654312', 1, 0, './data/12/1640629615.png');
 
 --
 -- Indexes for dumped tables
@@ -216,7 +219,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -228,7 +231,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
