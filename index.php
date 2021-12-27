@@ -51,28 +51,28 @@
 
 		<?php foreach ($result as $each) { ?>
 			<!-- item start -->
-			<a href="item_detail.php?id=<?php echo$each['id'] ?>" class="item">
+			<a href="item_details.php?id=<?php echo$each['id'] ?>" class="item">
 				<form method="post" action="progress_process_items.php">
 					<input type="text" name="id" value="<?php echo $each['id'] ?>" style="display: none;">
 					<img src="<?php echo $each['image'];  ?>">
 					<div class="item-body">
 						<div class="item-name"><?php echo $each['name'] ?></div>
 						<div class="item-price">
-							<span class="price-s"><?php if ($each['price_s'] != 0) echo '$' . $each['price_s'] ?></span>
-							<span class="price-m"><?php if ($each['price_m'] != 0) echo '$' . $each['price_m'] ?></span>
-							<span class="price-l"><?php if ($each['price_l'] != 0) echo '$' . $each['price_l'] ?></span>
+							<span class="price-s"><?php if ($each['s_price'] != 0) echo '$' . $each['s_price'] ?></span>
+							<span class="price-m"><?php if ($each['m_price'] != 0) echo '$' . $each['m_price'] ?></span>
+							<span class="price-l"><?php if ($each['l_price'] != 0) echo '$' . $each['l_price'] ?></span>
 						</div>
 						<div class="item-size radio-box">
 							<label>
-								<input type="radio" class="price-s" name="size" value="small"<?php if($each['price_s'] == 0) echo ' disabled'?>>
+								<input type="radio" class="price-s" name="size" value="s"<?php if($each['s_price'] == 0) echo ' disabled'?>>
 								<div>Small</div>
 							</label>
 							<label>
-								<input type="radio" class="price-m" name="size" value="medium" checked<?php if($each['price_m'] == 0) echo ' disabled'?>>
+								<input type="radio" class="price-m" name="size" value="m" checked<?php if($each['m_price'] == 0) echo ' disabled'?>>
 								<div>Medium</div>
 							</label>
 							<label>
-								<input type="radio" class="price-l" name="size" value="large"<?php if($each['price_l'] == 0) echo ' disabled'?>>
+								<input type="radio" class="price-l" name="size" value="l"<?php if($each['l_price'] == 0) echo ' disabled'?>>
 								<div>Large</div>
 							</label>
 						</div>

@@ -15,12 +15,13 @@ $each = mysqli_fetch_array($result);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo $each['name'] ?> - Starwar Coffee</title>
 
-	<link rel="stylesheet" type="text/css" href="./assests/css/item_detail_style.css">
+	<link rel="stylesheet" type="text/css" href="./assests/css/item_details_style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
+<?php include('back.php') ?>
 	<!-- item start -->
-			<div href="item_detail.php?id=<?php echo$each['id'] ?>" class="item">
+			<div href="item_details.php?id=<?php echo$each['id'] ?>" class="item">
 				<form method="post" action="progress_process_items.php">
 					<input type="text" name="id" value="<?php echo $each['id'] ?>" style="display: none;">
 					<img src="<?php echo $each['image'];  ?>">
@@ -29,15 +30,15 @@ $each = mysqli_fetch_array($result);
 						<div class="item-price">$9</div>
 						<div class="item-size radio-box">
 							<label>
-								<input type="radio" name="size" value="small"<?php if($each['price_s'] == 0) echo ' disabled'?>>
+								<input type="radio" name="size" value="s"<?php if($each['s_price'] == 0) echo ' disabled'?>>
 								<div>Small</div>
 							</label>
 							<label>
-								<input type="radio" name="size" value="medium" checked<?php if($each['price_m'] == 0) echo ' disabled'?>>
+								<input type="radio" name="size" value="m" checked<?php if($each['m_price'] == 0) echo ' disabled'?>>
 								<div>Medium</div>
 							</label>
 							<label>
-								<input type="radio" name="size" value="large"<?php if($each['price_l'] == 0) echo ' disabled'?>>
+								<input type="radio" name="size" value="l"<?php if($each['s_price'] == 0) echo ' disabled'?>>
 								<div>Large</div>
 							</label>
 						</div>

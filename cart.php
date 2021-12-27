@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1>CART</h1>
+<?php include('back.php') ?>
 <?php 
 if(!isset($_COOKIE['cart'])) { 
 	?>
@@ -29,7 +30,7 @@ $total = 0;
 	<tr>
 		<td><h3>Name</h3></td>
 		<td><h3>Image</h3></td>
-		<td><h3>Option</h3></td>
+		<td><h3>Options</h3></td>
 		<td><h3>Price per item</h3></td>
 		<td><h3>Quantity</h3></td>
 		<td><h3>Price</h3></td>
@@ -43,16 +44,16 @@ $total = 0;
 		$item = mysqli_fetch_array($result);
 
 		switch ($each->{'size'}) {
-			case 'small':
-				$price = $item['price_s'];
+			case 's':
+				$price = $item['s_price'];
 				break;
 		
-			case 'medium':
-				$price = $item['price_m'];
+			case 'm':
+				$price = $item['m_price'];
 				break;
 		
-			case 'large':
-				$price = $item['price_l'];
+			case 'l':
+				$price = $item['l_price'];
 				break;
 		}
 		$total += $each->{'quantity'}*$price;
@@ -61,7 +62,7 @@ $total = 0;
 			<td><?php echo $item['name'] ?></td>
 			<td><img width="100px" src="<?php echo $item['image'] ?>"></td>
 			<td>
-				<?php  echo $each->{'size'} ?><br>
+				size <?php  echo $each->{'size'} ?><br>
 				<?php if($each->{'ice'} != -1) echo $each->{'ice'}; ?><br>
 				<?php if($each->{'sugar'} != -1) echo $each->{'sugar'}; ?>
 			</td>

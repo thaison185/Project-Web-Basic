@@ -10,6 +10,7 @@
 	<script src="check_regex.js" type="text/javascript"></script>
 </head>
 <body>
+<?php include('back.php') ?>
 <?php 
 session_start();
 $id = $_SESSION['id'];

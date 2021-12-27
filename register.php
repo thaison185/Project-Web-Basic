@@ -10,6 +10,7 @@
 	<script src="check_regex.js" type="text/javascript"></script>
 </head>
 <body>
+<?php include('back.php') ?>
 <form method="post" action="progress_register.php">
 	<table>
 		<tr>

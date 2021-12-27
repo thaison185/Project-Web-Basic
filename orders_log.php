@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1>Orders</h1>
+<?php include('back.php') ?>
 <?php
 session_start();
 

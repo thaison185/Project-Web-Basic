@@ -7,6 +7,7 @@
 </head>
 <body>
 <?php session_start(); ?>
+<?php include('back.php') ?>
 <form method="post" action="progress_login.php">
 	<table>
 		<tr>
