@@ -7,7 +7,7 @@
 
 	<link rel="stylesheet" type="text/css" href="./assests/css/update_info_style.css">
 
-	<script src="check_regex_update_info.js" type="text/javascript"></script>
+	<script src="./assests/scripts/check_regex_update_info.js" type="text/javascript"></script>
 </head>
 <body>
 <?php include('back.php') ?>
