@@ -1,11 +1,11 @@
 <div id="header">
-	<div id="logo">
+	<a href="index.php" id="logo">
 		<img src="./assests/img/logo/logo.png">
-	</div>
+	</a>
 	<div class="nav">
-		<a href="#">Menu</a>
-		<a href="#">Store</a>
-		<a href="#">About us</a>
+		<button href="#" onclick="document.getElementById('items').scrollIntoView();">Menu</button>
+		<button href="#" onclick="document.getElementById('footer').scrollIntoView();">Store</button>
+		<button href="#" onclick="document.getElementById('footer').scrollIntoView();">About us</button>
 	</div>
 	<div class="login-register">
 		<?php if (isset($_SESSION['id'])) {?>
@@ -25,6 +25,11 @@
 		</a>
 	</div>
 	<div class="search">
-		<i class="ti-search search-icon"></i>
+		<form>
+				<label>
+					<input type="search" name="search" value="">
+					<i  class="ti-search search-icon"></i>
+				</label>
+			</form>
 	</div>
 </div>

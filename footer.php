@@ -23,10 +23,16 @@
 		</div>
 		<br>
 		<div class="social">
-			<i class="ti-facebook icon"></i>
-			<i class="ti-instagram icon"></i>
-			<i class="ti-pinterest icon"></i>
+			<a href="#">
+				<i class="ti-facebook icon"></i>
+			</a>
+			<a href="#">
+				<i class="ti-instagram icon"></i>
+			</a>
+			<a href="#">
+				<i class="ti-pinterest icon"></i>
+			</a>
 		</div>
 	</div>
-	<div id="copy-right">© 2019 Starwar Coffee Company. All rights reserved.</div>
+	<div id="copy-right">© 2019-2022 Starwar Coffee Company. All rights reserved.</div>
 </div>

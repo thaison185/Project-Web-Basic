@@ -11,7 +11,11 @@
 	<link rel="stylesheet" type="text/css" href="./assests/css/footer.css">
 
 	<link rel="stylesheet" type="text/css" href="./assests/font/themify-icons/themify-icons.css">
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Readex+Pro:wght@200&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="main">
@@ -27,29 +31,64 @@
 			<div class="slide">
 				<img src="./assests/img/slides/slide1.jpg">
 			</div>
+			<div class="slide">
+				<img src="./assests/img/slides/slide2.jpg">
+			</div>
+			<div class="slide">
+				<img src="./assests/img/slides/slide3.jpg">
+			</div>
+
+			<input type="radio" id="radio-btn-1" name="slider" checked>
+			<input type="radio" id="radio-btn-2" name="slider">
+			<input type="radio" id="radio-btn-" name="slider">
 		</div>
-		<div class="radio">
-			<div class="radio-btn"></div>
-			<div class="radio-btn"></div>
-			<div class="radio-btn"></div>
+		<div class="radio-box">
+			<label for='radio-btn-1' class='radio-btn'></label>
+			<label for='radio-btn-2' class='radio-btn'></label>
+			<label for='radio-btn-3' class='radio-btn'></label>
 		</div>
 	</div>
 	<!-- slider-end -->
 	<!-- items-start -->
 	<div id="items">
 		<?php 
-		require_once('connect.php');
+		include('connect.php');
 
-		$sql = "select count(*) from items";
+		$page = 1;
+		if(isset($_GET['page'])) {
+			if($_GET['page']) {
+				$page = $_GET['page'];
+			}
+		}
+
+		$search = '';
+		if(isset($_GET['search'])) {
+			if($_GET['search']) {
+				$search = $_GET['search'];
+			}
+		}
+
+		$sql = "select count(*) from items
+		where name like '%$search%'";
+		// echo $sql;
 		$result = mysqli_query($connect,$sql);
 		$n_items = mysqli_fetch_array($result)['count(*)'];
 
-		$sql = "select * from items";
+		$items_per_page = 6;
+		$n_pages = ceil($n_items / $items_per_page);
+
+		$offset = ($page - 1)*$items_per_page;
+		$sql = "select * from items 
+		where name like '%$search%'
+		limit $items_per_page offset $offset";
+		// echo $sql;
 		$result = mysqli_query($connect,$sql);
 		// echo json_encode($result[0]);
 		?>
 
-		<?php foreach ($result as $each) { ?>
+		<?php forEach($result as $each) { 
+				if(!preg_match("/temp/",$each['name'])) {
+			?>
 			<!-- item start -->
 			<a href="item_details.php?id=<?php echo$each['id'] ?>" class="item">
 				<form method="post" action="progress_process_items.php">
@@ -124,12 +163,30 @@
 				</form>
 			</a>
 			<!-- item end -->
-		<?php }  ?>
+		<?php } else { ?>
+			<!-- temp start -->
+			<div class="item">
+				<form>
+					<img src="<?php echo $each['image'];  ?>">
+					<div class="item-body">
+						<div class="item-name"><?php echo $each['name'] ?></div>
+					</div>
+				</form>
+			</div>
+			<!-- temp end -->
+		<?php }} ?>
 	</div>
 	<!-- items end -->
+	<!-- pages start -->
+	<div id="pages">
+	<?php for ($i=1; $i <= $n_pages; $i++) { ?>
+		<a href="index.php?page=<?php echo $i ?><?php if($search) echo '&'.'search='.$search ?>"><?php echo $i ?></a>
+	<?php } ?>
+	</div>
+	<!-- pages end -->
 	<!-- footer-start -->
 	<?php
-		require_once('footer.php');
+		include('footer.php');
 	?>
 	<!-- footer-end -->
 

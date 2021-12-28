@@ -9,6 +9,8 @@ else
 require_once('connect.php');
 
 $cart = json_decode($_COOKIE['cart']);
+$i = 0;
+$description = '';
 $total = 0;
 foreach ($cart as $each) {
 	$id = $each->{'id'};
@@ -30,10 +32,19 @@ foreach ($cart as $each) {
 			break;
 	}
 	$total += $each->{'quantity'}*$price;
+	if($i++ < 3) {
+		$description = $description.$item['name'].' size: '.$each->{'size'};
+		if($each->{'ice'} != '-1') $description = $description.' '.$each->{'ice'};
+		if($each->{'sugar'} != '-1') $description = $description.' '.$each->{'sugar'};
+		$description = $description.'\n';
+	}
+	if($i == 3) $description = $description.' ...';
 }
 
+// die($description);
+
 $sql = "INSERT INTO orders(customer_id, description, price, status) 
-VALUES ('$customer_id','','$total','pending')";
+VALUES ('$customer_id','$description','$total','pending')";
 echo $sql;
 $result = mysqli_query($connect,$sql);
 
