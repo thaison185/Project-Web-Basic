@@ -3,12 +3,14 @@ session_start();
 if(isset($_SESSION['id']))
 	$customer_id = $_SESSION['id'];
 else
-	$customer_id = '';
+	$customer_id = 0;
 // die($id);
 
 require_once('connect.php');
 
 $cart = json_decode($_COOKIE['cart']);
+$i = 0;
+$description = '';
 $total = 0;
 foreach ($cart as $each) {
 	$id = $each->{'id'};
@@ -17,29 +19,38 @@ foreach ($cart as $each) {
 	$item = mysqli_fetch_array($result);
 
 	switch ($each->{'size'}) {
-		case 'small':
-			$price = $item['price_s'];
+		case 's':
+			$price = $item['s_price'];
 			break;
 	
-		case 'medium':
-			$price = $item['price_m'];
+		case 'm':
+			$price = $item['m_price'];
 			break;
 	
-		case 'large':
-			$price = $item['price_l'];
+		case 'l':
+			$price = $item['l_price'];
 			break;
 	}
 	$total += $each->{'quantity'}*$price;
+	if($i++ < 3) {
+		$description = $description.$item['name'].' size: '.$each->{'size'};
+		if($each->{'ice'} != '-1') $description = $description.' '.$each->{'ice'};
+		if($each->{'sugar'} != '-1') $description = $description.' '.$each->{'sugar'};
+		$description = $description.'\n';
+	}
+	if($i == 3) $description = $description.' ...';
 }
 
+// die($description);
+
 $sql = "INSERT INTO orders(customer_id, description, price, status) 
-VALUES ('$customer_id','','$total','0')";
+VALUES ('$customer_id','$description','$total','pending')";
 echo $sql;
 $result = mysqli_query($connect,$sql);
 
 $sql = "select max(id) from orders 
 where customer_id = '$customer_id'";
-// echo $sql;
+echo $sql;
 $result = mysqli_query($connect,$sql);
 $order_id = mysqli_fetch_array($result)['max(id)'];
 // echo $order_id;
@@ -48,16 +59,16 @@ foreach ($cart as $each) {
 	$id = $each->{'id'};
 
 	switch ($each->{'size'}) {
-		case 'small':
-			$price = $item['price_s'];
+		case 's':
+			$price = $item['s_price'];
 			break;
 	
-		case 'medium':
-			$price = $item['price_m'];
+		case 'm':
+			$price = $item['m_price'];
 			break;
 	
-		case 'large':
-			$price = $item['price_l'];
+		case 'l':
+			$price = $item['l_price'];
 			break;
 	}
 	$item_id = $each->{'id'};
@@ -67,31 +78,31 @@ foreach ($cart as $each) {
 	$sugar = $each->{'sugar'};
 	if($ice != -1) {
 		if ($sugar != -1) {
-			$option = "$ice, $sugar";
+			$options = "$ice, $sugar";
 		} else {
-			$option = "$ice";
+			$options = "$ice";
 		}
 	} else {
 		if ($sugar != -1) {
-			$option = "$sugar";
+			$options = "$sugar";
 		} else {
-			$option = '';
+			$options = '';
 		}
 	}
 	$size = $each->{'size'};
 
-	$sql = "INSERT INTO `order_detail`(`order_id`, `item_id`, `quantity`, `price`, `option`, `size`)
-	VALUES ('$order_id','$item_id','$quantity','$price','$option','$size')";
+	$sql = "INSERT INTO `order_details`(`order_id`, `item_id`, `quantity`, `price`, `options`, `size`)
+	VALUES ('$order_id','$item_id','$quantity','$price','$options','$size')";
 	echo $sql;
 	$result = mysqli_query($connect,$sql);
 
 }
 require_once('delete_cart.php');
 
-// Order_Details
+// Order_detailss
 // order_id
 // item_id
 // quantity
 // price
-// options
+// optionss
 // size

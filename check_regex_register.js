@@ -9,9 +9,7 @@ function check_regex() {
 	{
 		document.getElementById('span_regex_username').innerHTML = "Username không hợp lệ! (dài từ 8-20 ký tự, chứa các kí tự a-z,A-Z,0-9,dấu .,dấu _ )";
 		regex_check = false;
-	}
-	else
-	{
+	} else {
 		document.getElementById('span_regex_username').innerHTML = '';
 	}
 
@@ -22,9 +20,7 @@ function check_regex() {
 	{
 		document.getElementById('span_regex_name').innerHTML = "Tên không hợp lệ! (Tên không chứa các ký tự đặc biệt )";
 		regex_check = false;
-	}
-	else
-	{
+	} else {
 		document.getElementById('span_regex_name').innerHTML = '';
 	}
 	
@@ -34,9 +30,7 @@ function check_regex() {
 	{
 		document.getElementById('span_regex_gender').innerHTML = "Giới tính không được để trống!";
 		regex_check = false;
-	}
-	else
-	{
+	} else {
 		document.getElementById('span_regex_gender').innerHTML = '';
 	}
 
@@ -47,9 +41,7 @@ function check_regex() {
 	{
 		document.getElementById('span_regex_email').innerHTML = "Mail không hợp lệ!";
 		regex_check = false;
-	}
-	else
-	{
+	} else {
 		document.getElementById('span_regex_email').innerHTML = '';
 	}
 	
@@ -60,20 +52,17 @@ function check_regex() {
 	{
 		document.getElementById('span_regex_phone').innerHTML = "Số điện thoại không hợp lệ!";
 		regex_check = false;
-	}
-	else
-	{
+	} else {
 		document.getElementById('span_regex_phone').innerHTML = '';
 	}
 	
 	//regex DOB
+	let DOB = document.getElementById('DOB').value;
 	if(!DOB)
 	{
 		document.getElementById('span_regex_DOB').innerHTML = "Ngày sinh không được để trống!";
 		regex_check = false;
-	}
-	else
-	{
+	} else {
 		document.getElementById('span_regex_DOB').innerHTML = '';
 	}
 	
@@ -83,9 +72,7 @@ function check_regex() {
 	{
 		document.getElementById('span_regex_address').innerHTML = "Địa chỉ không được để trống!";
 		regex_check = false;
-	}
-	else
-	{
+	} else {
 		document.getElementById('span_regex_address').innerHTML = '';
 	}
 	
@@ -97,9 +84,7 @@ function check_regex() {
 	{
 		document.getElementById('span_regex_password').innerHTML = "Mật khẩu không hợp lệ! (mật khẩu phải chứa ít nhất 8 ký tự, ít nhất 1 chữ cái thường, 1 chữ cái in hoa và 1 số)";
 		regex_check = false;
-	}
-	else
-	{
+	} else {
 		document.getElementById('span_regex_password').innerHTML = '';
 	}
 

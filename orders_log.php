@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1>Orders</h1>
+<?php include('back.php') ?>
 <?php
 session_start();
 
@@ -25,35 +26,16 @@ $result = mysqli_query($connect,$sql);
 		<td><h3>Id</h3></td>
 		<td><h3>Date</h3></td>
 		<td><h3>Description</h3></td>
-		<td><h3>Price</h3></td>
+		<td><h3>Total</h3></td>
 		<td><h3>Status</h3></td>
 	</tr>
 	<?php foreach ($result as $each) { ?>
 		<tr>
 			<td><?php echo $each['id'] ?></td>
 			<td><?php echo $each['date'] ?></td>
-			<td><?php echo $each['description'] ?></td>
+			<td><?php echo nl2br($each['description']) ?></td>
 			<td>$<?php echo $each['price'] ?></td>
-			<td>
-				<?php switch ($each['status']) {
-					case '0':
-						echo 'pending';
-						break;
-					
-					case '1':
-						echo 'accepted';
-						break;
-					
-					case '2':
-						echo 'cancelled';
-						break;
-
-					case '3':
-						echo 'delivered';
-						break;
-					
-				} ?>
-			</td>
+			<td><?php echo $each['status'] ?></td>
 		</tr>
 	<?php } ?>
 </table>

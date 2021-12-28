@@ -8,6 +8,12 @@
 	bottom: 0;
 }
 
+/*common*/
+#footer a {
+	color: black;
+	text-decoration: none;
+}
+
 #footer .title {
 	font-weight: bold;
 }

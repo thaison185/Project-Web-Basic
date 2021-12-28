@@ -2,7 +2,7 @@
 session_start();
 
 $username = $_POST['username'];
-$password = md5($_POST['password']);
+$password = ($_POST['password']);
 
 require_once('connect.php');
 
@@ -19,13 +19,7 @@ if (!$each) {
 	exit;
 }
 
-// $sql = "select count(*) from customers
-// where username = '$username',
-// hashed_password = '$password'";
-// $result = mysqli_query($connect,$sql);
-// $each = mysqli_fetch_array($result)['count(*)'];
-
-if($each['hashed_password'] == $password){
+if(password_verify($password,$each['hashed_password'])) {
 	$_SESSION['id'] = $each['id'];
 	$_SESSION['username'] = $each['username'];
 	$_SESSION['name'] = $each['name'];
@@ -35,8 +29,8 @@ if($each['hashed_password'] == $password){
 	exit;
 } else {
 	$_SESSION['error'] = "mật khẩu không trùng khớp!";
+	die($each['hashed_password']);
 	header('location:login.php');
-	// die('ktk');
 	exit;
 }
 
