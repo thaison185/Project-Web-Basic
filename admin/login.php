@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/login.css"> 
-    <title>Document</title>
+    <title>Q's Coffee | Staff Signing In</title>
 </head>
 <body>
     <div class="container">
@@ -19,6 +20,14 @@
             </div>
             <div class="form-area__login-form">
                 <p>Welcome back! Please login to your account.</p>
+                <div class="err">
+                    <?php
+                 if (isset($_SESSION['error'])){
+                    $err=$_SESSION['error'];
+                    echo "Error: $err";
+                 }
+                    ?>
+                </div>
                 <form action="./handle-login.php" method="post">
                     <label >
                         Email

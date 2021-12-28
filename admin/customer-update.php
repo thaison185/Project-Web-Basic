@@ -61,10 +61,6 @@
                         $err=$_SESSION['error'];
                         echo "Error: $err";
                     }
-                        if (isset($_SESSION['error'])){
-                             $err=$_SESSION['error'];
-                             echo "Error: $err";
-                         }
                      ?>
                 </div>
 

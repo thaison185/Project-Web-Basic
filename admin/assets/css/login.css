@@ -95,3 +95,9 @@
         opacity: 1;
     }
 }
+
+.err{
+    font-size: 1.6rem;
+    color: red;
+    margin-bottom: .5rem;
+}
