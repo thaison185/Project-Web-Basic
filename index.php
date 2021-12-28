@@ -9,13 +9,14 @@
 	<link rel="stylesheet" type="text/css" href="./assests/css/index_style.css">
 	<link rel="stylesheet" type="text/css" href="./assests/css/header.css">
 	<link rel="stylesheet" type="text/css" href="./assests/css/footer.css">
-
 	<link rel="stylesheet" type="text/css" href="./assests/font/themify-icons/themify-icons.css">
 	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Readex+Pro:wght@200&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
+
+	<script src="./assests/script/auto_slider.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="main">
@@ -27,6 +28,11 @@
 	<!-- header-end -->
 	<!-- slider-start -->
 	<div id="slider">
+
+		<input type="radio" id="radio-btn-1" name="slider" checked>
+		<input type="radio" id="radio-btn-2" name="slider">
+		<input type="radio" id="radio-btn-3" name="slider">
+
 		<div class="slides">
 			<div class="slide">
 				<img src="./assests/img/slides/slide1.jpg">
@@ -37,15 +43,12 @@
 			<div class="slide">
 				<img src="./assests/img/slides/slide3.jpg">
 			</div>
-
-			<input type="radio" id="radio-btn-1" name="slider" checked>
-			<input type="radio" id="radio-btn-2" name="slider">
-			<input type="radio" id="radio-btn-" name="slider">
 		</div>
+
 		<div class="radio-box">
-			<label for='radio-btn-1' class='radio-btn'></label>
-			<label for='radio-btn-2' class='radio-btn'></label>
-			<label for='radio-btn-3' class='radio-btn'></label>
+			<label for='radio-btn-1' class='radio-btn radio-btn-1'></label>
+			<label for='radio-btn-2' class='radio-btn radio-btn-2'></label>
+			<label for='radio-btn-3' class='radio-btn radio-btn-3'></label>
 		</div>
 	</div>
 	<!-- slider-end -->

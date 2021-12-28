@@ -17,6 +17,7 @@ input {
 #slider {
 	width: 1000px;
 	height: 500px;
+	border-radius: 10px;
 	position: relative;
 	margin: 70px auto 20px auto;
 	overflow: hidden;
@@ -32,7 +33,6 @@ input {
 #slider .slides .slide img {
 	width: 1000px;
 	height: 500px;
-	border-radius: 10px;
 }
 
 #slider .radio-box {
@@ -59,8 +59,28 @@ input {
 	background: black;
 }
 
-#slider .radio-box #radio-btn-1:checked {
+#slider #radio-btn-1:checked ~ .slides {
+	margin-left: -0%;
+}
 
+#slider #radio-btn-2:checked ~ .slides {
+	margin-left: -100%;
+}
+
+#slider #radio-btn-3:checked ~ .slides {
+	margin-left: -200%;
+}
+
+#slider #radio-btn-1:checked ~ .radio-box .radio-btn-1 {
+	background: black;
+}
+
+#slider #radio-btn-2:checked ~ .radio-box .radio-btn-2 {
+	background: black;
+}
+
+#slider #radio-btn-3:checked ~ .radio-box .radio-btn-3 {
+	background: black;
 }
 /*slider end*/
 
