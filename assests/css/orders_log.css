@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&display=swap');
+
+* {
+	font-family: 'Readex Pro', sans-serif;
+	padding: 0;
+	margin: 0;
+}
+/*body*/
+body {
+	margin-top: 46px;
+}
+
+table {
+	position: relative;
+	top: 60px;
+}
+
+.empty_log {
+	width: 500px;
+	height: 200px;
+	font-size: 50px;
+	line-height: 200px;
+	text-align: center;
+	background: #696969;
+	position: relative;
+	top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+}

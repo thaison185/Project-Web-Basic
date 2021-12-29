@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 #header {
 	width: 100%;
 	height: 46px;
@@ -60,11 +62,22 @@
 	cursor: pointer;
 }
 
-#header .login-register {
-	/*width: 46px;*/
+#header .nav div {
 	height: 46px;
 	line-height: 46px;
 	text-align: center;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#header .login-register {
+	/*width: 46px;*/
+	height: 46px;
+	text-align: center;
+	line-height: 46px;
 	position: absolute;
 	top: 0;
 	right: 300px;
@@ -74,7 +87,32 @@
 	color: white;
 }
 
+#header .login-register .name {
+	float: left;
+	margin-left: 15px;
+}
+
+#header .login-register .avatar {
+	width: 42px;
+	height: 42px;
+	background: white;
+	border-radius: 50%;
+	display: inline-block;
+	float: left;
+	margin-top: 2px;
+	overflow: hidden;
+}
+
+#header .login-register img {
+	width: 42px;
+	height: 42px;
+}
+
 #header .login-register .sub-menu {
+	width: 160px;
+	position: absolute;
+	top: 46px;
+	line-height: 46px;
 	display: none;
 }
 
@@ -93,7 +131,20 @@
 }
 
 #header .cart .cart-icon {
+	font-size: 20px;
+}
 
+#header .cart .cart-quantity {
+	width: 15px;
+	height: 15px;
+	font-size: 10px;
+	line-height: 15px;
+	background: red;
+	border-radius: 50%;
+	position: absolute;
+	top: 22px;
+	right: 10px;
+	padding: 2px;
 }
 
 #header .search {
@@ -106,6 +157,10 @@
 	right: 0;
 }
 
+#header .search .search-icon {
+	font-size: 20px;
+}
+
 #header .search input {
 	height: 100%;
 	color: white;
@@ -113,13 +168,14 @@
 	border: none;
 	outline: none;
 	position: absolute;
-	transform: translateX(-130px);
-	display: none;
+	transform: translateX(50px);
+	display: block;
 	padding: 10px;
+	transition: 1s;
 }
 
 #header .search:hover input ,
 #header .search input:focus {
-	display: block;
+	transform: translateX(-130px);
+	/*display: block;*/
 }
-/*header end*/

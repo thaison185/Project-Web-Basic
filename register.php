@@ -7,11 +7,11 @@
 
 	<link rel="stylesheet" type="text/css" href="./assests/css/register_style.css">
 
-	<script src="./assests/scripts/check_regex_register.js" type="text/javascript"></script>
+	<script src="./assests/script/check_regex_register.js" type="text/javascript"></script>
 </head>
 <body>
 <?php include('back.php') ?>
-<form method="post" action="progress_register.php">
+<form method="post" action="progress_register.php" enctype="multipart/form-data">
 	<h1>Register</h1>
 	<table>
 		<tr>
@@ -38,6 +38,13 @@
 				<input type="radio" name="gender" value="2">
 				Orther
 				<span id="span_regex_gender" class="error"></span>
+			</td>
+		</tr>
+		<tr>
+			<td>Avatar</td>
+			<td>
+				<input type="file" id="avatar" name="avatar">
+				<span id="span_regex_email" class="error"></span>
 			</td>
 		</tr>
 		<tr>

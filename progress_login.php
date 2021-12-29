@@ -23,6 +23,7 @@ if(password_verify($password,$each['hashed_password'])) {
 	$_SESSION['id'] = $each['id'];
 	$_SESSION['username'] = $each['username'];
 	$_SESSION['name'] = $each['name'];
+	$_SESSION['avatar'] = $each['avatar'];
 	// die(json_encode($each));
 	header('location:index.php');
 	// die('tt');

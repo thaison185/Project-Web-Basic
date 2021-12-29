@@ -23,6 +23,13 @@ if( isset($_POST['gender'])) {
 	$error = "đã xảy ra lỗi!";
 }
 
+if( isset($_FILES['avatar'])) {
+	$avatar = $_FILES['avatar'];
+	// $avatar = "$avatar";
+} else {
+	$avatar = null;
+}
+
 if( isset($_POST['email'])) {
 	$email = $_POST['email'];
 } else {
@@ -120,12 +127,27 @@ if (!password_verify($old_password, $each['hashed_password'])) {
 	exit;
 }
 
+if($avatar) {
+	$path_folder = './assests/img/avatar/';
+	$file_extension = explode('.',$avatar['name'])[1];
+	$fiel_name = time() . rand(0,9999);
+	$path_file_avatar = $path_folder . $fiel_name . '.' . $file_extension;
+	$avatar_str = "avatar = '$path_file_avatar',";
+	// die($path_file_avatar); 
+	move_uploaded_file($avatar['tmp_name'], $path_file_avatar);
+} else {
+	$avatar_str = '';
+}
+
 $sql = "update customers
 set 
 username = '$username',
 name = '$name',
-gender = '$gender',
-email = '$email',
+gender = '$gender',"
+.
+$avatar_str
+.
+"email = '$email',
 phone = '$phone',
 DOB = '$DOB',
 address = '$address',
@@ -137,4 +159,4 @@ echo($sql);
 
 $result = mysqli_query($connect,$sql);
 
-mysqli_close($connect);
+require('refresh_session.php');

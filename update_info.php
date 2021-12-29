@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Update info</title>
 
-	<link rel="stylesheet" type="text/css" href="./assests/css/update_info_style.css">
+	<link rel="stylesheet" type="text/css" href="./assests/css/update_info.css">
 
 	<script src="./assests/scripts/check_regex_update_info.js" type="text/javascript"></script>
 </head>
@@ -22,7 +22,7 @@ $result = mysqli_query($connect,$sql);
 $each = mysqli_fetch_array($result);
 
  ?>
-<form method="post" action="progress_update_info.php">
+<form method="post" action="progress_update_info.php" enctype="multipart/form-data">
 	<h1>Update info</h1>
 	<input type="text" name="id" value="<?php echo $each['id'] ?>" style='display: none;'>
 	<table>
@@ -50,6 +50,16 @@ $each = mysqli_fetch_array($result);
 				<input type="radio" name="gender" value="2"<?php if($each['gender'] == 2 ){ echo ' checked';} ?>>
 				Orther
 				<span id="span_regex_gender" class="error"></span>
+			</td>
+		</tr>
+		<tr>
+			<td>Avatar</td>
+			<td>
+				Keep old avatar
+				<img class="old_avatar" src="<?php echo $each['avatar'] ?>">
+				 or
+				<input type="file" id="avatar" name="avatar" >
+				<span id="span_regex_avatar" class="error"></span>
 			</td>
 		</tr>
 		<tr>

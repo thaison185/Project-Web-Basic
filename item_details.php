@@ -15,7 +15,8 @@ $each = mysqli_fetch_array($result);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo $each['name'] ?> - Starwar Coffee</title>
 
-	<link rel="stylesheet" type="text/css" href="./assests/css/item_details_style.css">
+	<link rel="stylesheet" type="text/css" href="./assests/css/item_details.css">
+	
 	<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>

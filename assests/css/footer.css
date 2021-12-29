@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-/*footer start*/
 #footer {
 	width: 100%;
 	height: 200px;
+	font-family: 'Montserrat', sans-serif;
 	background: grey;
 	position: relative;
 	bottom: 0;
@@ -19,6 +20,7 @@
 }
 
 #footer .content {
+	line-height: 25px;
 	padding-top: 10px;
 }
 
@@ -43,4 +45,3 @@
 	bottom: 0;
 	left: 25px;
 }
-/*footer end*/

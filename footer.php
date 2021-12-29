@@ -1,3 +1,6 @@
+<link rel="stylesheet" type="text/css" href="./assests/css/footer.css">
+<link rel="stylesheet" type="text/css" href="./assests/font/themify-icons/themify-icons.css">
+
 <div id="footer">
 	<div class="about-us">
 		<div class="title">About us</div>
@@ -17,7 +20,6 @@
 		<div class="title">Contact</div>
 		<div class="content">
 			Phone: 09308910JQK
-			<br>
 			<br>
 			Email: starwarcoffee@gmail.com
 		</div>

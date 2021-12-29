@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login</title>
 
-	<link rel="stylesheet" type="text/css" href="./assests/css/login_style.css">
+	<link rel="stylesheet" type="text/css" href="./assests/css/login.css">
 </head>
 <body>
 <?php session_start(); ?>

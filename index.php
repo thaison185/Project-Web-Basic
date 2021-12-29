@@ -4,18 +4,17 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Starwar coffee</title>
+	<!-- logo -->
 	<link rel="icon" type="text/css" href="https://cdn-icons-png.flaticon.com/512/184/184483.png">
-
-	<link rel="stylesheet" type="text/css" href="./assests/css/index_style.css">
-	<link rel="stylesheet" type="text/css" href="./assests/css/header.css">
-	<link rel="stylesheet" type="text/css" href="./assests/css/footer.css">
-	<link rel="stylesheet" type="text/css" href="./assests/font/themify-icons/themify-icons.css">
-	
+	<!-- ggfont preconnect -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Readex+Pro:wght@200&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
-
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="./assests/css/index.css">
+	<!-- <link rel="stylesheet" type="text/css" href="./assests/css/header.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="./assests/css/footer.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="./assests/font/themify-icons/themify-icons.css"> -->
+	<!-- script -->
 	<script src="./assests/script/auto_slider.js" type="text/javascript"></script>
 </head>
 <body>

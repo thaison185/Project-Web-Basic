@@ -4,20 +4,27 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Cart</title>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="./assests/css/cart.css">
 </head>
 <body>
-<h1>CART</h1>
+	<?php session_start(); ?>
+	<!-- header-start -->
+	<?php
+		require_once('header.php');
+	?>
+	<!-- header-end -->
 <?php include('back.php') ?>
 <?php 
 if(!isset($_COOKIE['cart'])) { 
 	?>
-	<h2>Cart is Empty!</h2>
+	<h2 class="empty_cart">Cart is Empty!</h2>
 <?php
 die();
  } 
 $cart = json_decode($_COOKIE['cart']);
 if(count($cart) == 0) { ?>
-	<h2>Cart is Empty!</h2>
+	<h2 class="empty_cart">Cart is Empty!</h2>
 <?php
 die();
  }
