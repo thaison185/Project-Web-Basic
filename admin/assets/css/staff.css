@@ -109,7 +109,14 @@
     text-decoration: none;
     padding: 1rem 0;
     cursor: pointer;
+    border-radius: .5rem;
+    transition: all .3s ease;
 }
+
+.confirm:hover{
+    background-color: #ff2015;
+}
+
 
 .actions a{
     display: block;
@@ -117,6 +124,12 @@
     background-color: var(--primary-color);
     color: #fff;
     text-decoration: none;
+    border-radius: .5rem;
+    transition: all .3s ease;
+}
+
+.actions a:hover{
+    background-color: var(--blue-pastel);
 }
 
 .insert{

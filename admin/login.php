@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +12,11 @@
     <title>Q's Coffee | Staff Signing In</title>
 </head>
 <body>
+    <?php if(isset($_SESSION['role'])){ 
+            header('location:dashboard.php');
+            exit;
+    }
+    ?>
     <div class="container">
         <div class="form-area">
             <div class="form-area__title">

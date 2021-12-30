@@ -71,12 +71,12 @@
                     </div>
                     <div>
                         <label>Ice: </label>
-                        <input type="radio" name="ice" value="0">Disable
+                        <input type="radio" name="ice" value="0" checked>Disable
                         <input type="radio" name="ice" value="1">Enable
                     </div>
                     <div>
                         <label>Sugar: </label>
-                        <input type="radio" name="sugar" value="0">Disable
+                        <input type="radio" name="sugar" value="0" checked>Disable
                         <input type="radio" name="sugar" value="1">Enable
                     </div>
                     <button type="submit">Insert</button>

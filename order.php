@@ -44,7 +44,7 @@ foreach ($cart as $each) {
 // die($description);
 
 $sql = "INSERT INTO orders(customer_id, description, price, status) 
-VALUES ('$customer_id','$description','$total','pending')";
+VALUES ('$customer_id','$description','$total','Pending')";
 echo $sql;
 $result = mysqli_query($connect,$sql);
 
