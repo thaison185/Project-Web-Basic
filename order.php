@@ -33,7 +33,7 @@ foreach ($cart as $each) {
 	}
 	$total += $each->{'quantity'}*$price;
 	if($i++ < 3) {
-		$description = $description.$item['name'].' size: '.$each->{'size'};
+		$description = $description.$each->{'quantity'}.' '.$item['name'].' size: '.$each->{'size'};
 		if($each->{'ice'} != '-1') $description = $description.' '.$each->{'ice'};
 		if($each->{'sugar'} != '-1') $description = $description.' '.$each->{'sugar'};
 		$description = $description.'\n';

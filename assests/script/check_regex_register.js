@@ -68,7 +68,8 @@ function check_regex() {
 	
 	//regex address
 	let address = document.getElementById('address').value;
-	if(address.length === 0)
+	regex = /^(?!.*[\"\<\>]).{10,}$/;
+	if(!regex.test(address))
 	{
 		document.getElementById('span_regex_address').innerHTML = "Địa chỉ không được để trống!";
 		regex_check = false;

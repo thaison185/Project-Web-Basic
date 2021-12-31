@@ -129,7 +129,7 @@ if (!password_verify($old_password, $each['hashed_password'])) {
 
 if($avatar) {
 	$path_folder = './assests/img/avatar/';
-	$file_extension = explode('.',$avatar['name'])[1];
+	$file_extension = explode('.',$avatar['tmp_name'])[1];
 	$fiel_name = time() . rand(0,9999);
 	$path_file_avatar = $path_folder . $fiel_name . '.' . $file_extension;
 	$avatar_str = "avatar = '$path_file_avatar',";

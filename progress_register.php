@@ -118,12 +118,13 @@ if (!$id) {
 }
 else
 	$id++;
-
-if($avatar) {
+// echo json_encode($avatar);
+// die(!!$avatar);
+if($avatar['tmp_name']) {
 	$path_folder = './assests/img/avatar/';
-	$file_extension = explode('.',$avatar['name'])[1];
-	$fiel_name = time() . rand(0,9999);
-	$path_file_avatar = $path_folder . $fiel_name . '.' . $file_extension;
+	$file_extension = explode('.',$avatar['tmp_name'])[1];
+	$file_name = time() . rand(0,9999);
+	$path_file_avatar = $path_folder . $file_name . '.' . $file_extension;
 	// die($path_file_avatar); 
 	move_uploaded_file($avatar['tmp_name'], $path_file_avatar);
 }

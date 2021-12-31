@@ -1,3 +1,4 @@
+<?php require_once('check_login.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,6 @@
 </head>
 <body>
 <div id="main">
-	<?php session_start(); ?>
 	<!-- header-start -->
 	<?php
 		require_once('header.php');

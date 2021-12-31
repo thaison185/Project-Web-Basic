@@ -1,3 +1,4 @@
+<?php require_once('check_login.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="./assests/css/cart.css">
 </head>
 <body>
-	<?php session_start(); ?>
 	<!-- header-start -->
 	<?php
 		require_once('header.php');

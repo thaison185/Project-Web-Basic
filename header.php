@@ -6,7 +6,7 @@
 		<img src="./assests/img/logo.png">
 	</a>
 	<div class="nav">
-	<?php if(basename($_SERVER['PHP_SELF']) == 'index.php') { ?>
+	<?php if (basename($_SERVER['PHP_SELF']) == 'index.php') { ?>
 		<button href="#" onclick="document.getElementById('items').scrollIntoView();">Menu</button>
 		<button href="#" onclick="document.getElementById('footer').scrollIntoView();">Store</button>
 		<button href="#" onclick="document.getElementById('footer').scrollIntoView();">About us</button>
@@ -17,7 +17,7 @@
 	<div class="login-register">
 		<?php if (isset($_SESSION['id'])) {?>
 			<div class="avatar">
-				<img src="<?php if($_SESSION['avatar']) { echo $_SESSION['avatar'];} else { echo "./assests/img/avatar/default.jpg";}?>">
+				<img src="<?php if ($_SESSION['avatar']) { echo $_SESSION['avatar'];} else { echo "./assests/img/avatar/default.jpg";}?>">
 			</div>
 			<span class="name">
 				<?php echo $_SESSION['name'] ?>
@@ -34,17 +34,17 @@
 	<div class="cart">
 		<a href="cart.php">
 		<?php 
-		if(isset($_COOKIE['cart'])) {
+		if (isset($_COOKIE['cart'])) {
 			$cart = json_decode($_COOKIE['cart']);
 		} else {
 			$cart = [];
 		}
-		if(count($cart) > 0) { 
+		if (count($cart) > 0) { 
 			$quantity = 0;
 			foreach ($cart as $each) {
 				$quantity += $each->{'quantity'};
 			}
-			if($quantity > 9)
+			if ($quantity > 9)
 				$quantity = '9+';
 			?>
 			<i class="ti-shopping-cart-full cart-icon"></i>
@@ -54,7 +54,7 @@
 		<?php } ?>
 		</a>
 	</div>
-	<?php if(basename($_SERVER['PHP_SELF']) == 'index.php') { ?>
+	<?php if (basename($_SERVER['PHP_SELF']) == 'index.php') { ?>
 	<div class="search">
 		<form>
 			<label>
