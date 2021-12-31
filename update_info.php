@@ -1,3 +1,4 @@
+<?php require_once('check_login.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,6 @@
 <body>
 <?php include('back.php') ?>
 <?php 
-session_start();
 $id = $_SESSION['id'];
 require_once('connect.php');
 
