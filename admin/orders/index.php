@@ -68,14 +68,16 @@
                     if(!isset($_GET['status'])){
                         $sql="select orders.id,date,status,price, name
                         from orders join customers
-                        on orders.customer_id=customers.id";
+                        on orders.customer_id=customers.id
+                        order by orders.id desc";
                     }
                     else{
                         $status=$_GET['status'];
                         $sql="select orders.id,date,status,price,name
                         from orders join customers
                         on orders.customer_id=customers.id
-                        where status='$status'";
+                        where status='$status'
+                        order by orders.id desc";
                     }
                     require '../../connect.php';
                     $result = $connect->query($sql);
