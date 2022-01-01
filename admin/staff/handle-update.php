@@ -48,7 +48,7 @@
     if($connect->error != '') {$_SESSION['error'] = $connect->error; mysqli_close($connect); header("location:update.php?id=$id"); exit;}
     else {unset($_SESSION['error']);}
     
-    if (isset($_FILES['photo'])){
+    if ($_FILES['photo']['error'] != UPLOAD_ERR_NO_FILE){
         $photo=$_FILES['photo'];
         $folder="./data/img/staff/$id/";
         if(!file_exists($folder)){mkdir("../data/img/staff/$id/", 0777);}

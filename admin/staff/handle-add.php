@@ -25,7 +25,7 @@
     $sql="select id from staff where email='$email'";
     $res=$connect->query($sql);
     $id=$res->fetch_array()[0];
-    if (isset($_FILES['photo'])){
+    if ($_FILES['photo']['error'] != UPLOAD_ERR_NO_FILE){
         $photo=$_FILES['photo'];
         $folder="./data/img/staff/$id/";
         mkdir("../../data/img/staff/$id/", 0777);

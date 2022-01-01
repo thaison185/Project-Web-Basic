@@ -7,13 +7,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/login.css"> 
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/login.css"> 
     <title>Q's Coffee | Staff Signing In</title>
 </head>
 <body>
     <?php if(isset($_SESSION['role'])){ 
-            header('location:dashboard');
+            header('location:../dashboard');
             exit;
     }
     ?>
@@ -23,10 +23,10 @@
                 Q's Coffee - Staff Only
             </div>
             <div class="form-area__warn">
-                This page is the Staff only page. If you are not a staff of our company, please go back to <a href="../index.php">page for customers</a> 
+                This page is the Staff only page. If you are not a staff of our company, please go back to <a href="../../index.php">page for customers</a> 
             </div>
             <div class="form-area__login-form">
-                <p>Welcome back! Please login to your account.</p>
+                <p>Welcome back! Please sign in to your account.</p>
                 <div class="err">
                     <?php
                  if (isset($_SESSION['error'])){
@@ -35,7 +35,7 @@
                  }
                     ?>
                 </div>
-                <form action="./handle-login.php" method="post">
+                <form action="./handle-signin.php" method="post">
                     <label >
                         Email
                         <br>

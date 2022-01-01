@@ -2,7 +2,7 @@
 session_start();
     $email = addslashes($_POST['email']);
     $password = $_POST['password'];
-    require './connect.php';
+    require '../connect.php';
 
     $valid = "select * from staff 
     where email='$email'";
@@ -17,9 +17,9 @@ session_start();
             $_SESSION['avatar'] = $cre['avatar'];
             $_SESSION['email'] = $cre['email'];
             unset($_SESSION['error']);
-            header('location:./dashboard');
+            header('location:../dashboard');
             exit;
         }
     } 
 $_SESSION['error']="Invalid email or password!";
-header('location:login.php');
+header('location:index.php');

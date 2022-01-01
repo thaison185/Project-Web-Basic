@@ -34,7 +34,7 @@ if($_SESSION['role']==1){
     if($connect->error != '') {$_SESSION['error'] = $connect->error;}
     else {unset($_SESSION['error']);}
     
-    if (isset($_FILES['photo'])){
+    if ($_FILES['photo']['error'] != UPLOAD_ERR_NO_FILE){
         $photo=$_FILES['photo'];
         $folder="./data/img/items/";
         $arr=explode('.',$photo['name']);

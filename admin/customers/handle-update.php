@@ -33,10 +33,10 @@
     gender='$gender'
     where id=$id";
     $res=$connect->query($sql);
-    if($connect->error != '') {$_SESSION['error'] = $connect->error; mysqli_close($connect); header("location:customer-update.php?id=$id"); exit;}
+    if($connect->error != '') {$_SESSION['error'] = $connect->error; mysqli_close($connect); header("location:update.php?id=$id"); exit;}
     else {unset($_SESSION['error']);}
     
-    if (isset($_FILES['photo'])){
+    if ($_FILES['photo']['error'] != UPLOAD_ERR_NO_FILE){
         $photo=$_FILES['photo'];
         $folder="./data/img/customers/";
         $arr=explode('.',$photo['name']);
