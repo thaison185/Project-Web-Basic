@@ -8,7 +8,7 @@ if (isset($_SESSION['role'])) {
 	exit;
 }
 
-if(basename($_SERVER['PHP_SELF']) != 'index.php') {
+if(basename($_SERVER['PHP_SELF']) != 'index.php' && basename($_SERVER['PHP_SELF']) != 'cart.php') {
 	if (!isset($_SESSION['id'])) {
 		header("location:index.php");
 		exit;

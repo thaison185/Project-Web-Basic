@@ -217,17 +217,3 @@ body {
 }
 
 /*item end*/
-/*page start*/
-#pages {
-	width: 1000px;
-	padding: 0 50px 10px;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-#pages a {
-	color: black;
-	text-decoration: none;
-	padding-right: 10px;
-}
-/*pages end*/

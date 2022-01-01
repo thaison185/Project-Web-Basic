@@ -11,6 +11,7 @@
 		padding: 0 5px 0 5px;
 		margin: 3px;
 		box-sizing: content-box;
+		z-index: 10;
 	}
 </style>
 

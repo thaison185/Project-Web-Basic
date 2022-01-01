@@ -15,4 +15,6 @@ $each = mysqli_fetch_array($result);
 $_SESSION['id'] = $each['id'];
 $_SESSION['username'] = $each['username'];
 $_SESSION['name'] = $each['name'];
+$_SESSION['phone'] = $each['phone'];
 $_SESSION['avatar'] = $each['avatar'];
+$_SESSION['address'] = $each['address'];

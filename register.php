@@ -84,15 +84,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<div id="error" class="error">
-					<?php
-					session_start();
-					if (isset($_SESSION['error'])) {
-						echo $_SESSION['error'];
-						unset($_SESSION['error']);
-					}
-					?>
-				</div>
+				<?php include('error.php'); ?>
 			</td>
 		</tr>
 		<tr>

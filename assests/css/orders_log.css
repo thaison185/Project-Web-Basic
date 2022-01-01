@@ -4,6 +4,7 @@
 	font-family: 'Readex Pro', sans-serif;
 	padding: 0;
 	margin: 0;
+	overflow: visible;
 }
 /*body*/
 body {
@@ -11,8 +12,51 @@ body {
 }
 
 table {
-	position: relative;
-	top: 60px;
+	width: 100%;
+	/*border-spacing: 0;*/
+	margin-top: 100px;
+}
+
+table tr td[onclick] {
+	cursor: pointer;
+}
+
+table tr:first-child {
+	background: #ABB2B9;
+}
+
+table tr {
+	background: #D5D8DC;
+	/*margin-top: 3px;*/
+}
+
+table td {
+	padding: 5px;
+}
+
+table td:nth-child(1) {
+    width: 30px;
+}
+
+table td:nth-child(2) {
+    width: 200px;
+}
+
+table td:nth-child(3) {
+    /*width: 50%;*/
+}
+
+table td:nth-child(4) {
+    width: 350px;
+}
+
+table td:nth-child(5) {
+    width: 30px;
+}
+
+table td:nth-child(6) {
+    width: 200px;
+}
 }
 
 .empty_log {
