@@ -1,8 +1,8 @@
 <?php
     session_start();
-    require 'check-role.php';
+    require '../check-role.php';
     if($_SESSION['role'] != 1) {
-        header('location:products.php');
+        header('location:index.php');
         exit;
     }
     $name=addslashes($_POST['name']);
@@ -14,14 +14,14 @@
     $sugar=$_POST['sugar'];
 
     $photo=$_FILES['photo'];
-    $folder="./assests/img/items/";
+    $folder="./data/img/items/";
     $arr=explode('.',$photo['name']);
     $extension=$arr[count($arr)-1];
     $file_name= time() . '.' . $extension;
     $image= $folder . $file_name;
-    move_uploaded_file($photo['tmp_name'],'.'.$image);
+    move_uploaded_file($photo['tmp_name'],'../../'.$image);
 
-    require 'connect.php';
+    require '../connect.php';
     $sql="insert into items(name,image,s_price,m_price,l_price,description,ice,sugar)
     values ('$name','$image',$s_price,$m_price,$l_price,'$description','$ice','$sugar')";
     $res=$connect->query($sql);
@@ -29,4 +29,4 @@
     else {unset($_SESSION['error']);}
     mysqli_close($connect);
     $_SESSION['success']="Product has been Added!";
-    header('location:product-insert.php');
+    header('location:add.php');

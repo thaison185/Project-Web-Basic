@@ -1,24 +1,24 @@
 <?php 
     session_start();
-    require 'check-role.php';
+    require '../check-role.php';
     if($_SESSION['role'] != 1) {
-        header('location:customers.php');
+        header('location:index.php');
         exit;
     }
     $_SESSION['cur']="Customers";
     if(!isset($_GET['id'])){
         $_SESSION['error']="No customer selected!";
-        header('location:customers.php');
+        header('location:index.php');
         exit;
     }
     unset($_SESSION['error']);
     $id=$_GET['id'];
-    require 'connect.php';
+    require '../connect.php';
     $sql="select * from customers where id=$id";
     $res=$connect->query($sql);
     if(!$res->num_rows>0){
         $_SESSION['error']="Can't find customer whom id=$id!";
-        header('location:customers.php');
+        header('location:index.php');
         exit;
     }
     $customer=$res->fetch_array();
@@ -30,17 +30,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/customers.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/customers.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" >
     <title>Q Coffee | Customers Control</title>
 </head>
 <body>
 <?php 
-        include './sidebar.php';
-        include './header.php';
-        require './connect.php';
+        include '../sidebar.php';
+        include '../header.php';
 ?>  
 <div class="app">
     <!-- Container Begin -->
@@ -64,7 +63,7 @@
                      ?>
                 </div>
 
-                <form action="./customer-handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
+                <form action="./handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
                     <div>
                         <label for="username">Username: </label>
                         <input type="text" name="username"  id="username" value="<?php echo $customer['username'] ?>">
@@ -107,18 +106,18 @@
                     </div>
                     <div>
                         <label>Avatar: </label>
-                        <?php if ($customer['avatar']==''){echo 'No Avatar';}else{?> <img src=".<?php echo $customer['avatar']; ?>" alt="Avatar" width="200px"><?php }?>
+                        <?php if ($customer['avatar']==''){echo 'No Avatar';}else{?> <img src="../../<?php echo $customer['avatar']; ?>" alt="Avatar" width="200px"><?php }?>
                         <input type="file" name="photo" >
                     </div>
                     <button type="submit">Update</button>
                 </form>
-            <a href="./customers.php" class="back"><i class="fas fa-chevron-left"></i>     Back to Customers</a>
+            <a href="./index.php" class="back"><i class="fas fa-chevron-left"></i>     Back to Customers</a>
         </div>
    
     <!-- Container End -->
 </div>
 </div>
-<?php include './footer.php'; $connect->close()?>
+<?php include '../footer.php'; $connect->close()?>
 </body>
 </html>
 

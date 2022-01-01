@@ -1,8 +1,8 @@
 <?php
     session_start();
-    require 'check-role.php';
+    require '../check-role.php';
     if($_SESSION['role'] != 1) {
-        header('location:dashboard.php');
+        header('location:../dashboard');
         exit;
     }
     $_SESSION['cur']="Staff";
@@ -15,7 +15,7 @@
     $role=$_POST['role'];
     $password=password_hash($_POST['password'],PASSWORD_DEFAULT);
     
-    require 'connect.php';
+    require '../connect.php';
 
     $sql="insert into staff(username,name,email,hashed_password,phone,gender,role) values('$username','$name','$email','$password','$phone','$gender','$role')";
     $res=$connect->query($sql);
@@ -27,13 +27,13 @@
     $id=$res->fetch_array()[0];
     if (isset($_FILES['photo'])){
         $photo=$_FILES['photo'];
-        $folder="./data/$id/";
-        mkdir("./data/$id/", 0777);
+        $folder="./data/img/staff/$id/";
+        mkdir("../../data/img/staff/$id/", 0777);
         $arr=explode('.',$photo['name']);
         $extension=$arr[count($arr)-1];
         $file_name= time() . '.' . $extension;
         $image= $folder . $file_name;
-        move_uploaded_file($photo['tmp_name'],$image);
+        move_uploaded_file($photo['tmp_name'],'../../'.$image);
         $sql="update staff
         set
         avatar='$image'
@@ -44,4 +44,4 @@
 
     mysqli_close($connect);
     $_SESSION['success']="Staff has been Added!";
-    header("location:staff.php");
+    header("location:index.php");

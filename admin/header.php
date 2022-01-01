@@ -6,8 +6,8 @@
                 </span>
             </div>
             <div class="header__account">
-                <?php $avatar=$_SESSION['avatar']==''?'./data/default.png':$_SESSION['avatar']; ?>
-                <img src=<?php echo $avatar;?> alt="Avatar" class="header__account-avatar">
+                <?php $avatar=$_SESSION['avatar']==''?'./data/img/staff/default.png':$_SESSION['avatar']; ?>
+                <img src="../<?php echo $avatar;?>" alt="Avatar" class="header__account-avatar">
                 <div class="header__account-info">
                     <p class="header__account-sub-info">
                         <?php if($_SESSION['role']==1){echo("Administrator");}else{echo("Staff");} ?>
@@ -31,7 +31,7 @@
                     <div class="header__sub-menu-footer">
                         <script>
                                 function signOut() {
-                                    window.location.href="./sign-out.php";
+                                    window.location.href="../sign-out.php";
                                 }
                                 function confirmSignOut() {
                                     if (confirm("Do you really want to Sign out?") == true) {

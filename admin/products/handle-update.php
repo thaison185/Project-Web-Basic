@@ -1,10 +1,10 @@
 <?php
     session_start();
-    require 'check-role.php';
+    require '../check-role.php';
     $_SESSION['cur']="Products";
     if(!isset($_GET['id'])){
         $_SESSION['error']="No product selected!";
-        header('location:products.php');
+        header('location:index.php');
         exit;
     }
     unset($_SESSION['error']);
@@ -19,7 +19,7 @@ if($_SESSION['role']==1){
     $ice=$_POST['ice'];
     $sugar=$_POST['sugar'];
 
-    require 'connect.php';
+    require '../connect.php';
     $sql="update items
     set
     name='$name',
@@ -36,12 +36,12 @@ if($_SESSION['role']==1){
     
     if (isset($_FILES['photo'])){
         $photo=$_FILES['photo'];
-        $folder="./assests/img/items/";
+        $folder="./data/img/items/";
         $arr=explode('.',$photo['name']);
         $extension=$arr[count($arr)-1];
         $file_name= time() . '.' . $extension;
         $image= $folder . $file_name;
-        move_uploaded_file($photo['tmp_name'],'.'.$image);
+        move_uploaded_file($photo['tmp_name'],'../../'.$image);
         $sql="update items
         set
         image='$image'
@@ -55,7 +55,7 @@ else{
     $m_price=$_POST['m_price']==''?0:$_POST['m_price'];
     $l_price=$_POST['l_price']==''?0:$_POST['l_price'];
 
-    require 'connect.php';
+    require '../connect.php';
     $sql="update items
     set
     s_price=$s_price,
@@ -68,4 +68,4 @@ else{
 }
     $_SESSION['success']="Product #$id has been Updated!";
     mysqli_close($connect);
-    header("location:product-update.php?id=$id");
+    header("location:update.php?id=$id");

@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    require 'check-role.php';
+    require '../check-role.php';
     $_SESSION['cur']="Customers";
  ?>
 <!DOCTYPE html>
@@ -10,17 +10,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/customers.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/customers.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" >
     <title>Q Coffee | Customers Control</title>
 </head>
 <body>
 <?php 
-        include './sidebar.php';
-        include './header.php';
-        require './connect.php';
+        include '../sidebar.php';
+        include '../header.php';
+        require '../connect.php';
         $sql="select * from customers";
         $customers=$connect->query($sql);
 
@@ -91,15 +91,15 @@
                     <td><?php echo $DOB; ?></td>
                     <td><?php echo $address; ?></td>
                     <td><?php echo $gender; ?></td>
-                    <td><?php if ($avatar==''){echo 'No Avatar';}else{?> <img src=".<?php echo $avatar; ?>" alt="Avatar" width="100px"><?php }?></td>
+                    <td><?php if ($avatar==''){echo 'No Avatar';}else{?> <img src="../../<?php echo $avatar; ?>" alt="Avatar" width="100px"><?php }?></td>
                     <?php
                         if ($_SESSION['role']==1){
                     ?>
                     <td class="actions">
-                        <div><a href="./customer-update.php?id=<?php echo $id; ?>">Update</a></div>
+                        <div><a href="./update.php?id=<?php echo $id; ?>">Update</a></div>
                         <script>
                             function Delete() {
-                            window.location.href="./customer-delete.php?id=<?php echo $id?>";
+                            window.location.href="./delete.php?id=<?php echo $id?>";
                             }
                             function confirmDelete() {
                                 if (confirm("All orders made by this customer will be deleted too! Do you really want to delete this customer?") == true) {
@@ -117,7 +117,7 @@
     </div>
     <!-- Container End -->
 </div>
-<?php include './footer.php'; $connect->close()?>
+<?php include '../footer.php'; $connect->close()?>
 </div>
 </body>
 </html>

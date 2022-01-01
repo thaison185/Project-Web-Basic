@@ -1,15 +1,15 @@
 <?php
-require "connect.php";
+require "../connect.php";
 session_start();
-require 'check-role.php';
+require '../check-role.php';
 if($_SESSION['role'] != 1) {
-    header('location:orders.php');
+    header('location:index.php');
     exit;
 }
 if(!isset($_GET['id'])){
     session_start();
     $_SESSION['error']="No order selected!";
-    header('location:orders.php');
+    header('location:index.php');
     exit;
 }
 unset($_SESSION['error']);
@@ -25,5 +25,5 @@ if(!$connect->query($sql)){
     exit;
 }
 $connect->close();
-$_SESSION['success']="Order #id Deleted!";
-header('location:orders.php');
+$_SESSION['success']="Order #$id Deleted!";
+header('location:index.php');

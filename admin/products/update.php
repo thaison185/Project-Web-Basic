@@ -1,20 +1,20 @@
 <?php 
     session_start();
-    require 'check-role.php';
+    require '../check-role.php';
     $_SESSION['cur']="Products";
     if(!isset($_GET['id'])){
         $_SESSION['error']="No product selected!";
-        header('location:products.php');
+        header('location:index.php');
         exit;
     }
     unset($_SESSION['error']);
     $id=$_GET['id'];
-    require 'connect.php';
+    require '../connect.php';
     $sql="select * from items where id=$id";
     $res=$connect->query($sql);
     if(!$res->num_rows>0){
         $_SESSION['error']="Can't find product which id=$id!";
-        header('location:products.php');
+        header('location:index.php');
         exit;
     }
     $item=$res->fetch_array();
@@ -26,17 +26,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/products.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/products.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" >
     <title>Q Coffee | Products Control</title>
 </head>
 <body>
 <?php 
-        include './sidebar.php';
-        include './header.php';
-        require './connect.php';
+       include '../sidebar.php';
+        include '../header.php';
 ?>
 <div class="app">
     <!-- Container Begin -->
@@ -62,14 +61,14 @@
                 <?php
                     if($_SESSION['role']==1){
                 ?>
-                <form action="./product-handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
+                <form action="./handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
                     <div>
                         <label for="name">Name: </label>
                         <input type="text" name="name"  id="name" value="<?php echo $item['name'] ?>">
                     </div>
                     <div>
                         <label>Image: </label>
-                        <img src=".<?php echo $item['image'];?>" alt="Image" width="200px">
+                        <img src="../../<?php echo $item['image'];?>" alt="Image" width="200px">
                         <input type="file" name="photo" >
                     </div>
                     <div>
@@ -124,7 +123,7 @@
                     else{
                 ?>
                  <div>
-                 <form action="./product-handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
+                 <form action="./handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
                         <label>Price: </label>
                         <br>
                         <label for="s">Size S: </label>
@@ -138,11 +137,11 @@
                 </form>
                 <?php } ?>
             </div>
-            <a href="./products.php" class="back"><i class="fas fa-chevron-left"></i>     Back to Products</a>
+            <a href="./index.php" class="back"><i class="fas fa-chevron-left"></i>     Back to Products</a>
         </div>
     </div>
     <!-- Container End -->
-    <?php include './footer.php'; $connect->close()?>
+    <?php include '../footer.php'; $connect->close()?>
 </div>
 </body>
 </html>

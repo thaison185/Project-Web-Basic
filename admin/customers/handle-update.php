@@ -1,14 +1,14 @@
 <?php
     session_start();
-    require 'check-role.php';
+    require '../check-role.php';
     if($_SESSION['role'] != 1) {
-        header('location:customers.php');
+        header('location:index.php');
         exit;
     }
     $_SESSION['cur']="Customers";
     if(!isset($_GET['id'])){
         $_SESSION['error']="No customer selected!";
-        header('location:customers.php');
+        header('location:index.php');
         exit;
     }
     unset($_SESSION['error']);
@@ -21,7 +21,7 @@
     $address=addslashes($_POST['address']);
     $gender=$_POST['gender'];
 
-    require 'connect.php';
+    require '../connect.php';
     $sql="update customers
     set
     username='$username',
@@ -38,12 +38,12 @@
     
     if (isset($_FILES['photo'])){
         $photo=$_FILES['photo'];
-        $folder="./assests/img/customers/";
+        $folder="./data/img/customers/";
         $arr=explode('.',$photo['name']);
         $extension=$arr[count($arr)-1];
         $file_name= time() . '.' . $extension;
         $image= $folder . $file_name;
-        move_uploaded_file($photo['tmp_name'],'.'.$image);
+        move_uploaded_file($photo['tmp_name'],'../../'.$image);
         $sql="update customers
         set
         avatar='$image'
@@ -54,4 +54,4 @@
 
     mysqli_close($connect);
     $_SESSION['success']="Customer #$id has been Updated!";
-    header("location:customer-update.php?id=$id");
+    header("location:update.php?id=$id");

@@ -13,7 +13,7 @@
 </head>
 <body>
     <?php if(isset($_SESSION['role'])){ 
-            header('location:dashboard.php');
+            header('location:dashboard');
             exit;
     }
     ?>
@@ -40,6 +40,7 @@
                         Email
                         <br>
                         <input type="email" name="email" required>
+                        <!-- assmin@qcoffee.com:BigBossofQCoffee! -->
                     </label>
                     <label >
                         Password
@@ -53,4 +54,3 @@
     </div>
 </body>
 </html>
-<!-- assmin@qcoffee.com:BigBossofQCoffee! -->

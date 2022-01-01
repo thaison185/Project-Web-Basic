@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    require 'check-role.php';
+    require '../check-role.php';
     $_SESSION['cur']="Shipping Orders";
 ?>
 <!DOCTYPE html>
@@ -10,16 +10,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/orders.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/orders.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" >
     <title>Q Coffee | Orders Control</title>
 </head>
 <body>
 <?php 
-        include './sidebar.php';
-        include './header.php';
+       include '../sidebar.php';
+        include '../header.php';
 ?>  
 <div class="app">
     <!-- Container Begin -->
@@ -31,7 +31,7 @@
             </div>
             <div class="orders__right-side">
                 <div class="orders__status">
-                    <a href="./orders.php" class="orders__status-clear">
+                    <a href="./index.php" class="orders__status-clear">
                         <?php
                             if(!isset($_GET['status'])){
                                 echo("Status");
@@ -42,10 +42,10 @@
                     </a>
                     <div class="orders__status-menu">
                         <ul>
-                            <li><a href="./orders.php?status=Pending">Pending</a></li>
-                            <li><a href="./orders.php?status=Accepted">Accepted</a></li>
-                            <li><a href="./orders.php?status=Delivered">Delivered</a></li>
-                            <li><a href="./orders.php?status=Rejected">Rejected</a></li>
+                            <li><a href="./index.php?status=Pending">Pending</a></li>
+                            <li><a href="./index.php?status=Accepted">Accepted</a></li>
+                            <li><a href="./index.php?status=Delivered">Delivered</a></li>
+                            <li><a href="./index.php?status=Rejected">Rejected</a></li>
                         </ul>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                         on orders.customer_id=customers.id
                         where status='$status'";
                     }
-                    require 'connect.php';
+                    require '../connect.php';
                     $result = $connect->query($sql);
                 ?>
             </div>
@@ -113,7 +113,7 @@
                             <td  class="orders__more-btn">
                                     <i class="fas fa-ellipsis-h"></i>
                                         <ul class="orders__table-sub-menu hidden">
-                                            <li><a href="./order_details.php?id=<?php echo $id; ?>"><i class="fas fa-eye"></i></i> Order Details</a></li>
+                                            <li><a href="./details.php?id=<?php echo $id; ?>"><i class="fas fa-eye"></i></i> Order Details</a></li>
                                             <?php
                                             if ($row['status']!="Rejected"){
                                             ?>
@@ -121,10 +121,10 @@
                                                 <a href="<?php
                                                     switch ($row['status']){
                                                         case "Pending":
-                                                            echo "./update-order.php?id='$id'&status=Accepted";
+                                                            echo "./update.php?id='$id'&status=Accepted";
                                                             break;
                                                         case "Accepted":
-                                                            echo "./update-order.php?id='$id'&status=Delivered";
+                                                            echo "./update.php?id='$id'&status=Delivered";
                                                             break;
                                                         default:
                                                             echo '#';
@@ -142,13 +142,13 @@
                                                  ?>
                                                 </a>
                                             </li>
-                                            <li><a href="./update-order.php?id=<?php echo($id);?>&status=Rejected"><i class="fas fa-money-bill-wave-alt"></i> Reject Order</a></li>
+                                            <li><a href="./update.php?id=<?php echo($id);?>&status=Rejected"><i class="fas fa-money-bill-wave-alt"></i> Reject Order</a></li>
                                             <?php } 
                                                 if ($_SESSION['role'] == 1){
                                             ?>
                                             <script>
                                                 function Delete() {
-                                                    window.location.href="./delete-order.php?id=<?php echo $id?>";
+                                                    window.location.href="./delete.php?id=<?php echo $id?>";
                                                 }
                                                 function confirmDelete() {
                                                     if (confirm("Do you really want to delete this order?") == true) {
@@ -190,7 +190,7 @@
 
     </div>
     <!-- Container End -->
-    <?php include './footer.php'; $connect->close()?>
+    <?php include '../footer.php'; $connect->close()?>
 </div>
 </body>
 </html>
