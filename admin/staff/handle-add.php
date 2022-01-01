@@ -15,7 +15,7 @@
     $role=$_POST['role'];
     $password=password_hash($_POST['password'],PASSWORD_DEFAULT);
     
-    require '../connect.php';
+    require '../../connect.php';
 
     $sql="insert into staff(username,name,email,hashed_password,phone,gender,role) values('$username','$name','$email','$password','$phone','$gender','$role')";
     $res=$connect->query($sql);

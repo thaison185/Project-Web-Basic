@@ -19,7 +19,7 @@
     $phone=addslashes($_POST['phone']);
     $gender=$_POST['gender'];
     $role=$_POST['role'];
-    require '../connect.php';
+    require '../../connect.php';
     $sql="select * from staff where id=$id";
     $res=$connect->query($sql);
     if(!$res->num_rows>0){

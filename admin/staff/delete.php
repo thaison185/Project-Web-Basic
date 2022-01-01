@@ -14,7 +14,7 @@
     unset($_SESSION['error']);
     $id=$_GET['id'];
 
-    require '../connect.php';
+    require '../../connect.php';
     $sql="select * from staff where id=$id";
     $res=$connect->query($sql);
     if(!$res->num_rows>0){

@@ -24,7 +24,7 @@
 <?php 
        include '../sidebar.php';
         include '../header.php';
-        require '../connect.php';
+        require '../../connect.php';
 ?>  
 <div class="app">
     <!-- Container Begin -->

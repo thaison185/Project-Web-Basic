@@ -9,7 +9,7 @@
     }
     unset($_SESSION['error']);
     $id=$_GET['id'];
-    require '../connect.php';
+    require '../../connect.php';
     if(isset($_GET['status'])){
         $stat=$_GET['status'];
         $sql="update orders

@@ -77,7 +77,7 @@
                         on orders.customer_id=customers.id
                         where status='$status'";
                     }
-                    require '../connect.php';
+                    require '../../connect.php';
                     $result = $connect->query($sql);
                 ?>
             </div>

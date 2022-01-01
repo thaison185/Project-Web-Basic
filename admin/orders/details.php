@@ -26,7 +26,7 @@
         unset($_SESSION['error']);
        include '../sidebar.php';
         include '../header.php';
-        require '../connect.php';
+        require '../../connect.php';
         $id=$_GET['id'];
         $sql="select order_details.*, items.image,items.name 
         from order_details join items on items.id= order_details.item_id

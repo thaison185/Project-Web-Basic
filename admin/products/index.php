@@ -20,7 +20,7 @@
 <?php 
        include '../sidebar.php';
         include '../header.php';
-        require '../connect.php';
+        require '../../connect.php';
         $sql="select * from items";
         $items=$connect->query($sql);
 ?>  

@@ -21,7 +21,7 @@
     $image= $folder . $file_name;
     move_uploaded_file($photo['tmp_name'],'../../'.$image);
 
-    require '../connect.php';
+    require '../../connect.php';
     $sql="insert into items(name,image,s_price,m_price,l_price,description,ice,sugar)
     values ('$name','$image',$s_price,$m_price,$l_price,'$description','$ice','$sugar')";
     $res=$connect->query($sql);

@@ -14,7 +14,7 @@
     unset($_SESSION['error']);
     $id=$_GET['id'];
 
-    require '../connect.php';
+    require '../../connect.php';
     $sql= "select order_id from order_details where item_id=$id";
     $arr=$connect->query($sql);
 

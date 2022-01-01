@@ -2,7 +2,7 @@
 session_start();
     $email = addslashes($_POST['email']);
     $password = $_POST['password'];
-    require '../connect.php';
+    require '../../connect.php';
 
     $valid = "select * from staff 
     where email='$email'";

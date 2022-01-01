@@ -21,7 +21,7 @@
     $address=addslashes($_POST['address']);
     $gender=$_POST['gender'];
 
-    require '../connect.php';
+    require '../../connect.php';
     $sql="update customers
     set
     username='$username',

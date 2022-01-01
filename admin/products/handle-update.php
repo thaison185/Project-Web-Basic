@@ -19,7 +19,7 @@ if($_SESSION['role']==1){
     $ice=$_POST['ice'];
     $sugar=$_POST['sugar'];
 
-    require '../connect.php';
+    require '../../connect.php';
     $sql="update items
     set
     name='$name',
@@ -55,7 +55,7 @@ else{
     $m_price=$_POST['m_price']==''?0:$_POST['m_price'];
     $l_price=$_POST['l_price']==''?0:$_POST['l_price'];
 
-    require '../connect.php';
+    require '../../connect.php';
     $sql="update items
     set
     s_price=$s_price,
