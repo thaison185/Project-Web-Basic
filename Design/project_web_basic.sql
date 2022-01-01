@@ -157,20 +157,20 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `customer_id`, `date`, `description`, `price`, `reciever_info`, `status`) VALUES
-(41, 105, '2021-12-30 08:18:53', '1 Milk shake size: l 100% sugar\n2 Cold brew size: m 100% ice\n3 Capuchino size: l\n ...', 95, NULL, 'pending'),
-(42, 105, '2021-12-30 08:19:13', '1 Capuchino size: s\n', 6, NULL, 'pending'),
-(43, 106, '2021-12-30 08:19:40', '8 White chocolate mocha size: l 100% ice 100% sugar\n', 80, NULL, 'pending'),
-(44, 107, '2021-12-30 08:19:58', '1 Cold brew size: m 100% ice\n', 9, NULL, 'pending'),
-(45, 107, '2021-12-30 08:20:22', '1 Cold brew size: m 100% ice\n', 9, NULL, 'pending'),
-(46, 107, '2021-12-30 08:20:31', '1 Cold brew size: m 100% ice\n', 9, NULL, 'pending'),
-(47, 107, '2021-12-30 08:20:35', '1 Cold brew size: m 100% ice\n', 9, NULL, 'pending'),
-(48, 107, '2021-12-30 08:20:43', '1 Cold brew size: m 100% ice\n', 9, NULL, 'pending'),
-(49, 107, '2021-12-30 08:20:47', '1 Cold brew size: m 100% ice\n', 9, NULL, 'pending'),
-(65, 0, '2021-12-30 08:31:06', '1 Cold brew size: m 50% ice\n', 9, NULL, 'pending'),
-(66, 0, '2021-12-30 08:31:11', '1 Cold brew size: m 50% ice\n', 9, NULL, 'pending'),
-(67, 0, '2021-12-30 08:31:15', '1 Cold brew size: m 50% ice\n', 9, NULL, 'pending'),
-(68, 0, '2021-12-30 08:31:38', '1 Cold brew size: m 100% ice\n1 Milk shake size: m 100% sugar\n1 White chocolate mocha size: m 100% ice 100% sugar\n ...', 33, NULL, 'pending'),
-(69, 0, '2021-12-30 08:31:43', '1 Cold brew size: m 100% ice\n', 9, NULL, 'pending');
+(41, 105, '2021-12-30 08:18:53', '1 Milk shake size: l 100% sugar\n2 Cold brew size: m 100% ice\n3 Capuchino size: l\n ...', 95, NULL, 'Pending'),
+(42, 105, '2021-12-30 08:19:13', '1 Capuchino size: s\n', 6, NULL, 'Pending'),
+(43, 106, '2021-12-30 08:19:40', '8 White chocolate mocha size: l 100% ice 100% sugar\n', 80, NULL, 'Pending'),
+(44, 107, '2021-12-30 08:19:58', '1 Cold brew size: m 100% ice\n', 9, NULL, 'Pending'),
+(45, 107, '2021-12-30 08:20:22', '1 Cold brew size: m 100% ice\n', 9, NULL, 'Pending'),
+(46, 107, '2021-12-30 08:20:31', '1 Cold brew size: m 100% ice\n', 9, NULL, 'Pending'),
+(47, 107, '2021-12-30 08:20:35', '1 Cold brew size: m 100% ice\n', 9, NULL, 'Pending'),
+(48, 107, '2021-12-30 08:20:43', '1 Cold brew size: m 100% ice\n', 9, NULL, 'Pending'),
+(49, 107, '2021-12-30 08:20:47', '1 Cold brew size: m 100% ice\n', 9, NULL, 'Pending'),
+(65, 0, '2021-12-30 08:31:06', '1 Cold brew size: m 50% ice\n', 9, NULL, 'Pending'),
+(66, 0, '2021-12-30 08:31:11', '1 Cold brew size: m 50% ice\n', 9, NULL, 'Pending'),
+(67, 0, '2021-12-30 08:31:15', '1 Cold brew size: m 50% ice\n', 9, NULL, 'Pending'),
+(68, 0, '2021-12-30 08:31:38', '1 Cold brew size: m 100% ice\n1 Milk shake size: m 100% sugar\n1 White chocolate mocha size: m 100% ice 100% sugar\n ...', 33, NULL, 'Pending'),
+(69, 0, '2021-12-30 08:31:43', '1 Cold brew size: m 100% ice\n', 9, NULL, 'Pending');
 
 -- --------------------------------------------------------
 
