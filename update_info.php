@@ -56,7 +56,11 @@ $each = mysqli_fetch_array($result);
 			<td>Avatar</td>
 			<td>
 				Keep old avatar
+				<?php if ($each['avatar']) { ?>
 				<img class="old_avatar" src="<?php echo $each['avatar'] ?>">
+				<?php } else { ?>
+				<img class="old_avatar" src="assests/img/avatar/default.jpg">
+				<?php } ?>
 				 or
 				<input type="file" id="avatar" name="avatar" >
 				<span id="span_regex_avatar" class="error"></span>
@@ -106,13 +110,7 @@ $each = mysqli_fetch_array($result);
 		</tr>
 		<tr>
 			<td colspan="2">
-				<div id="error" class="error">
-					<?php if (isset($_SESSION['error'])) {
-						echo $_SESSION['error'];
-						unset($_SESSION['error']);
-					}
-					?>
-				</div>
+				<?php include('error.php'); ?>
 			</td>
 		</tr>
 		<tr>

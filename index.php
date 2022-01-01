@@ -51,6 +51,7 @@
 		</div>
 	</div>
 	<!-- slider-end -->
+	<?php include('error.php'); ?>
 	<!-- items-start -->
 	<div id="items">
 		<?php 
@@ -93,7 +94,7 @@
 			?>
 			<!-- item start -->
 			<a href="item_details.php?id=<?php echo$each['id'] ?>" class="item">
-				<form method="post" action="progress_process_items.php">
+				<form method="get" action="progress_update_cart.php">
 					<input type="text" name="id" value="<?php echo $each['id'] ?>" style="display: none;">
 					<img src="<?php echo $each['image'];  ?>">
 					<div class="item-body">
@@ -180,11 +181,7 @@
 	</div>
 	<!-- items end -->
 	<!-- pages start -->
-	<div id="pages">
-	<?php for ($i=1; $i <= $n_pages; $i++) { ?>
-		<a href="index.php?page=<?php echo $i ?><?php if($search) echo '&'.'search='.$search ?>"><?php echo $i ?></a>
-	<?php } ?>
-	</div>
+	<?php include('pages.php') ?>
 	<!-- pages end -->
 	<!-- footer-start -->
 	<?php

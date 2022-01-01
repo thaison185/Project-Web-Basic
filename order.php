@@ -1,10 +1,36 @@
 <?php 
 session_start();
+
+if (!isset($_COOKIE['cart'])) {
+	exit;
+}
+
 if(isset($_SESSION['id']))
 	$customer_id = $_SESSION['id'];
 else
 	$customer_id = 0;
 // die($id);
+
+$reciever = $_POST['reciever'];
+if ($reciever == 0) {
+	$reciever_info = 
+	"Name: " . $_SESSION['name'] . 
+	"\nPhone: " . $_SESSION['phone'] . 
+	"\nAddress: " . $_SESSION['address'];
+} else {
+	$reciever_info = 
+	"Name: " . $_POST['name'] . 
+	"\nPhone : " . $_POST['phone'] . 
+	"\nAddress: " . $_POST['address'];
+}
+
+if (isset($_POST['notes'])) {
+	$notes = $_POST['notes'];
+} else {
+	$notes = '';
+}
+
+// die(isset($_POST['notes']));
 
 require_once('connect.php');
 
@@ -32,13 +58,11 @@ foreach ($cart as $each) {
 			break;
 	}
 	$total += $each->{'quantity'}*$price;
-	if($i++ < 3) {
-		$description = $description.$each->{'quantity'}.' '.$item['name'].' size: '.$each->{'size'};
-		if($each->{'ice'} != '-1') $description = $description.' '.$each->{'ice'};
-		if($each->{'sugar'} != '-1') $description = $description.' '.$each->{'sugar'};
-		$description = $description.'\n';
-	}
-	if($i == 3) $description = $description.' ...';
+}
+
+$description = $reciever_info;
+if (strlen($notes) > 0) {
+	$description = $description . '\nNotes: ' . $notes;
 }
 
 // die($description);

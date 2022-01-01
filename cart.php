@@ -15,6 +15,7 @@
 	?>
 	<!-- header-end -->
 <?php include('back.php') ?>
+<?php include('error.php') ?>
 <?php 
 if(!isset($_COOKIE['cart'])) { 
 	?>
@@ -33,8 +34,8 @@ require_once('connect.php');
 
 $total = 0;
  ?>
-<table border="1px" width="100%">
-	<tr>
+<table>
+	<tr class="head">
 		<td><h3>Name</h3></td>
 		<td><h3>Image</h3></td>
 		<td><h3>Options</h3></td>
@@ -67,7 +68,7 @@ $total = 0;
 		?>
 		<tr>
 			<td><?php echo $item['name'] ?></td>
-			<td><img width="100px" src="<?php echo $item['image'] ?>"></td>
+			<td><img src="<?php echo $item['image'] ?>"></td>
 			<td>
 				size <?php  echo $each->{'size'} ?><br>
 				<?php if($each->{'ice'} != -1) echo $each->{'ice'}; ?><br>
@@ -86,10 +87,69 @@ $total = 0;
 			</td>
 		</tr>
 	<?php } ?>
+	<tr>
+		<td colspan="6" style="text-align: right;">Total:</td>
+		<td> 
+			<h2>$<?php echo $total ?></h2>
+		</td>
+	</tr>
 </table>
-<h2 >Total: $<?php echo $total ?></h2>
-<!-- style="position: absolute; bottom: -120px; left: 0; padding-bottom: 20px;" -->
-<h2><a href="order.php">Order</a></h2>
- <!-- style="position: absolute; bottom: -120px; right: 0; padding-bottom: 20px;" -->
+<form method="post" action="order.php">
+	<table>	
+		<tr>
+			<td>
+				Notes:
+				<textarea class="notes" name="notes"></textarea>
+			</td>
+		</tr>
+	<?php if (isset($_SESSION['id'])) { ?>
+		<input type="radio" id="reciever_0" name="reciever" value="0" checked>
+		<input type="radio" id="reciever_1" name="reciever" value="1">
+		<tr>
+			<td>Delivery address:</td>
+		</tr>
+		<tr>
+			<td class="reciever_0">
+				<label for="reciever_0">Use your delivery info</label>
+			</td>
+		</tr>
+		<tr>
+			<td>Or</td>
+		</tr>
+		<tr>
+			<td class="reciever_1">
+				<label for="reciever_1">Fill in new delivery info</label>
+			</td>
+		</tr>
+	<?php } else { ?>
+		<input type="radio" name="reciever" value="1" checked style="display:none;">
+		<tr>
+			<td>Fill in delivery info</td>
+		</tr>
+	<?php } ?>
+		<table class="reciever_info">
+			<tr>
+				<td>Name</td>
+				<td>
+					<input type="text" name="name">
+				</td>
+			</tr>	
+			<tr>
+				<td>Phone</td>
+				<td>
+					<input type="text" name="phone">
+				</td>
+			</tr>	
+			<tr>
+				<td>Address</td>
+				<td>
+					<textarea name="address"></textarea>
+				</td>
+			</tr>	
+		</table>	
+	</table>
+	<button type="submit">Orders</button>
+</form>
+
 </body>
 </html>

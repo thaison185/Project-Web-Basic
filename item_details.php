@@ -21,6 +21,7 @@ $each = mysqli_fetch_array($result);
 </head>
 <body>
 <?php include('back.php') ?>
+<?php include('error.php'); ?>	
 	<!-- item start -->
 			<div href="item_details.php?id=<?php echo$each['id'] ?>" class="item">
 				<form method="post" action="progress_process_items.php">

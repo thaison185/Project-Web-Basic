@@ -6,9 +6,75 @@
 /*body*/
 body {
 	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+form {
+	width: 50%;
 }
 
 table {
+	width: 100%;
+	/*border-spacing: 0;*/
+	/*margin-top: 100px;*/
+}
+
+input[type=radio] {
+	display: none;
+}
+
+#reciever_0:checked ~ table .reciever_0 {
+	background: #ABB2B9;
+}
+
+#reciever_1:checked ~ table .reciever_1 {
+	background: #ABB2B9;
+}
+
+
+table img {
+	width: 100px; 
+}
+
+table tr.head {
+	background: #ABB2B9;
+}
+
+table tr {
+	background: #D5D8DC;
+	/*margin-top: 3px;*/
+}
+
+table td {
+	padding: 5px;
+}
+
+table td:nth-child(1) {
+    width: 100px;
+}
+
+table td:nth-child(2) {
+    width: 100px;
+}
+
+table td:nth-child(3) {
+    /*width: 50%;*/
+}
+
+table td:nth-child(4) {
+    width: 200px;
+}
+
+table td:nth-child(5) {
+    width: 100px;
+}
+
+table td:nth-child(6) {
+    width: 100px;
+}
+
+table td:nth-child(7) {
+    width: 100px;
 }
 
 .empty_cart {
@@ -22,4 +88,26 @@ table {
 	top: 100px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+form {
+	position: relative;
+}
+
+.reciever_info {
+	display: none;
+}
+
+form input[value="1"]:checked ~ .reciever_info {
+	display: flex;
+}
+
+form button {
+	width: 100px;
+	height: 50px;
+	font-size: 25px;
+	font-weight: bold;
+	position: relative; 
+	top: -50px;
+	right: -180%;
 }
