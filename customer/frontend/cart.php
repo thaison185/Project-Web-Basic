@@ -9,11 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="./assests/css/cart.css">
 </head>
 <body>
-	<!-- header-start -->
-	<?php
-		require_once('header.php');
-	?>
-	<!-- header-end -->
+<?php require_once('header.php'); ?>
 <?php include('back.php') ?>
 <?php include('error.php') ?>
 <?php 
@@ -150,6 +146,5 @@ $total = 0;
 	</table>
 	<button type="submit">Orders</button>
 </form>
-
 </body>
 </html>

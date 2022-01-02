@@ -9,15 +9,9 @@
 	<link rel="stylesheet" type="text/css" href="./assests/css/orders_log.css">
 </head>
 <body>
-	<!-- header-start -->
-	<?php
-		include('header.php');
-	?>
-	<!-- header-end -->
+	<?php include('header.php'); ?>
 	<?php include('back.php') ?>
-
 	<?php include('error.php'); ?>
-	
 	<?php
 	$customer_id = $_SESSION['id'];
 
@@ -92,27 +86,13 @@
 
 				 ?>
 				<tr>
-					<td onclick="window.location='order_detail.php?id=<?php echo $each_order['id'] ?>';">#<?php echo $each_order['id'] ?></td>
+					<td
+					>#<?php echo $each_order['id'] ?></td>
 					<td onclick="window.location='order_detail.php?id=<?php echo $each_order['id'] ?>';"><?php echo $each_order['date'] ?></td>
 					<td onclick="window.location='order_detail.php?id=<?php echo $each_order['id'] ?>';"><?php echo nl2br($items_in_order) ?></td>
 					<td onclick="window.location='order_detail.php?id=<?php echo $each_order['id'] ?>';"><?php echo nl2br($each_order['description']) ?></td>
 					<td onclick="window.location='order_detail.php?id=<?php echo $each_order['id'] ?>';">$<?php echo $each_order['price'] ?></td>
-					<td style="color: <?php 
-						switch ($each_order['status']) {
-							case 'Pending':
-								echo 'black';
-								break;
-							case 'Accepted':
-								echo '#85C1E9';
-								break;
-							case 'Delivered':
-								echo '#32cd32';
-								break;
-							case 'Rejected':
-								echo 'red';
-								break;
-						}
-					 ?>;" onclick="window.location='order_detail.php?id=<?php echo $each_order['id'] ?>';"><?php echo $each_order['status'] ?></td>
+					<td class="<?php echo $each_order['status'] ?>" onclick="window.location='order_detail.php?id=<?php echo $each_order['id'] ?>';"><?php echo $each_order['status'] ?></td>
 				</tr>
 			<?php } ?>
 		</table>
