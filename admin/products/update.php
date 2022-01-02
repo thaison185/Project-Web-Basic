@@ -68,7 +68,7 @@
                     </div>
                     <div>
                         <label>Image: </label>
-                        <img src="../../<?php echo $item['image'];?>" alt="Image" width="200px">
+                        <?php if($item['image']==''){echo 'No Image';}else{ ?><img src="../../<?php echo $item['image'];?>" alt="Image" width="200px"><?php } ?>
                         <input type="file" name="photo" >
                     </div>
                     <div>

@@ -84,7 +84,7 @@
                         $option= "Ice: " .  $ice . " - Sugar: " . $sugar;        
                 ?>
                 <tr class="float-z">
-                    <td><img src="../../<?php echo $image; ?>" alt="Product Image" width="100px"></td>
+                    <td><?php if ($image==''){echo 'No Image';} else{ ?><img src="../../<?php echo $image; ?>" alt="Product Image" width="100px"><?php } ?></td>
                     <td><?php echo $id; ?></td>
                     <td><?php echo $name; ?></td>
                     <td><span>$ <?php echo $price; ?></span></td>

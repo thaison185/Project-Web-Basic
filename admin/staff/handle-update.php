@@ -49,6 +49,9 @@
     else {unset($_SESSION['error']);}
     
     if ($_FILES['photo']['error'] != UPLOAD_ERR_NO_FILE){
+        $res=$connect->query("select avatar from staff where id=$id");
+        $old='../../'.$res->fetch_array()['avatar'];
+        if (is_file($old)&&file_exists($old)){if(!unlink($old)){die("$old error");}}
         $photo=$_FILES['photo'];
         $folder="./data/img/staff/$id/";
         if(!file_exists($folder)){mkdir("../data/img/staff/$id/", 0777);}

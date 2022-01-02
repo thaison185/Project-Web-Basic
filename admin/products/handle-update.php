@@ -35,6 +35,9 @@ if($_SESSION['role']==1){
     else {unset($_SESSION['error']);}
     
     if ($_FILES['photo']['error'] != UPLOAD_ERR_NO_FILE){
+        $res=$connect->query("select image from items where id=$id");
+        $old='../../'.$res->fetch_array()['image'];
+        if (is_file($old)&&file_exists($old)){if(!unlink($old)){die("$old error");}}
         $photo=$_FILES['photo'];
         $folder="./data/img/items/";
         $arr=explode('.',$photo['name']);
