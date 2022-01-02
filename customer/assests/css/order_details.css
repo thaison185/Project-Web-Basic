@@ -1,0 +1,85 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+/*body*/
+body {
+	position: relative;
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+.status {
+	font-size: 30px;
+	position: absolute;
+	top: 0;
+	right: 20px;
+} 
+
+table {
+	width: 100%;
+	/*border-spacing: 0;*/
+	/*margin-top: 100px;*/
+}
+
+table tr td[onclick] {
+	cursor: pointer;
+}
+
+table img {
+	width: 100px; 
+}
+
+table tr.head {
+	background: #ABB2B9;
+}
+
+table tr {
+	background: #D5D8DC;
+	/*margin-top: 3px;*/
+}
+
+table td {
+	padding: 5px;
+}
+
+table td:nth-child(1) {
+    width: 200px;
+}
+
+table td:nth-child(2) {
+    width: 100px;
+}
+
+table td:nth-child(3) {
+    width: 100px;
+}
+
+table td:nth-child(4) {
+    /*width: 200px;*/
+}
+
+table td:nth-child(5) {
+    width: 100px;
+}
+
+table td:nth-child(6) {
+    width: 100px;
+}
+
+.Pending {
+	color: black;
+}
+
+.Accepted {
+	color: #85C1E9;
+}
+
+.Delivered {
+	color: #32cd32;
+}
+
+.Rejected {
+	color: red;
+}
