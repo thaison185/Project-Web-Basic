@@ -1,8 +1,8 @@
 <?php 
 $error = null;
 
-
 session_start();
+
 $id = $_SESSION['id'];
 
 if( isset($_POST['username'])) {
@@ -112,7 +112,7 @@ $each = mysqli_fetch_array($result)['count(*)'];
 
 if($each > 0) {
 	$_SESSION['error'] = "username hoặc email hoặc số điện thoại đã đăng ký!";
-	header('location:update_info.php');
+	header('location:../frontend/update_info.php');
 	exit;
 }
 

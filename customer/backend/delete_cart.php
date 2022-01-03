@@ -1,2 +1,2 @@
 <?php 
-setcookie('cart','',-1);
+setcookie('cart', '', -1, '/');

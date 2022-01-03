@@ -37,7 +37,9 @@
 	$offset = ($page - 1)*$orders_per_page;
 	$sql = "select * from orders 
 	where customer_id = '$customer_id'
+	ORDER BY id DESC
 	limit $orders_per_page offset $offset";
+	// echo $sql;
 	$result = mysqli_query($connect,$sql);
 
 	// $empty = !mysqli_fetch_array($result);

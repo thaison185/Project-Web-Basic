@@ -8,7 +8,7 @@
 
 	<link rel="stylesheet" type="text/css" href="../assests/css/register.css">
 
-	<script src="../assests/script/check_regex_register.js" type="text/javascript"></script>
+	<script src="../assests/js/check_regex_register.js" type="text/javascript"></script>
 </head>
 <body>
 <!-- <?php include('back.php') ?> -->

@@ -13,7 +13,7 @@
 	<!-- css -->
 	<link rel="stylesheet" type="text/css" href="../assests/css/index.css">
 	<!-- script -->
-	<script src="../assests/script/auto_slider.js" type="text/javascript"></script>
+	<script src="../assests/js/auto_slider.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="main">
@@ -99,15 +99,15 @@
 						</div>
 						<div class="item-size radio-box">
 							<label>
-								<input type="radio" class="price-s" name="size" value="s"<?php if($each['s_price'] == 0) echo ' disabled'?>>
+								<input type="radio" class="price-s" name="size" value="S"<?php if($each['s_price'] == 0) echo ' disabled'?>>
 								<div>Small</div>
 							</label>
 							<label>
-								<input type="radio" class="price-m" name="size" value="m" checked<?php if($each['m_price'] == 0) echo ' disabled'?>>
+								<input type="radio" class="price-m" name="size" value="M" checked<?php if($each['m_price'] == 0) echo ' disabled'?>>
 								<div>Medium</div>
 							</label>
 							<label>
-								<input type="radio" class="price-l" name="size" value="l"<?php if($each['l_price'] == 0) echo ' disabled'?>>
+								<input type="radio" class="price-l" name="size" value="L"<?php if($each['l_price'] == 0) echo ' disabled'?>>
 								<div>Large</div>
 							</label>
 						</div>

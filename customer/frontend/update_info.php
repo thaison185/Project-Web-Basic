@@ -8,7 +8,7 @@
 
 	<link rel="stylesheet" type="text/css" href="../assests/css/update_info.css">
 
-	<script src="../assests/scripts/check_regex_update_info.js" type="text/javascript"></script>
+	<script src="../assests/js/check_regex_update_info.js" type="text/javascript"></script>
 </head>
 <body>
 <!-- <?php include('back.php') ?> -->

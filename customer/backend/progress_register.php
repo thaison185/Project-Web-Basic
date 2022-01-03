@@ -134,6 +134,6 @@ $sql = "insert into customers(id,username,name,gender,avatar,email,phone,DOB,add
 values('$id','$username','$name','$gender','$path_file_avatar','$email','$phone','$DOB','$address','$hashed_password')";
 
 $result = mysqli_query($connect,$sql);
-die($sql);
+echo($sql);
 
 mysql_close($connect);

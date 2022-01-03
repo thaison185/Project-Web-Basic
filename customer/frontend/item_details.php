@@ -32,15 +32,15 @@
 					<div class="item-price">$9</div>
 					<div class="item-size radio-box">
 						<label>
-							<input type="radio" name="size" value="s"<?php if($each['s_price'] == 0) echo ' disabled'?>>
+							<input type="radio" name="size" value="S"<?php if($each['s_price'] == 0) echo ' disabled'?>>
 							<div>Small</div>
 						</label>
 						<label>
-							<input type="radio" name="size" value="m" checked<?php if($each['m_price'] == 0) echo ' disabled'?>>
+							<input type="radio" name="size" value="M" checked<?php if($each['m_price'] == 0) echo ' disabled'?>>
 							<div>Medium</div>
 						</label>
 						<label>
-							<input type="radio" name="size" value="l"<?php if($each['s_price'] == 0) echo ' disabled'?>>
+							<input type="radio" name="size" value="L"<?php if($each['s_price'] == 0) echo ' disabled'?>>
 							<div>Large</div>
 						</label>
 					</div>
@@ -92,6 +92,5 @@
 			</form>
 		</div>
 	<!-- item end -->
-
 </body>
 </html>

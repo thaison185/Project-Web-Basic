@@ -2,6 +2,11 @@
 
 session_start();
 
+if (!isset($_SESSION['id'])) {
+	header('location:../frontend/index.php');
+	exit;
+}
+
 $id = $_SESSION['id'];
 
 require_once('../../connect.php');
