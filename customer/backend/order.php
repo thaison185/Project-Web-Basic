@@ -45,15 +45,15 @@ foreach ($cart as $each) {
 	$item = mysqli_fetch_array($result);
 
 	switch ($each->{'size'}) {
-		case 's':
+		case 'S':
 			$price = $item['s_price'];
 			break;
 	
-		case 'm':
+		case 'M':
 			$price = $item['m_price'];
 			break;
 	
-		case 'l':
+		case 'L':
 			$price = $item['l_price'];
 			break;
 	}
@@ -83,15 +83,15 @@ foreach ($cart as $each) {
 	$id = $each->{'id'};
 
 	switch ($each->{'size'}) {
-		case 's':
+		case 'S':
 			$price = $item['s_price'];
 			break;
 	
-		case 'm':
+		case 'M':
 			$price = $item['m_price'];
 			break;
 	
-		case 'l':
+		case 'L':
 			$price = $item['l_price'];
 			break;
 	}
@@ -121,7 +121,7 @@ foreach ($cart as $each) {
 	$result = mysqli_query($connect,$sql);
 
 }
-require_once('delete_cart.php');
+require_once('../backend/delete_cart.php');
 
 // header('location:../frontend/index.php');
 

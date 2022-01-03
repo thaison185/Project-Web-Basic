@@ -96,16 +96,16 @@
                         if ($_SESSION['role']==1){
                     ?>
                         <script>
-                            function Delete() {
-                            window.location.href="./delete.php?id=<?php echo $id?>";
+                            function Delete(id) {
+                            window.location.href="./delete.php?id="+id;
                             }
-                            function confirmDelete() {
+                            function confirmDelete(id) {
                                 if (confirm("All orders include this product will be deleted too, do you want to continue?") == true) {
-                                    Delete();
+                                    Delete(id);
                                 }
                             }
                         </script>
-                        <button class="confirm" onclick="confirmDelete()">Delete</button>
+                        <button class="confirm" onclick="confirmDelete(<?php echo $id?>)">Delete</button>
                     <?php } ?>
                     </td>
                 </tr>

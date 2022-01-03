@@ -48,15 +48,15 @@ $total = 0;
 		$item = mysqli_fetch_array($result);
 
 		switch ($each->{'size'}) {
-			case 's':
+			case 'S':
 				$price = $item['s_price'];
 				break;
 		
-			case 'm':
+			case 'M':
 				$price = $item['m_price'];
 				break;
 		
-			case 'l':
+			case 'L':
 				$price = $item['l_price'];
 				break;
 		}

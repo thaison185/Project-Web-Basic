@@ -52,7 +52,7 @@
             <p class="p__details">Address: <?php echo $details['address'];?></p>
             <p class="p__details">Status: <?php echo $details['status'];?></p>
             <p class="p__details">Created at: <?php echo $details['date'];?></p>
-            <p class="p__details">Description: <?php echo $details['description'];?></p>
+            <p class="p__details">Description: <br><?php echo nl2br($details['description']);?></p>
             <p class="p__price">Total price: $ <?php echo  $details['price'];?></p>
             </div>
             <div class="orders__order_table">

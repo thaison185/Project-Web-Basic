@@ -98,16 +98,16 @@
                     <td class="actions">
                         <div><a href="./update.php?id=<?php echo $id; ?>">Update</a></div>
                         <script>
-                            function Delete() {
-                            window.location.href="./delete.php?id=<?php echo $id?>";
+                            function Delete(id) {
+                            window.location.href="./delete.php?id="+id;
                             }
-                            function confirmDelete() {
+                            function confirmDelete(id) {
                                 if (confirm("All orders made by this customer will be deleted too! Do you really want to delete this customer?") == true) {
-                                    Delete();
+                                    Delete(id);
                                 }
                             }
                         </script>
-                        <button class="confirm" onclick="confirmDelete()">Delete</button>
+                        <button class="confirm" onclick="confirmDelete(<?php echo $id?>)">Delete</button>
                     <?php } ?>
                     </td>
                 </tr>

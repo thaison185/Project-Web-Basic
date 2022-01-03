@@ -11,9 +11,9 @@
 <?php session_start(); ?>
 <!-- <?php include('back.php') ?> -->
 <div id="temp" style="position: fixed; color:red; font-size: 50px;">
-	tk: customer1
+	tk: <a href="../../data/username.php" style="color:yellow;text-decoration:none;">username.php</a>
 	<br>
-	mk: aaaaaaaaA1
+	mk: Default1
 </div>
 <form method="post" action="../backend/progress_login.php">
 	<h1>Login</h1>

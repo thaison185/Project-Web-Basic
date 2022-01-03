@@ -101,26 +101,26 @@
                     ?>
                         <div><a href="./update.php?id=<?php echo $id; ?>">Update</a></div>
                         <script>
-                            function Delete() {
-                            window.location.href="./delete.php?id=<?php echo $id?>";
+                            function Delete(id) {
+                            window.location.href="./delete.php?id="+id;
                             }
-                            function secondLayerConfirm(){
+                            function secondLayerConfirm(id){
                                 if (confirm("Ты точно хочешь удалить этого сотрудника? Подумайте!") == true) {
-                                    thirdLayerConfirm();
+                                    thirdLayerConfirm(id);
                                 }
                             }
-                            function thirdLayerConfirm() {
+                            function thirdLayerConfirm(id) {
                                 if (confirm("Honto ni? Doshite?") == true) {
-                                    Delete();
+                                    Delete(id);
                                 }
                             }
-                            function confirmDelete() {
+                            function confirmDelete(id) {
                                 if (confirm("Do you really want to delete this staff?") == true) {
-                                    secondLayerConfirm();
+                                    secondLayerConfirm(id);
                                 }
                             }
                         </script>
-                        <button class="confirm" onclick="confirmDelete()">Delete</button>
+                        <button class="confirm" onclick="confirmDelete(<?php echo $id?>)">Delete</button>
                     <?php } ?>
                     </td>
                 </tr>
