@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 03, 2022 at 06:45 PM
+-- Generation Time: Jan 04, 2022 at 09:32 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -167,7 +167,8 @@ CREATE TABLE `items` (
   `s_price` float DEFAULT NULL,
   `m_price` float DEFAULT NULL,
   `l_price` float DEFAULT NULL,
-  `description` text NOT NULL,
+  `description` text,
+  `category` varchar(20) NOT NULL,
   `ice` tinyint(1) NOT NULL,
   `sugar` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -176,50 +177,50 @@ CREATE TABLE `items` (
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`id`, `name`, `image`, `s_price`, `m_price`, `l_price`, `description`, `ice`, `sugar`) VALUES
-(1, 'Americano', './data/img/items/1641144170.png', 2, 3, 4, '', 1, 0),
-(2, 'Cappuccino', './data/img/items/1641142475.png', 3, 5, 7, '', 1, 0),
-(3, 'Espresso', './data/img/items/1641144576.jpg', 2, 5, 6, '', 1, 0),
-(4, 'Latte', './data/img/items/1641144841.jpg', 0, 5, 8, '', 1, 0),
-(5, 'Cinnamon Dolce Latte', './data/img/items/1641144933.webp', 0, 6, 9, '', 1, 0),
-(6, 'Caramel Macchiato', './data/img/items/1641145024.webp', 0, 6, 9, '', 1, 0),
-(7, 'Mocha', './data/img/items/1641145094.jpg', 3, 6, 8, '', 1, 0),
-(8, 'White Chocolate Mocha', './data/img/items/1641145155.jpg', 0, 7, 9, '', 1, 0),
-(9, 'Bac Xiu', './data/img/items/1641145305.jpg', 2, 3, 5, '', 1, 0),
-(10, 'Cold Brew', './data/img/items/1641145350.png', 3, 5, 7, '', 1, 0),
-(11, 'Chai Tea Latte', './data/img/items/1641145393.webp', 2, 3, 4, '', 1, 0),
-(12, 'Earl Grey', './data/img/items/1641145434.jpg', 0, 2, 3, '', 1, 0),
-(13, 'Matcha Latte', './data/img/items/1641145477.jpg', 3, 5, 6, '', 1, 0),
-(14, 'Lipton', './data/img/items/1641145562.jpg', 0, 1, 2, '', 1, 0),
-(15, 'Tra Dao Cam Sa', './data/img/items/1641145606.jpg', 1, 2, 3, '', 1, 0),
-(16, 'Oolong Tea', './data/img/items/1641145697.jpg', 1, 0, 3, '', 1, 0),
-(17, 'Hot Chocolate', './data/img/items/1641145761.jpg', 0, 3, 5, '', 0, 1),
-(18, 'White Chocolate', './data/img/items/1641145827.webp', 0, 3, 5, '', 1, 1),
-(19, 'Lemonade', './data/img/items/1641145871.jpg', 1, 2, 0, '', 1, 1),
-(20, 'Apple Juice', './data/img/items/1641145928.jpg', 1, 2, 3, '', 1, 1),
-(21, 'Milkshake', './data/img/items/1641145960.png', 2, 3, 0, '', 1, 1),
-(22, 'Milkshake Chocolate', './data/img/items/1641146010.jpg', 3, 4, 0, '', 1, 1),
-(23, 'Milkshake Strawberry', './data/img/items/1641146092.jpg', 3, 4, 0, '', 1, 1),
-(24, 'Bubble Milk Tea', './data/img/items/1641146140.jpg', 0, 2, 3, '', 1, 1),
-(25, 'Milk Tea Oolong', './data/img/items/1641146167.jpg', 0, 2, 3, '', 1, 1),
-(26, 'Milk Tea Latte Macchiato', './data/img/items/1641146240.jpg', 0, 3, 4, '', 1, 1),
-(27, 'Frappuccino ', './data/img/items/1641146300.jpg', 2, 4, 0, '', 0, 0),
-(28, 'Frappuccino Chocolate', './data/img/items/1641146324.jpg', 3, 5, 0, '', 0, 0),
-(29, 'Frappuccino Cookie', './data/img/items/1641146351.webp', 3, 5, 0, '', 0, 0),
-(30, 'Frappuccino Matcha', './data/img/items/1641146377.jpg', 3, 5, 0, '', 0, 0),
-(31, 'Frappuccino Caramel', './data/img/items/1641146401.jpg', 3, 5, 0, '', 0, 0),
-(32, 'Tiramisu', './data/img/items/1641146427.png', 3, 5, 6, '', 0, 0),
-(33, 'Red Velvet', './data/img/items/1641146471.jpg', 0, 5, 7, '', 0, 0),
-(34, 'Cheesecake', './data/img/items/1641146509.jpg', 0, 4, 5, '', 0, 0),
-(35, 'Mousse Chocolate', './data/img/items/1641146553.jpg', 0, 0, 7, '', 0, 0),
-(36, 'Butter&Garlic bagel', './data/img/items/1641146603.jpg', 0, 3, 0, '', 0, 0),
-(37, 'Chocolate Fondant', './data/img/items/1641146714.jpg', 0, 0, 6, '', 0, 0),
-(38, 'Chocolate Brownie', './data/img/items/1641146759.jpg', 0, 4, 0, '', 0, 0),
-(39, 'Chocolate Chip Cookie', './data/img/items/1641146784.jpg', 1, 0, 0, '', 0, 0),
-(40, 'Croissant', './data/img/items/1641146834.png', 2, 3, 0, '', 0, 0),
-(41, 'Chocolate Croissant', './data/img/items/1641146899.jpg', 0, 4, 5, '', 0, 0),
-(42, 'Blue Berry Muffin', './data/img/items/1641146953.jpg', 0, 3, 0, '', 0, 0),
-(43, 'Bong Lan Trung Muoi Cha Bong', './data/img/items/1641147020.jpg', 0, 3, 0, '', 0, 0);
+INSERT INTO `items` (`id`, `name`, `image`, `s_price`, `m_price`, `l_price`, `description`, `category`, `ice`, `sugar`) VALUES
+(1, 'Americano', './data/img/items/1641144170.png', 2, 3, 4, NULL, 'Coffee', 1, 0),
+(2, 'Cappuccino', './data/img/items/1641142475.png', 3, 5, 7, NULL, 'Coffee', 1, 0),
+(3, 'Espresso', './data/img/items/1641144576.jpg', 2, 5, 6, NULL, 'Coffee', 1, 0),
+(4, 'Latte', './data/img/items/1641144841.jpg', 0, 5, 8, NULL, 'Coffee', 1, 0),
+(5, 'Cinnamon Dolce Latte', './data/img/items/1641144933.webp', 0, 6, 9, NULL, 'Coffee', 1, 0),
+(6, 'Caramel Macchiato', './data/img/items/1641145024.webp', 0, 6, 9, NULL, 'Coffee', 1, 0),
+(7, 'Mocha', './data/img/items/1641145094.jpg', 3, 6, 8, NULL, 'Coffee', 1, 0),
+(8, 'White Chocolate Mocha', './data/img/items/1641145155.jpg', 0, 7, 9, NULL, 'Coffee', 1, 0),
+(9, 'Bac Xiu', './data/img/items/1641145305.jpg', 2, 3, 5, NULL, 'Coffee', 1, 0),
+(10, 'Cold Brew', './data/img/items/1641145350.png', 3, 5, 7, NULL, 'Coffee', 1, 0),
+(11, 'Chai Tea Latte', './data/img/items/1641145393.webp', 2, 3, 4, NULL, 'Tea', 1, 0),
+(12, 'Earl Grey', './data/img/items/1641145434.jpg', 0, 2, 3, NULL, 'Tea', 1, 0),
+(13, 'Matcha Latte', './data/img/items/1641145477.jpg', 3, 5, 6, NULL, 'Tea', 1, 0),
+(14, 'Lipton', './data/img/items/1641145562.jpg', 0, 1, 2, NULL, 'Tea', 1, 0),
+(15, 'Tra Dao Cam Sa', './data/img/items/1641145606.jpg', 1, 2, 3, NULL, 'Tea', 1, 0),
+(16, 'Oolong Tea', './data/img/items/1641145697.jpg', 1, 0, 3, NULL, 'Tea', 1, 0),
+(17, 'Hot Chocolate', './data/img/items/1641145761.jpg', 0, 3, 5, NULL, 'Other Drink', 0, 1),
+(18, 'White Chocolate', './data/img/items/1641145827.webp', 0, 3, 5, NULL, 'Other Drink', 1, 1),
+(19, 'Lemonade', './data/img/items/1641145871.jpg', 1, 2, 0, NULL, 'Other Drink', 1, 1),
+(20, 'Apple Juice', './data/img/items/1641145928.jpg', 1, 2, 3, NULL, 'Other Drink', 1, 1),
+(21, 'Milkshake', './data/img/items/1641145960.png', 2, 3, 0, NULL, 'Other Drink', 1, 1),
+(22, 'Milkshake Chocolate', './data/img/items/1641146010.jpg', 3, 4, 0, NULL, 'Other Drink', 1, 1),
+(23, 'Milkshake Strawberry', './data/img/items/1641146092.jpg', 3, 4, 0, NULL, 'Other Drink', 1, 1),
+(24, 'Bubble Milk Tea', './data/img/items/1641146140.jpg', 0, 2, 3, NULL, 'Other Drink', 1, 1),
+(25, 'Milk Tea Oolong', './data/img/items/1641146167.jpg', 0, 2, 3, NULL, 'Other Drink', 1, 1),
+(26, 'Milk Tea Latte Macchiato', './data/img/items/1641146240.jpg', 0, 3, 4, NULL, 'Other Drink', 1, 1),
+(27, 'Frappuccino ', './data/img/items/1641146300.jpg', 2, 4, 0, NULL, 'Coffee', 0, 0),
+(28, 'Frappuccino Chocolate', './data/img/items/1641146324.jpg', 3, 5, 0, NULL, 'Coffee', 0, 0),
+(29, 'Frappuccino Cookie', './data/img/items/1641146351.webp', 3, 5, 0, NULL, 'Coffee', 0, 0),
+(30, 'Frappuccino Matcha', './data/img/items/1641146377.jpg', 3, 5, 0, NULL, 'Coffee', 0, 0),
+(31, 'Frappuccino Caramel', './data/img/items/1641146401.jpg', 3, 5, 0, NULL, 'Coffee', 0, 0),
+(32, 'Tiramisu', './data/img/items/1641146427.png', 3, 5, 6, NULL, 'Food', 0, 0),
+(33, 'Red Velvet', './data/img/items/1641146471.jpg', 0, 5, 7, NULL, 'Food', 0, 0),
+(34, 'Cheesecake', './data/img/items/1641146509.jpg', 0, 4, 5, NULL, 'Food', 0, 0),
+(35, 'Mousse Chocolate', './data/img/items/1641146553.jpg', 0, 0, 7, NULL, 'Food', 0, 0),
+(36, 'Butter&Garlic bagel', './data/img/items/1641146603.jpg', 0, 3, 0, NULL, 'Food', 0, 0),
+(37, 'Chocolate Fondant', './data/img/items/1641146714.jpg', 0, 0, 6, NULL, 'Food', 0, 0),
+(38, 'Chocolate Brownie', './data/img/items/1641146759.jpg', 0, 4, 0, NULL, 'Food', 0, 0),
+(39, 'Chocolate Chip Cookie', './data/img/items/1641146784.jpg', 1, 0, 0, NULL, 'Food', 0, 0),
+(40, 'Croissant', './data/img/items/1641146834.png', 2, 3, 0, NULL, 'Food', 0, 0),
+(41, 'Chocolate Croissant', './data/img/items/1641146899.jpg', 0, 4, 5, NULL, 'Food', 0, 0),
+(42, 'Blue Berry Muffin', './data/img/items/1641146953.jpg', 0, 3, 0, NULL, 'Food', 0, 0),
+(43, 'Bong Lan Trung Muoi Cha Bong', './data/img/items/1641147020.jpg', 0, 3, 0, NULL, 'Food', 0, 0);
 
 -- --------------------------------------------------------
 
