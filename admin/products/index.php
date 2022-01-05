@@ -66,6 +66,7 @@
                     <th>Product ID</th>
                     <th>Name</th>
                     <th>Price S|M|L</th>
+                    <th>Category</th>
                     <th>Description</th>
                     <th>Options</th>
                     <th>Action</th>   
@@ -79,6 +80,7 @@
                         $image=$row['image'];
                         $price=$row['s_price'] . ' | ' . $row['m_price'] . ' | ' . $row['l_price'];
                         $description=$row['description'];
+                        $category=$row['category'];
                         $ice=$row['ice']==0?"disable":"enable";
                         $sugar=$row['ice']==0?"disable":"enable";
                         $option= "Ice: " .  $ice . " - Sugar: " . $sugar;        
@@ -88,6 +90,7 @@
                     <td><?php echo $id; ?></td>
                     <td><?php echo $name; ?></td>
                     <td><span>$ <?php echo $price; ?></span></td>
+                    <td><?php echo $category; ?></td>
                     <td><?php echo $description; ?></td>
                     <td><?php echo $option; ?></td>
                     <td class="actions">

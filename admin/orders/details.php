@@ -55,7 +55,8 @@
             <p class="p__details">Description: <br><?php echo nl2br($details['description']);?></p>
             <p class="p__price">Total price: $ <?php echo  $details['price'];?></p>
             </div>
-            <div class="orders__order_table">
+        </div>   
+        <div class="orders__order-table">
                 <table class="orders__table">
                 <thead>
                             <tr>
@@ -83,13 +84,12 @@
                             <td><?php echo $option;?></td>
                             <td><?php echo $size;?></td>
                             <td><?php echo $quantity;?></td>
-                            <td><?php echo $total;?></td>
+                            <td>$ <?php echo $total;?></td>
                         </tr>
                         <?php } ?>
                     </tbody>
                 </table>
             </div>
-        </div>
     </div>
     <!-- Container End -->
     <?php include '../footer.php'; ?>

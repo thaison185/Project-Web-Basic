@@ -65,6 +65,7 @@
 .customers__table th,
 .customers__table td{
     padding: 1rem;
+    text-align: center;
 }
 
 .customers__table td{
@@ -111,16 +112,17 @@
     cursor: pointer;
     border-radius: .5rem;
     transition: all .3s ease;
+    margin: auto;
+    margin-bottom: 2rem;
 }
 
 .confirm:hover{
     background-color: #ff2015;
 }
-
-
 .actions a{
     display: block;
     width: 10rem;
+    margin: auto;
     background-color: var(--primary-color);
     color: #fff;
     text-decoration: none;
