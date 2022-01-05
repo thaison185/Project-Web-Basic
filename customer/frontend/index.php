@@ -70,7 +70,7 @@
 		$result = mysqli_query($connect,$sql);
 		$n_items = mysqli_fetch_array($result)['count(*)'];
 
-		$items_per_page = 9;
+		$items_per_page = 6;
 		$n_pages = ceil($n_items / $items_per_page);
 
 		$offset = ($page - 1)*$items_per_page;
