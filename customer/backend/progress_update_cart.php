@@ -4,6 +4,7 @@
 session_start();
 
 $id = $_GET['id'];
+// die($id);
 $action = $_GET['action'];
 
 $cart = [];
@@ -72,11 +73,11 @@ if($action == 'del') {
 	}
 	// echo json_encode($item);
 	echo json_encode($cart);
-	// header('location:../frontend/index.php');
+	header('location:../frontend/index.php');
 	setcookie('cart',json_encode($cart),time() + (86400 * 30), '/');
 	exit;
 }
 
 setcookie('cart',json_encode($cart),time() + (86400 * 30), '/');
 
-// header('location:../frontend/cart.php');
+header('location:../frontend/cart.php');

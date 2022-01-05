@@ -1,7 +1,7 @@
 <?php 
 
 session_start();
-unset($_SESSION['id']);
+session_destroy();
 // die($_SESSION['id'] );
 
 header('location:../frontend/index.php');

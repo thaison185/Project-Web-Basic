@@ -10,7 +10,7 @@
 </head>
 <body>
 <?php include('header.php'); ?>
-<!-- <?php include('back.php') ?> -->
+<?php include('back.php') ?>
 <?php include('error.php') ?>
 <?php 
 if(!isset($_COOKIE['cart'])) { 
@@ -63,8 +63,8 @@ $total = 0;
 		$total += $each->{'quantity'}*$price;
 		?>
 		<tr>
-			<td><?php echo $item['name'] ?></td>
-			<td><img src="<?php echo $item['image'] ?>"></td>
+			<td onclick="window.location='item_details.php?id=<?php echo $item['id'] ?>';"><?php echo $item['name'] ?></td>
+			<td class="img" onclick="window.location='item_details.php?id=<?php echo $item['id'] ?>';"><img src="../../<?php echo $item['image'] ?>"></td>
 			<td>
 				size <?php  echo $each->{'size'} ?><br>
 				<?php if($each->{'ice'} != -1) echo $each->{'ice'}; ?><br>
@@ -144,7 +144,7 @@ $total = 0;
 			</tr>	
 		</table>	
 	</table>
-	<button type="submit">Orders</button>
+	<button type="submit">Order</button>
 </form>
 </body>
 </html>

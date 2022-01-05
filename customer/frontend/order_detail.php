@@ -10,7 +10,7 @@
 </head>
 <body>
 	<?php include('header.php'); ?>
-	<!-- <?php include('back.php'); ?> -->
+	<?php include('back.php'); ?>
 	<?php 
 	if (isset($_GET['id'])) {
 		$order_id = $_GET['id'];
@@ -49,7 +49,7 @@
 		foreach ($result as $each_item) { ?>
 			<tr>
 				<td onclick="window.location='item_details.php?id=<?php echo $each_item['item_id'] ?>';"><?php echo $each_item['name']; ?></td>
-				<td onclick="window.location='item_details.php?id=<?php echo $each_item['item_id'] ?>';"><img src="<?php echo $each_item['image']; ?>"></td>
+				<td onclick="window.location='item_details.php?id=<?php echo $each_item['item_id'] ?>';" class="img"><img src="../../<?php echo $each_item['image']; ?>"></td>
 				<td><?php echo $each_item['size']; ?></td>
 				<td><?php echo $each_item['options']; ?></td>
 				<td><?php echo $each_item['quantity']; ?></td>

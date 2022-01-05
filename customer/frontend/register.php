@@ -11,7 +11,7 @@
 	<script src="../assests/js/check_regex_register.js" type="text/javascript"></script>
 </head>
 <body>
-<!-- <?php include('back.php') ?> -->
+<?php include('back.php') ?>
 <form method="post" action="../backend/progress_register.php" enctype="multipart/form-data">
 	<h1>Register</h1>
 	<table>

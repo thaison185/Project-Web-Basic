@@ -1,57 +1,52 @@
 <?php 
 $error = '';
 
-if( isset($_POST['username'])) {
+if($_POST['username']) {
 	$username = $_POST['username'];
 } else {
 	$error = "đã xảy ra lỗi!";
 }
 
-if( isset($_POST['name'])) {
+if($_POST['name']) {
 	$name = $_POST['name'];
 } else {
 	$error = "đã xảy ra lỗi!";
 }
 
-if( isset($_POST['gender'])) {
+if($_POST['gender'] !== null) {
 	$gender = $_POST['gender'];
 } else {
 	$error = "đã xảy ra lỗi!";
 }
 
-if( isset($_FILES['avatar'])) {
-	$avatar = $_FILES['avatar'];
-	// $avatar = "$avatar";
-} else {
-	$avatar = null;
-}
+$avatar = $_FILES['avatar'];
 // die(json_encode($avatar));
 
-if( isset($_POST['email'])) {
+if($_POST['email']) {
 	$email = $_POST['email'];
 } else {
 	$error = "đã xảy ra lỗi!";
 }
 
-if( isset($_POST['phone'])) {
+if($_POST['phone']) {
 	$phone = $_POST['phone'];
 } else {
 	$error = "đã xảy ra lỗi!";
 }
 
-if( isset($_POST['DOB'])) {
+if($_POST['DOB']) {
 	$DOB = $_POST['DOB'];
 } else {
 	$error = "đã xảy ra lỗi!";
 }
 
-if( isset($_POST['address'])) {
+if($_POST['address']) {
 	$address = $_POST['address'];
 } else {
 	$error = "đã xảy ra lỗi!";
 }
 
-if( isset($_POST['password'])) {
+if($_POST['password']) {
 	$password = $_POST['password'];
 	$hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 } else {
@@ -112,13 +107,13 @@ if($each > 0) {
 $sql = "select max(id) from customers";
 $result = mysqli_query($connect,$sql);
 $each = mysqli_fetch_array($result)['max(id)'];
-$id = $each;
+$id = $each+1;
 // die($each);
-if (!$id) {
-	$id = 1;
-}
-else
-	$id++;
+// if (!$id) {
+// 	$id = 1;
+// }
+// else
+// 	$id++;
 // echo json_encode($avatar);
 // die(!!$avatar);
 if($avatar['tmp_name']) {

@@ -9,31 +9,25 @@ body {
 	margin-bottom: 100px;
 }
 
-form {
-	width: 50%;
-}
-
 table {
 	width: 100%;
 	/*border-spacing: 0;*/
 	/*margin-top: 100px;*/
 }
 
-input[type=radio] {
-	display: none;
+table tr td[onclick] {
+	cursor: pointer;
 }
 
-#reciever_0:checked ~ table .reciever_0 {
-	background: #ABB2B9;
+table .img {
+	width: 100px; 
+	/*height: 100%;*/
+	padding: 0;
+	margin: 0;
 }
-
-#reciever_1:checked ~ table .reciever_1 {
-	background: #ABB2B9;
-}
-
 
 table img {
-	width: 100px; 
+	width: 100%;
 }
 
 table tr.head {
@@ -50,7 +44,7 @@ table td {
 }
 
 table td:nth-child(1) {
-    width: 100px;
+    width: 200px;
 }
 
 table td:nth-child(2) {
@@ -91,7 +85,20 @@ table td:nth-child(7) {
 }
 
 form {
+	width: 50%;
 	position: relative;
+}
+
+input[type=radio] {
+	display: none;
+}
+
+#reciever_0:checked ~ table .reciever_0 {
+	background: #ABB2B9;
+}
+
+#reciever_1:checked ~ table .reciever_1 {
+	background: #ABB2B9;
 }
 
 .reciever_info {
@@ -102,9 +109,15 @@ form input[value="1"]:checked ~ .reciever_info {
 	display: flex;
 }
 
+form label {
+	/*width: 100%;*/
+	cursor: pointer;
+}
+
 form button {
 	width: 100px;
 	height: 50px;
+	background: #ABEBC6;
 	font-size: 25px;
 	font-weight: bold;
 	position: relative; 

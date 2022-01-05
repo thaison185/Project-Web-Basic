@@ -82,14 +82,13 @@
 		// echo json_encode($result[0]);
 		?>
 
-		<?php forEach($result as $each) { 
-				if(!preg_match("/temp/",$each['name'])) {
-			?>
+		<?php forEach($result as $each) { ?>
 			<!-- item start -->
 			<a href="item_details.php?id=<?php echo$each['id'] ?>" class="item">
 				<form method="get" action="../backend/progress_update_cart.php">
 					<input type="text" name="id" value="<?php echo $each['id'] ?>" style="display: none;">
-					<img src="<?php echo $each['image'];  ?>">
+					<div class="img" style="background: url(../../<?php echo $each['image'];  ?>);
+    background-size: cover; background-position: center center;"></div>
 					<div class="item-body">
 						<div class="item-name"><?php echo $each['name'] ?></div>
 						<div class="item-price">
@@ -159,18 +158,7 @@
 				</form>
 			</a>
 			<!-- item end -->
-		<?php } else { ?>
-			<!-- temp start -->
-			<div class="item">
-				<form>
-					<img src="<?php echo $each['image'];  ?>">
-					<div class="item-body">
-						<div class="item-name"><?php echo $each['name'] ?></div>
-					</div>
-				</form>
-			</div>
-			<!-- temp end -->
-		<?php }} ?>
+		<?php } ?>
 	</div>
 	<!-- items end -->
 	<!-- pages start -->

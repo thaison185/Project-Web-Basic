@@ -10,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- <?php include('back.php') ?> -->
+<?php include('back.php') ?>
 <?php include('error.php'); ?>	
 	<!-- item start -->
 		<?php 
@@ -26,7 +26,7 @@
 		<div href="item_details.php?id=<?php echo$each['id'] ?>" class="item">
 			<form method="post" action="../backend/progress_process_items.php">
 				<input type="text" name="id" value="<?php echo $each['id'] ?>" style="display: none;">
-				<img src="<?php echo $each['image'];  ?>">
+				<div class="img" style="background: url(../../<?php echo $each['image'];  ?>); background-size: cover; background-position: center center;"></div>
 				<div class="item-body">
 					<div class="item-name"><?php echo $each['name'] ?></div>
 					<div class="item-price">$9</div>

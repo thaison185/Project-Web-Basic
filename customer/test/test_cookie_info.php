@@ -1,3 +1,3 @@
 <?php 
 
-die(json_encode($_COOKIE['cart']));
+die(json_encode());

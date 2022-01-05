@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php session_start(); ?>
-<!-- <?php include('back.php') ?> -->
+<?php include('back.php') ?>
 <div id="temp" style="position: fixed; color:red; font-size: 50px;">
 	tk: <a href="../../data/username.php" style="color:yellow;text-decoration:none;">username.php</a>
 	<br>

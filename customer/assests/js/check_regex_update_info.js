@@ -80,7 +80,7 @@ function check_regex() {
 	//regex new password
 	let new_password = document.getElementById('new_password').value;
 	regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-	if(!regex.test(new_password))
+	if(!regex.test(new_password) && new_password.length > 0)
 	{
 		document.getElementById('span_regex_new_password').innerHTML = "Mật khẩu không hợp lệ! (mật khẩu phải chứa ít nhất 8 ký tự, ít nhất 1 chữ cái thường, 1 chữ cái in hoa và 1 số)";
 		regex_check = false;

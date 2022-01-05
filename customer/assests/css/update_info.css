@@ -21,17 +21,85 @@ body {
 	display: flex;
 }
 
-form {
+#form_change_avatar {
+	width: 100%;
+	height: 100%;
+	display: none;
+	background: rgba(127.5, 127.5, 127.5, 0.5);
+	position: fixed;
+	z-index: 10;
+}
+
+#form_change_avatar .cover {
+	width: 100%;
+	height: 100%;
+}
+
+#form_change_avatar form {
+	width: 50%;
+	height: 50%;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 10px;
+	display: flex;
+	/*flex-wrap: wrap;*/
+	background: white;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	/*z-index: 10;*/
+}
+
+#form_change_avatar h1,
+#form_change_avatar input {
+	/*display: block;*/
+	/*margin: auto;*/
+}
+
+#avatar {
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 20%;
+	transform: translateY(-50%);
+	overflow: hidden;
+}
+
+#avatar button {
+	width: 300px;
+	height: 100px;
+	color: #606060;
+	font-size: 50px;
+	background: rgba(128, 128, 128, 0.7);
+	display: none;
+	position: absolute;
+	bottom: 0;
+}
+
+#avatar:hover button {
+	display: block;
+	cursor: pointer;
+}
+
+#avatar img {
+	width: 100%;
+	height: 100%;
+}
+
+form#update_info {
 	width: 350px;
-	height: 650px;
+	height: 550px;
 	text-align: center;
 	background: #FDFEFE;
 	border-radius: 20px;
 	position: relative;
-	top: 50vh;
-	transform: translateY(-50%);
-	margin-left: auto;
-	margin-right: auto;
+	top: 50%;
+	left: 60%;
+	transform: translateY(-50%) translateX(-50%);
 }
 
 form h1 {
@@ -53,7 +121,7 @@ form .old_avatar {
 	height: 70px;
 }
 
-span {
+form span {
 	width: 100%;
 	/*height: 20px;*/
 	text-align: left;

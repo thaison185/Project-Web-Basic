@@ -11,7 +11,8 @@
 	<script src="../assests/js/check_regex_update_info.js" type="text/javascript"></script>
 </head>
 <body>
-<!-- <?php include('back.php') ?> -->
+<?php include('header.php'); ?>
+<?php include('back.php'); ?>
 <?php 
 $id = $_SESSION['id'];
 require_once('../../connect.php');
@@ -22,14 +23,26 @@ $result = mysqli_query($connect,$sql);
 $each = mysqli_fetch_array($result);
 
  ?>
-<form method="post" action="../backend/progress_update_info.php" enctype="multipart/form-data">
+ <div id="form_change_avatar">
+ 	<div class="cover" onclick="document.querySelector('#form_change_avatar').style.display = 'none';"></div>
+ 	<form method="post" action="../backend/progress_update_avatar.php" enctype="multipart/form-data">
+	 	<h1>Select image to change avatar</h1><br>
+	 	<input type="file" name="avatar">
+	 	<input type="submit" name="">
+	</form>
+</div>
+ <div id="avatar">
+ 	<button onclick="document.querySelector('#form_change_avatar').style.display = 'flex';"><i class="ti-camera"></i></button>
+ 	<img src="<?php if ($each['avatar']) { echo $each['avatar']; } else echo "../../data/img/avatar/default.jpg" ?>">
+ </div>
+<form id="update_info" method="post" action="../backend/progress_update_info.php">
 	<h1>Update info</h1>
 	<input type="text" name="id" value="<?php echo $each['id'] ?>" style='display: none;'>
 	<table>
 		<tr>
 			<td>Username</td>
 			<td>
-				<input type="text" id="username" name="username" value="<?php echo $each['username'] ?>">
+				<input type="text" id="username" name="username" value="<?php echo $each['username'] ?>" disabled>
 				<span id="span_regex_username" class="error"></span>
 			</td>
 		</tr>
@@ -52,20 +65,16 @@ $each = mysqli_fetch_array($result);
 				<span id="span_regex_gender" class="error"></span>
 			</td>
 		</tr>
-		<tr>
+		<!-- <tr>
 			<td>Avatar</td>
 			<td>
 				Keep old avatar
-				<?php if ($each['avatar']) { ?>
-				<img class="old_avatar" src="<?php echo $each['avatar'] ?>">
-				<?php } else { ?>
-				<img class="old_avatar" src="assests/img/avatar/default.jpg">
-				<?php } ?>
+				<img class="old_avatar" src="<?php if ($each['avatar']) { echo $each['avatar']; } else echo "../../data/img/avatar/default.jpg" ?>">
 				 or
-				<input type="file" id="avatar" name="avatar" >
+				<input type="file" id="avatar" name="avatar">
 				<span id="span_regex_avatar" class="error"></span>
 			</td>
-		</tr>
+		</tr> -->
 		<tr>
 			<td>Email</td>
 			<td>
@@ -97,14 +106,14 @@ $each = mysqli_fetch_array($result);
 		<tr>
 			<td>New password</td>
 			<td>
-				<input type="password" id="new_password" name="new_password">
+				<input type="password" id="new_password" name="new_password" placeholder="Optional">
 				<span id="span_regex_new_password" class="error"></span>
 			</td>
 		</tr>
 		<tr>
 			<td>Old password</td>
 			<td>
-				<input type="password" id="old_password" name="old_password">
+				<input type="password" id="old_password" name="old_password" placeholder="Required">
 				<span id="span_regex_old_password" class="error"></span>
 			</td>
 		</tr>

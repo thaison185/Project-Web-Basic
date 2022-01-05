@@ -1,7 +1,10 @@
 <?php 
 session_start();
 
-if (!isset($_COOKIE['cart'])) {
+// die(isset($_POST['notes']));
+
+if (!isset(json_decode($_COOKIE['cart'])['0'])) {
+	header('location:../frontend/index.php');
 	exit;
 }
 
@@ -24,11 +27,7 @@ if ($reciever == 0) {
 	"\nAddress: " . $_POST['address'];
 }
 
-if (isset($_POST['notes'])) {
-	$notes = $_POST['notes'];
-} else {
-	$notes = '';
-}
+$notes = $_POST['notes'];
 
 // die(isset($_POST['notes']));
 
@@ -81,6 +80,9 @@ $order_id = mysqli_fetch_array($result)['max(id)'];
 
 foreach ($cart as $each) {
 	$id = $each->{'id'};
+	$sql = "select * from items where id = '$id'";
+	$result = mysqli_query($connect,$sql);
+	$item = mysqli_fetch_array($result);
 
 	switch ($each->{'size'}) {
 		case 'S':
@@ -123,7 +125,7 @@ foreach ($cart as $each) {
 }
 require_once('../backend/delete_cart.php');
 
-// header('location:../frontend/index.php');
+header('location:../frontend/index.php');
 
 // Order_detailss
 // order_id

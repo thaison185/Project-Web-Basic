@@ -2,7 +2,7 @@
 session_start();
 
 $username = $_POST['username'];
-$password = ($_POST['password']);
+$password = $_POST['password'];
 
 require_once('../../connect.php');
 
@@ -11,7 +11,7 @@ where username = '$username'";
 $result = mysqli_query($connect,$sql);
 $each = mysqli_fetch_array($result);
 // die($sql);
-echo json_encode($each);
+// die(json_encode($each));
 if (!$each) {
 	$_SESSION['error'] = "không tìm thấy tài khoản!";
 	header('location:../frontend/login.php');
@@ -21,8 +21,10 @@ if (!$each) {
 
 if(password_verify($password,$each['hashed_password'])) {
 	$_SESSION['id'] = $each['id'];
+	// die($_SESSION['id']);
 	$_SESSION['username'] = $each['username'];
 	$_SESSION['name'] = $each['name'];
+	$_SESSION['gender'] = $each['gender'];
 	$_SESSION['phone'] = $each['phone'];
 	$_SESSION['avatar'] = $each['avatar'];
 	$_SESSION['address'] = $each['address'];
@@ -32,7 +34,7 @@ if(password_verify($password,$each['hashed_password'])) {
 	exit;
 } else {
 	$_SESSION['error'] = "mật khẩu không trùng khớp!";
-	die($each['hashed_password']);
+	// die($each['hashed_password']);
 	header('location:../frontend/login.php');
 	exit;
 }

@@ -10,7 +10,7 @@
 </head>
 <body>
 	<?php include('header.php'); ?>
-	<!-- <?php include('back.php') ?> -->
+	<?php include('back.php') ?>
 	<?php include('error.php'); ?>
 	<?php
 	$customer_id = $_SESSION['id'];
