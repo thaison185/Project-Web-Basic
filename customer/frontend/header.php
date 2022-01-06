@@ -3,7 +3,8 @@
 
 <div id="header">
 	<a href="index.php" id="logo">
-		<img src="../../data/img/logo.png">
+		<img src="../../data/img/Logo_mini2_dark_edit.png">
+		<div class="shop_name">'s coffee</div>
 	</a>
 	<div class="nav">
 	<?php if (basename($_SERVER['PHP_SELF']) == 'index.php') { ?>

@@ -36,7 +36,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<?php include('error.php'); ?>
+				<?php include('flash_msg.php'); ?>
 			</td>
 		</tr>
 		<tr>

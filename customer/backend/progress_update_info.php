@@ -73,7 +73,8 @@ if($_POST['new_password']) {
 }
 
 if($error) {
-	$_SESSION['error'] = $error . '1';
+	$_SESSION['flash_msg'] = $error . '1';
+	$_SESSION['flash_msg_type'] = "error";
 	header('location:../frontend/update_info.php');
 	exit;
 }
@@ -103,7 +104,8 @@ if($new_password) {
 }
 
 if($error) {
-	$_SESSION['error'] = $error . '2';
+	$_SESSION['flash_msg'] = $error . '2';
+	$_SESSION['flash_msg_type'] = "error";
 	header('location:update_info.php');
 	exit;
 }
@@ -119,7 +121,8 @@ $each = mysqli_fetch_array($result)['count(*)'];
 echo(json_encode($each));
 
 if($each > 0) {
-	$_SESSION['error'] = "email hoặc số điện thoại đã đăng ký!";
+	$_SESSION['flash_msg'] = "email hoặc số điện thoại đã đăng ký!";
+	$_SESSION['flash_msg_type'] = "error";
 	header('location:../frontend/update_info.php');
 	exit;
 }
@@ -130,7 +133,8 @@ $result = mysqli_query($connect,$sql);
 $each = mysqli_fetch_array($result);
 
 if (!password_verify($old_password, $each['hashed_password'])) {
-	$_SESSION['error'] = 'sai mật khẩu!';
+	$_SESSION['flash_msg'] = 'sai mật khẩu!';
+	$_SESSION['flash_msg_type'] = "error";
 	header('location:../frontend/update_info.php');
 	exit;
 }
@@ -166,5 +170,8 @@ echo($sql);
 $result = mysqli_query($connect,$sql);
 
 require('refresh_session.php');
+
+$_SESSION['flash_msg'] = 'update info thành công!';
+$_SESSION['flash_msg_type'] = 'success';
 
 header('location:../frontend/update_info.php');

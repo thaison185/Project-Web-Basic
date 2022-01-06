@@ -125,7 +125,10 @@ foreach ($cart as $each) {
 }
 require_once('../backend/delete_cart.php');
 
-header('location:../frontend/index.php');
+$_SESSION['flash_msg'] = 'Thực hiện order thành công';
+$_SESSION['flash_msg_type'] = 'success';
+
+header("location:../frontend/order_details.php?id=$order_id");
 
 // Order_detailss
 // order_id

@@ -1,3 +1,13 @@
+<?php 
+$id = $_GET['id'];
+
+require_once('../../connect.php');
+
+$sql = "select * from items
+where id = '$id'";
+$result = mysqli_query($connect,$sql);
+$each = mysqli_fetch_array($result);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,20 +21,10 @@
 </head>
 <body>
 <?php include('back.php') ?>
-<?php include('error.php'); ?>	
+<?php include('flash_msg.php'); ?>
 	<!-- item start -->
-		<?php 
-		$id = $_GET['id'];
-
-		require_once('../../connect.php');
-
-		$sql = "select * from items
-		where id = '$id'";
-		$result = mysqli_query($connect,$sql);
-		$each = mysqli_fetch_array($result);
-		?>
-		<div href="item_details.php?id=<?php echo$each['id'] ?>" class="item">
-			<form method="post" action="../backend/progress_process_items.php">
+		<div class="item">
+			<form method="get" action="../backend/progress_update_cart.php">
 				<input type="text" name="id" value="<?php echo $each['id'] ?>" style="display: none;">
 				<div class="img" style="background: url(../../<?php echo $each['image'];  ?>); background-size: cover; background-position: center center;"></div>
 				<div class="item-body">

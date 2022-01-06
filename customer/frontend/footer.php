@@ -25,13 +25,13 @@
 		</div>
 		<br>
 		<div class="social">
-			<a href="#">
+			<a href="https://facebook.com">
 				<i class="ti-facebook icon"></i>
 			</a>
-			<a href="#">
+			<a href="https://instagram.com">
 				<i class="ti-instagram icon"></i>
 			</a>
-			<a href="#">
+			<a href="https://pinterest.com">
 				<i class="ti-pinterest icon"></i>
 			</a>
 		</div>

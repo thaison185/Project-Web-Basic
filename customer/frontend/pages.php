@@ -10,7 +10,7 @@
 
 	#pages a {
 		color: black;
-		font-weight: bold;
+		/*font-weight: bold;*/
 		text-decoration: none;
 		padding-right: 10px;
 	}
@@ -24,7 +24,7 @@
 <?php for ($i=$page-4; $i <= $page+4; $i++) { 
 		if ($i > 0 && $i <= $n_pages) {
 	?>
-	<a href="<?php echo basename($_SERVER['PHP_SELF']); ?>?page=<?php echo $i ?>"><?php echo $i ?></a>
+	<a href="<?php echo basename($_SERVER['PHP_SELF']); ?>?page=<?php echo $i ?>" style="<?php if ($i == $page) echo "font-weight: bold; font-size: 20px" ?>"><?php echo $i ?></a>
 <?php } }?>
 	<?php if ($page < $n_pages-4) { ?>
 		<a href="<?php echo basename($_SERVER['PHP_SELF']); ?>?page=<?php echo $page+1 ?>">></a>

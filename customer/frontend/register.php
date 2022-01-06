@@ -45,7 +45,7 @@
 			<td>Avatar</td>
 			<td>
 				<input type="file" id="avatar" name="avatar">
-				<span id="span_regex_email" class="error"></span>
+				<!-- <span id="span_regex_avatar" class="error"></span> -->
 			</td>
 		</tr>
 		<tr>
@@ -85,7 +85,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<?php include('error.php'); ?>
+				<?php include('flash_msg.php'); ?>
 			</td>
 		</tr>
 		<tr>

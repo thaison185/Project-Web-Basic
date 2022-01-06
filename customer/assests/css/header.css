@@ -5,7 +5,7 @@
 	height: 46px;
 	color: white;
 	font-family: 'Montserrat', sans-serif;
-	background: black;
+	background: #2d1902;
 	position: fixed;
 	top: 0;
 	z-index: 9;
@@ -34,15 +34,25 @@
 }
 
 #logo img{
-	width: 75px;
-	height: 75px;
+	width: 46px;
+	height: 46px;
+}
+
+#logo .shop_name {
+	line-height: 46px;
+	display: inline-block;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	float: right;
+	/*margin: 0 0 0 0px;*/
+	cursor: pointer;
 }
 
 #header .nav {
 	display: inline-block;
 	position: absolute;
 	top: 0;
-	left: 200px;
+	left: 270px;
 }
 
 #header .nav a ,

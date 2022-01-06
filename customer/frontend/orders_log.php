@@ -11,7 +11,7 @@
 <body>
 	<?php include('header.php'); ?>
 	<?php include('back.php') ?>
-	<?php include('error.php'); ?>
+	<?php include('flash_msg.php'); ?>
 	<?php
 	$customer_id = $_SESSION['id'];
 
@@ -90,10 +90,10 @@
 				<tr>
 					<td
 					>#<?php echo $each_order['id'] ?></td>
-					<td onclick="window.location='order_detail.php?id=<?php echo $each_order['id'] ?>';"><?php echo $each_order['date'] ?></td>
-					<td onclick="window.location='order_detail.php?id=<?php echo $each_order['id'] ?>';"><?php echo nl2br($items_in_order) ?></td>
-					<td onclick="window.location='order_detail.php?id=<?php echo $each_order['id'] ?>';"><?php echo nl2br($each_order['description']) ?></td>
-					<td onclick="window.location='order_detail.php?id=<?php echo $each_order['id'] ?>';">$<?php echo $each_order['price'] ?></td>
+					<td onclick="window.location='order_details.php?id=<?php echo $each_order['id'] ?>';"><?php echo $each_order['date'] ?></td>
+					<td onclick="window.location='order_details.php?id=<?php echo $each_order['id'] ?>';"><?php echo nl2br($items_in_order) ?></td>
+					<td onclick="window.location='order_details.php?id=<?php echo $each_order['id'] ?>';"><?php echo nl2br($each_order['description']) ?></td>
+					<td onclick="window.location='order_details.php?id=<?php echo $each_order['id'] ?>';">$<?php echo $each_order['price'] ?></td>
 					<td class="<?php echo $each_order['status'] ?>" onclick="window.location='order_detail.php?id=<?php echo $each_order['id'] ?>';"><?php echo $each_order['status'] ?></td>
 				</tr>
 			<?php } ?>

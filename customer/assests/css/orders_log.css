@@ -65,6 +65,7 @@ table td:nth-child(6) {
 	line-height: 200px;
 	text-align: center;
 	background: #696969;
+	border-radius: 20px;
 	position: relative;
 	top: 100px;
 	margin-left: auto;

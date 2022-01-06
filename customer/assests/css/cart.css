@@ -71,6 +71,15 @@ table td:nth-child(7) {
     width: 100px;
 }
 
+table a {
+	width: 20px;
+	height: 20px;
+	text-decoration: none;
+	background: #F8F9F9;
+	border-radius: 10px;
+	padding: 5px;
+}
+
 .empty_cart {
 	width: 500px;
 	height: 200px;
@@ -78,6 +87,7 @@ table td:nth-child(7) {
 	line-height: 200px;
 	text-align: center;
 	background: #696969;
+	border-radius: 20px;
 	position: relative;
 	top: 100px;
 	margin-left: auto;

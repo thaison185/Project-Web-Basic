@@ -21,9 +21,10 @@ if($action == 'del') {
 	// echo json_encode($cart);
 } else if($action == 'inc') {
 	if ($total_quantity >= 50) {
-		$_SESSION['error'] = "Số lượng sản phẩm trong giỏ hàng không được vượt quá 50!";
-	header('location:../frontend/cart.php');
-	exit;
+		$_SESSION['flash_msg'] = "Số lượng sản phẩm trong giỏ hàng không được vượt quá 50!";
+		$_SESSION['flash_msg_type'] = "error";
+		header('location:../frontend/cart.php');
+		exit;
 	}
 	$cart[$id]->{'quantity'}++;
 	// echo $cart[$id]['quantity'];
@@ -34,19 +35,20 @@ if($action == 'del') {
 		$cart[$id]->{'quantity'}--;
 } else if($action == 'add_to_cart') {
 	if ($total_quantity >= 50) {
-		$_SESSION['error'] = "Số lượng sản phẩm trong giỏ hàng không được vượt quá 50!";
-	header('location:../frontend/index.php');
-	exit;
+		$_SESSION['flash_msg'] = "Số lượng sản phẩm trong giỏ hàng không được vượt quá 50!";
+		$_SESSION['flash_msg_tpye'] = "error";
+		header('location:../frontend/index.php');
+		exit;
 	}
 	$size = $_GET['size'];
 	$ice = -1;
 	$sugar = -1;
 
-	if(isset($_GET['ice'])) {
+	if($_GET['ice']) {
 		$ice = $_GET['ice'];
 	}
 
-	if(isset($_GET['sugar'])) {
+	if($_GET['sugar']) {
 		$sugar = $_GET['sugar'];
 	}
 

@@ -55,7 +55,8 @@ if($_POST['password']) {
 
 if($error) {
 	session_start();
-	$_SESSION['error'] = $error;
+	$_SESSION['flash_msg'] = $error;
+	$_SESSION['flash_msg_type'] = "error";
 	// die($error);
 	header('location:../frontend/register.php');
 	exit;
@@ -85,7 +86,8 @@ if(!preg_match($regex, $password)) {
 
 if($error) {
 	session_start();
-	$_SESSION['error'] = $error;
+	$_SESSION['flash_msg'] = $error;
+	$_SESSION['flash_msg_type'] = "error";
 	header('location:../frontend/register.php');
 	exit;
 }
@@ -94,12 +96,14 @@ require_once('../../connect.php');
 
 $sql = "select count(*) from customers
 where username = '$username' or email = '$email' or phone = '$phone'";
+echo $sql;
 $result = mysqli_query($connect,$sql);
 $each = mysqli_fetch_array($result)['count(*)'];
 
 if($each > 0) {
 	session_start();
-	$_SESSION['error'] = "username hoặc email hoặc số điện thoại đã đăng ký!";
+	$_SESSION['flash_msg'] = "username hoặc email hoặc số điện thoại đã đăng ký!";
+	$_SESSION['flash_msg_type'] = "error";
 	header('location:../frontend/register.php');
 	exit;
 }
@@ -116,19 +120,28 @@ $id = $each+1;
 // 	$id++;
 // echo json_encode($avatar);
 // die(!!$avatar);
+
+$path_file_avatar = '';
 if($avatar['tmp_name']) {
 	$path_folder = '../../data/img/avatar/';
 	$file_extension = explode('.',$avatar['tmp_name'])[1];
 	$file_name = time() . rand(0,9999);
-	$path_file_avatar = $path_folder . $file_name . '.' . $file_extension;
+	$path_file_avatar = '\''.$path_folder . $file_name . '.' . $file_extension.'\'';
 	// die($path_file_avatar); 
 	move_uploaded_file($avatar['tmp_name'], $path_file_avatar);
 }
 
 $sql = "insert into customers(id,username,name,gender,avatar,email,phone,DOB,address,hashed_password)
-values('$id','$username','$name','$gender','$path_file_avatar','$email','$phone','$DOB','$address','$hashed_password')";
+values('$id','$username','$name','$gender',$path_file_avatar,'$email','$phone','$DOB','$address','$hashed_password')";
 
 $result = mysqli_query($connect,$sql);
 echo($sql);
 
-mysql_close($connect);
+mysqli_close($connect);
+
+session_start();
+
+$_SESSION['flash_msg'] = 'đăng ký thành công!';
+$_SESSION['flash_msg_type'] = 'success';
+
+header('location:../frontend/login.php');

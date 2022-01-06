@@ -27,6 +27,7 @@
 	 ?>
 	<h1>Order #<?php echo $order_id ?></h1>
 	<div class="date"><?php echo $each['date']  ?></div>
+	<?php include('flash_msg.php'); ?>
 	<div class="status <?php echo $each['status'] ?>"><?php echo $each['status']  ?></div>
 	<table width="100%">
 		<tr class="head">

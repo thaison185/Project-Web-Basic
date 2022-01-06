@@ -13,7 +13,8 @@ $each = mysqli_fetch_array($result);
 // die($sql);
 // die(json_encode($each));
 if (!$each) {
-	$_SESSION['error'] = "không tìm thấy tài khoản!";
+	$_SESSION['flash_msg'] = "không tìm thấy tài khoản!";
+	$_SESSION['flash_msg_type'] = "error";
 	header('location:../frontend/login.php');
 	// die('ktt');
 	exit;
@@ -33,7 +34,8 @@ if(password_verify($password,$each['hashed_password'])) {
 	// die('tt');
 	exit;
 } else {
-	$_SESSION['error'] = "mật khẩu không trùng khớp!";
+	$_SESSION['flash_msg'] = "mật khẩu không trùng khớp!";
+	$_SESSION['flash_msg_type'] = "error";
 	// die($each['hashed_password']);
 	header('location:../frontend/login.php');
 	exit;

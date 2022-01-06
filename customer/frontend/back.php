@@ -4,8 +4,9 @@
 		height: 20px;
 		color: black;
 		text-decoration: none;
-		border-radius: 5px;
 		background: #D5D8DC;
+		border-radius: 5px;
+		outline: 1px solid white;
 		position: fixed;
 		top: 70px;
 		padding: 0 5px 0 5px;

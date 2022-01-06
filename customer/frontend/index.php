@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Starwar coffee</title>
+	<title>Q's coffee</title>
 	<!-- logo -->
 	<link rel="icon" type="text/css" href="https://cdn-icons-png.flaticon.com/512/184/184483.png">
 	<!-- ggfont preconnect -->
@@ -44,7 +44,7 @@
 		</div>
 	</div>
 	<!-- slider-end -->
-	<?php include('error.php'); ?>
+	<?php include('flash_msg.php'); ?>
 	<!-- items-start -->
 	<div id="items">
 		<?php 

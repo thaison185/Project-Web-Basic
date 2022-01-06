@@ -51,7 +51,7 @@ body {
 #slider .radio-box .radio-btn {
 	width: 10px;
 	height: 10px;
-	border: 2px solid black;
+	border: 2px solid #2d1902;
 	border-radius: 50%;
 	display: inline-block;
 	margin-right: 10px;
@@ -60,10 +60,10 @@ body {
 #slider .radio-box .radio-btn:hover {
 	cursor: pointer;
 }
-
+/*
 #slider .radio-box input:checked + label {
-	background: black;
-}
+	background: #2d1902;
+}*/
 
 #slider #radio-btn-1:checked ~ .slides {
 	margin-left: -0%;
@@ -78,15 +78,15 @@ body {
 }
 
 #slider #radio-btn-1:checked ~ .radio-box .radio-btn-1 {
-	background: black;
+	background: #2d1902;
 }
 
 #slider #radio-btn-2:checked ~ .radio-box .radio-btn-2 {
-	background: black;
+	background: #2d1902;
 }
 
 #slider #radio-btn-3:checked ~ .radio-box .radio-btn-3 {
-	background: black;
+	background: #2d1902;
 }
 /*slider end*/
 
@@ -140,7 +140,7 @@ body {
 	width: 290px;
 	height: 220px;
 	position: absolute;
-	top: 270px;
+	top: 260px;
 	/*padding: 0 40px 50px;*/
 	padding: 10px 10px;
 	/*opacity: 0;*/
@@ -192,7 +192,7 @@ body {
 	padding: 5px;
 }
 
-.item .item-body .radio-box div {
+.item .item-body .radio-box label:not(:last-child) div {
 	border-right: 1px solid white;
 }
 

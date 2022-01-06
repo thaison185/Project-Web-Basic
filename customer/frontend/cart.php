@@ -11,7 +11,7 @@
 <body>
 <?php include('header.php'); ?>
 <?php include('back.php') ?>
-<?php include('error.php') ?>
+<?php include('flash_msg.php'); ?>
 <?php 
 if(!isset($_COOKIE['cart'])) { 
 	?>
