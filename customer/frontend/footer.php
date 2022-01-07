@@ -19,9 +19,9 @@
 	<div class="contact">
 		<div class="title">Contact</div>
 		<div class="content">
-			Phone: 09308910JQK
+			Phone: 093053300Q
 			<br>
-			Email: starwarcoffee@gmail.com
+			Email: qcoffee@gmail.com
 		</div>
 		<br>
 		<div class="social">
@@ -36,5 +36,5 @@
 			</a>
 		</div>
 	</div>
-	<div id="copy-right">© 2019-2022 Starwar Coffee Company. All rights reserved.</div>
+	<div id="copy-right">© 1998-2022 Q's Coffee Company. All rights reserved.</div>
 </div>

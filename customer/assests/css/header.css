@@ -20,6 +20,7 @@
 .sub-menu {
 	background: white;
 	box-shadow: 0 0 3px black;
+	/*overflow: visible;*/	
 }
 
 .sub-menu a {
@@ -55,8 +56,8 @@
 	left: 270px;
 }
 
-#header .nav a ,
-#header .nav button {
+#header .nav > a ,
+#header .nav > button {
 	width: 100px;
 	height: 46px;
 	line-height: 46px;
@@ -72,7 +73,7 @@
 	cursor: pointer;
 }
 
-#header .nav div {
+#header .nav > div {
 	height: 46px;
 	line-height: 46px;
 	text-align: center;
@@ -119,6 +120,7 @@
 	height: 42px;
 }
 
+#header .category .sub-menu ,
 #header .login-register .sub-menu {
 	width: 160px;
 	position: absolute;
@@ -127,6 +129,7 @@
 	display: none;
 }
 
+#header .category:hover .sub-menu ,
 #header .login-register:hover .sub-menu {
 	display: block;
 }

@@ -21,7 +21,6 @@ $sql = "select * from customers
 where id = '$id'";
 $result = mysqli_query($connect,$sql);
 $each = mysqli_fetch_array($result);
-
  ?>
  <div id="form_change_avatar">
  	<div class="cover" onclick="document.querySelector('#form_change_avatar').style.display = 'none';"></div>

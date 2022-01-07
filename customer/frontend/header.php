@@ -8,9 +8,17 @@
 	</a>
 	<div class="nav">
 	<?php if (basename($_SERVER['PHP_SELF']) == 'index.php') { ?>
-		<button href="#" onclick="document.getElementById('items').scrollIntoView();">Menu</button>
-		<button href="#" onclick="document.getElementById('footer').scrollIntoView();">Store</button>
-		<button href="#" onclick="document.getElementById('footer').scrollIntoView();">About us</button>
+		<div class="category">Catogery <i class="ti-angle-down"></i>
+			<div class="sub-menu">
+				<?php 
+				$sql = "SELECT DISTINCT category FROM items";
+				// echo $sql;
+				$result = mysqli_query($connect,$sql);
+				foreach ($result as $each) { ?>
+					<a href="index.php?category=<?php echo $each['category'] ?>"><?php echo $each['category']; ?></a>
+				<?php } ?>
+			</div>
+		</div>
 	<?php } else { ?>
 		<div><?php echo ucfirst(str_replace('.php','',str_replace('_',' ',basename($_SERVER['PHP_SELF'])))) ?></div>
 	<?php } ?>

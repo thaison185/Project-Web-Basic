@@ -1,4 +1,5 @@
 <?php require_once('../backend/check_login.php'); ?>
+<?php include('../../connect.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +49,6 @@
 	<!-- items-start -->
 	<div id="items">
 		<?php 
-		include('../../connect.php');
 
 		$page = 1;
 		if(isset($_GET['page'])) {
@@ -59,13 +59,16 @@
 
 		$search = '';
 		if(isset($_GET['search'])) {
-			if($_GET['search']) {
-				$search = $_GET['search'];
-			}
+			$search = $_GET['search'];
+		}
+
+		$category = '';
+		if(isset($_GET['category'])) {
+			$category = $_GET['category'];
 		}
 
 		$sql = "select count(*) from items
-		where name like '%$search%'";
+		where name like '%$search%' and ( category = '$category' or '$category' = '' )";
 		// echo $sql;
 		$result = mysqli_query($connect,$sql);
 		$n_items = mysqli_fetch_array($result)['count(*)'];
@@ -75,7 +78,7 @@
 
 		$offset = ($page - 1)*$items_per_page;
 		$sql = "select * from items 
-		where name like '%$search%'
+		where name like '%$search%' and ( category = '$category' or '$category' = '' )
 		limit $items_per_page offset $offset";
 		// echo $sql;
 		$result = mysqli_query($connect,$sql);
