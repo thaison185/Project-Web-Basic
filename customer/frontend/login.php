@@ -4,8 +4,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login</title>
-
+	<!-- css -->
 	<link rel="stylesheet" type="text/css" href="../assests/css/login.css">
+	<!-- scripts -->
+	<script src="../assests/js/check_blank_login.js" type="text/javascript"></script>
 </head>
 <body>
 <?php session_start(); ?>
@@ -23,7 +25,7 @@
 		</tr>
 		<tr>
 			<td>
-				<input type="text" name="username">
+				<input type="text" id="username" name="username">
 			</td>
 		</tr>
 		<tr>
@@ -31,7 +33,7 @@
 		</tr>
 		<tr>
 			<td>
-				<input type="password" name="password">
+				<input type="password" id="password" name="password">
 			</td>
 		</tr>
 		<tr>
@@ -41,7 +43,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="submit" name="">
+				<input type="submit" onclick="return check_blank()" name="">
 			</td>
 		</tr>
 	</table>

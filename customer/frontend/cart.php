@@ -7,6 +7,8 @@
 	<title>Cart</title>
 	<!-- css -->
 	<link rel="stylesheet" type="text/css" href="../assests/css/cart.css">
+	<!-- scripts -->
+	<script src="../assests/js/check_blank_order.js" type="text/javascript"></script>
 </head>
 <body>
 <?php include('header.php'); ?>
@@ -127,24 +129,25 @@ $total = 0;
 			<tr>
 				<td>Name</td>
 				<td>
-					<input type="text" name="name">
+					<input type="text" id="name" name="name">
 				</td>
 			</tr>	
 			<tr>
 				<td>Phone</td>
 				<td>
-					<input type="text" name="phone">
+					<input type="text" id="phone" name="phone">
 				</td>
 			</tr>	
 			<tr>
 				<td>Address</td>
 				<td>
-					<textarea name="address"></textarea>
+					<textarea id="address" name="address"></textarea>
 				</td>
 			</tr>	
 		</table>	
 	</table>
-	<button type="submit">Order</button>
+	<button type="submit" onclick="return check_blank()">Order</button>
 </form>
+<!-- <span class="error" id="span_regex_blank"></span> -->
 </body>
 </html>

@@ -16,5 +16,5 @@
 		unset($_SESSION['flash_msg']); 
 	?>
 <?php } else { ?>
-	<div id="flash_msg" style="opacity: 0;">---</div>
+	<div id="flash_msg" class="error">​</div>
 <?php } ?>
