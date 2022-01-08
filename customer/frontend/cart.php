@@ -72,13 +72,13 @@ $total = 0;
 			</td>
 			<td>$<?php echo $price ?></td>
 			<td>
-				<a href="../backend/progress_update_cart.php?id=<?php echo $index ?>&action=dec">-</a>
+				<a href="../backend/progress_update_cart.php?id=<?php echo $index ?>&action=dec"><i class="ti-minus"></i></a>
 				<?php echo $each->{'quantity'} ?>
-				<a href="../backend/progress_update_cart.php?id=<?php echo $index ?>&action=inc">+</a>
+				<a href="../backend/progress_update_cart.php?id=<?php echo $index ?>&action=inc"><i class="ti-plus"></i></a>
 			</td>
 			<td>$<?php echo $each->{'quantity'}*$price ?></td>
 			<td>
-				<a href="../backend/progress_update_cart.php?id=<?php echo $index ?>&action=del" style="color: red;">Delete</a>
+				<a href="../backend/progress_update_cart.php?id=<?php echo $index ?>&action=del" style="color: red;"><i class="ti-trash"></i></a>
 
 			</td>
 		</tr>

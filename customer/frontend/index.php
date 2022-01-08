@@ -72,6 +72,7 @@
 		// echo $sql;
 		$result = mysqli_query($connect,$sql);
 		$n_items = mysqli_fetch_array($result)['count(*)'];
+		// echo $sql;
 
 		$items_per_page = 6;
 		$n_pages = ceil($n_items / $items_per_page);
@@ -84,6 +85,10 @@
 		$result = mysqli_query($connect,$sql);
 		// echo json_encode($result[0]);
 		?>
+
+		<?php if ($n_items == 0) { ?>
+			<h1>Không tìm thấy bất kì sản phẩm nào!</h1>	
+		<?php } ?>
 
 		<?php forEach($result as $each) { ?>
 			<!-- item start -->

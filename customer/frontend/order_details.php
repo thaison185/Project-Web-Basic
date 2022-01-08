@@ -24,7 +24,7 @@
 	where id = '$order_id'";
 	$result = mysqli_query($connect,$sql);
 	$each = mysqli_fetch_array($result);
-	 ?>
+	?>
 	<h1>Order #<?php echo $order_id ?></h1>
 	<div class="date"><?php echo $each['date']  ?></div>
 	<?php include('flash_msg.php'); ?>

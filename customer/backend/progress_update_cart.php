@@ -36,7 +36,7 @@ if($action == 'del') {
 } else if($action == 'add_to_cart') {
 	if ($total_quantity >= 50) {
 		$_SESSION['flash_msg'] = "Số lượng sản phẩm trong giỏ hàng không được vượt quá 50!";
-		$_SESSION['flash_msg_tpye'] = "error";
+		$_SESSION['flash_msg_type'] = "error";
 		header('location:../frontend/index.php');
 		exit;
 	}
