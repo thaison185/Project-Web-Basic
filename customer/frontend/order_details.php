@@ -58,8 +58,8 @@
 			</tr>
 		<?php } ?>
 		<tr>
-			<td colspan="5" style="text-align: right;">Total:</td>
-			<td>$<?php echo $each['price']; ?></td>
+			<td colspan="5" style="text-align: center;">Total:</td>
+			<td><h2>$<?php echo $each['price']; ?></h2></td>
 		</tr>
 	</table>
 </body>

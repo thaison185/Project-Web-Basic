@@ -17,13 +17,13 @@
 <?php 
 if(!isset($_COOKIE['cart'])) { 
 	?>
-	<h2 class="empty_cart">Cart is Empty!</h2>
+	<img class="empty_cart" src="../../data/img/empty_cart.png">
 <?php
 die();
  } 
 $cart = json_decode($_COOKIE['cart']);
 if(count($cart) == 0) { ?>
-	<h2 class="empty_cart">Cart is Empty!</h2>
+	<img class="empty_cart" src="../../data/img/empty_cart.png">
 <?php
 die();
  }
@@ -86,7 +86,7 @@ $total = 0;
 		</tr>
 	<?php } ?>
 	<tr>
-		<td colspan="6" style="text-align: right;">Total:</td>
+		<td colspan="6" style="text-align: center;">Total:</td>
 		<td> 
 			<h2>$<?php echo $total ?></h2>
 		</td>
@@ -120,7 +120,7 @@ $total = 0;
 			</td>
 		</tr>
 	<?php } else { ?>
-		<input type="radio" name="reciever" value="1" checked style="display:none;">
+		<input type="radio" id="reciever_1" name="reciever" value="1" checked style="display:none;">
 		<tr>
 			<td>Fill in delivery info</td>
 		</tr>
