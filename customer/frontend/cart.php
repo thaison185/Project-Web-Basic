@@ -6,9 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Cart</title>
 	<!-- css -->
-	<link rel="stylesheet" type="text/css" href="../assests/css/cart.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/cart.css">
 	<!-- scripts -->
-	<script src="../assests/js/check_blank_order.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="../assets/js/check_blank_order.js" type="text/javascript"></script>
+	<script src="../assets/js/functional_cart_btn.js" type="text/javascript"></script>
+	<script src="../assets/js/update_display.js" type="text/javascript"></script>
 </head>
 <body>
 <?php include('header.php'); ?>
@@ -64,23 +67,33 @@ $total = 0;
 		}
 		$total += $each->{'quantity'}*$price;
 		?>
-		<tr>
-			<td onclick="window.location='item_details.php?id=<?php echo $item['id'] ?>';"><?php echo $item['name'] ?></td>
-			<td class="img" onclick="window.location='item_details.php?id=<?php echo $item['id'] ?>';"><img src="../../<?php echo $item['image'] ?>"></td>
-			<td>
+		<tr id="item-<?php echo $index ?>">
+			<td class="item_name" onclick="window.location='item_details.php?id=<?php echo $item['id'] ?>';"><?php echo $item['name'] ?></td>
+			<td class="item_img" onclick="window.location='item_details.php?id=<?php echo $item['id'] ?>';"><img src="../../<?php echo $item['image'] ?>"></td>
+			<td class="item_size">
 				size <?php  echo $each->{'size'} ?><br>
 				<?php if($each->{'ice'} != -1) echo $each->{'ice'}; ?><br>
 				<?php if($each->{'sugar'} != -1) echo $each->{'sugar'}; ?>
 			</td>
-			<td>$<?php echo $price ?></td>
-			<td>
-				<a href="../backend/progress_update_cart.php?id=<?php echo $index ?>&action=dec"><i class="ti-minus"></i></a>
-				<?php echo $each->{'quantity'} ?>
-				<a href="../backend/progress_update_cart.php?id=<?php echo $index ?>&action=inc"><i class="ti-plus"></i></a>
+			<td class="item_price_per_item">
+				$<span class="span_price_per_item"><?php echo $price ?></span>
 			</td>
-			<td>$<?php echo $each->{'quantity'}*$price ?></td>
-			<td>
-				<a href="../backend/progress_update_cart.php?id=<?php echo $index ?>&action=del" style="color: red;"><i class="ti-trash"></i></a>
+			<td class="item_quantity">
+				<button class="btn" data-id="<?php echo $index ?>" data-type="dec">
+					<i class="ti-minus"></i>
+				</button>
+				<span class="span_quantity"><?php echo $each->{'quantity'} ?></span>
+				<button class="btn" data-id="<?php echo $index ?>" data-type="inc">
+					<i class="ti-plus"></i>
+				</button>
+			</td>
+			<td class="item_price">
+				<h3>
+					$<span class="span_price"><?php echo $each->{'quantity'}*$price ?></span>
+				</h3>
+			</td>
+			<td class="item_del_btn">
+				<button class="btn" data-id="<?php echo $index ?>" data-type="del"><i class="ti-trash trash_icon"></i></button>
 
 			</td>
 		</tr>
@@ -88,66 +101,61 @@ $total = 0;
 	<tr>
 		<td colspan="6" style="text-align: center;">Total:</td>
 		<td> 
-			<h2>$<?php echo $total ?></h2>
+			<h1>
+				$<span class="span_total"><?php echo $total ?></span>
+			</h1>
 		</td>
 	</tr>
 </table>
 <form method="post" action="../backend/order.php">
-	<table>	
-		<tr>
-			<td>
-				Notes:
-				<textarea class="notes" name="notes"></textarea>
-			</td>
-		</tr>
-	<?php if (isset($_SESSION['id'])) { ?>
-		<input type="radio" id="reciever_0" name="reciever" value="0" checked>
-		<input type="radio" id="reciever_1" name="reciever" value="1">
-		<tr>
-			<td>Delivery address:</td>
-		</tr>
-		<tr>
-			<td class="reciever_0">
-				<label for="reciever_0">Use your delivery info</label>
-			</td>
-		</tr>
-		<tr>
-			<td>Or</td>
-		</tr>
-		<tr>
-			<td class="reciever_1">
-				<label for="reciever_1">Fill in new delivery info</label>
-			</td>
-		</tr>
-	<?php } else { ?>
-		<input type="radio" id="reciever_1" name="reciever" value="1" checked style="display:none;">
-		<tr>
-			<td>Fill in delivery info</td>
-		</tr>
-	<?php } ?>
-		<table class="reciever_info">
-			<tr>
-				<td>Name</td>
-				<td>
-					<input type="text" id="name" name="name">
-				</td>
-			</tr>	
-			<tr>
-				<td>Phone</td>
-				<td>
-					<input type="text" id="phone" name="phone">
-				</td>
-			</tr>	
-			<tr>
-				<td>Address</td>
-				<td>
-					<textarea id="address" name="address"></textarea>
-				</td>
-			</tr>	
-		</table>	
-	</table>
+	Notes: <textarea class="notes" name="notes"></textarea>
+	<br>
+	<br>
+<?php if (isset($_SESSION['id'])) { ?>
+	<input type="radio" id="reciever_0" name="reciever" value="0" checked>
+	<input type="radio" id="reciever_1" name="reciever" value="1">
+	<h2>Delivery address:</h2>
+	<br>
+	<label class="reciever_0" for="reciever_0">Use your delivery info</label>
+	<!-- <br> -->
+	<!-- <br> -->
+		Or
+	<!-- <br> -->
+	<!-- <br> -->
+	<label class="reciever_1" for="reciever_1">Fill in new delivery info</label>
+	<br>
+	<br>
+		
+<?php } else { ?>
+	<input type="radio" id="reciever_1" name="reciever" value="1" checked style="display:none;">
+	Fill in delivery info
+	<br>
+<?php } ?>
 	<button type="submit" onclick="return check_blank()">Order</button>
+	<table class="reciever_info">
+		<tr>
+			<td>Name</td>
+			<td>
+				<input type="text" id="name" name="name">
+			</td>
+		</tr>	
+		<tr>
+			<td>Phone</td>
+			<td>
+				<input type="text" id="phone" name="phone">
+			</td>
+		</tr>	
+		<tr>
+			<td>Address</td>
+			<td>
+				<textarea id="address" name="address"></textarea>
+			</td>
+		</tr>	
+	</table>	
 </form>
 <!-- <span class="error" id="span_regex_blank"></span> -->
+<script type="text/javascript">
+	update_price_display();
+</script>
 </body>
 </html>

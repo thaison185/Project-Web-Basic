@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="../assests/css/header.css">
-<link rel="stylesheet" type="text/css" href="../assests/font/themify-icons/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/header.css">
+<link rel="stylesheet" type="text/css" href="../assets/font/themify-icons/themify-icons.css">
 
 <div id="header">
 	<a href="index.php" id="logo">
@@ -37,7 +37,8 @@
 				<a href="../backend/logout.php">Đăng xuất!</a>
 			</div>
 		<?php } else { ?>
-		<a href="login.php">login</a>/<a href="register.php">register</a>
+		<a class="login-btn" href="login.php">login</a>
+		<a class="register-btn" href="register.php">register</a>
 		<?php }; ?>
 	</div>
 	<div class="cart">
@@ -53,13 +54,12 @@
 			foreach ($cart as $each) {
 				$quantity += $each->{'quantity'};
 			}
-			if ($quantity > 9)
-				$quantity = '9+';
 			?>
 			<i class="ti-shopping-cart-full cart-icon"></i>
-			<span class="cart-quantity"><?php echo $quantity ?></span>
+			<span class="cart-quantity" value="<?php echo $quantity ?>"><?php echo $quantity > 9 ? "9+" : $quantity ?></span>
 		<?php } else { ?>
 			<i class="ti-shopping-cart cart-icon"></i>
+			<span class="cart-quantity" value="0" style="display: none;"></span>
 		<?php } ?>
 		</a>
 	</div>

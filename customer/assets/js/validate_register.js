@@ -71,7 +71,7 @@ function check_regex() {
 	regex = /^(?!.*[\"\<\>]).{10,}$/;
 	if(!regex.test(address))
 	{
-		document.getElementById('span_regex_address').innerHTML = "Địa chỉ không được để trống!";
+		document.getElementById('span_regex_address').innerHTML = "Địa chỉ không được để trống hoặc quá ngắn!";
 		regex_check = false;
 	} else {
 		document.getElementById('span_regex_address').innerHTML = '';

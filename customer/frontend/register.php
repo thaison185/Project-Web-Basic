@@ -6,9 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Register</title>
 
-	<link rel="stylesheet" type="text/css" href="../assests/css/register.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/register.css">
 
-	<script src="../assests/js/check_regex_register.js" type="text/javascript"></script>
+	<script src="../assets/js/validate_register.js" type="text/javascript"></script>
 </head>
 <body>
 <?php include('back.php') ?>
@@ -32,12 +32,18 @@
 		<tr>
 			<td>Gender</td>
 			<td>
-				<input type="radio" name="gender" value="0">
-				Male
-				<input type="radio" name="gender" value="1">
-				Female
-				<input type="radio" name="gender" value="2">
-				Orther
+				<label>
+					<input type="radio" name="gender" value="0">
+					Male
+				</label>
+				<label>
+					<input type="radio" name="gender" value="1">
+					Female
+				</label>
+				<label>
+					<input type="radio" name="gender" value="2">
+					Orther
+				</label>
 				<span id="span_regex_gender" class="error"></span>
 			</td>
 		</tr>

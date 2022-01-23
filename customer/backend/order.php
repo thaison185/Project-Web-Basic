@@ -4,7 +4,8 @@ session_start();
 // die(isset($_POST['notes']));
 
 if (!isset(json_decode($_COOKIE['cart'])['0'])) {
-	header('location:../frontend/index.php');
+	// header('location:../frontend/index.php');
+	echo("error-- empty cart!");
 	exit;
 }
 
@@ -68,12 +69,12 @@ if (strlen($notes) > 0) {
 
 $sql = "INSERT INTO orders(customer_id, description, price, status) 
 VALUES ('$customer_id','$description','$total','Pending')";
-echo $sql;
+// echo $sql;
 $result = mysqli_query($connect,$sql);
 
 $sql = "select max(id) from orders 
 where customer_id = '$customer_id'";
-echo $sql;
+// echo $sql;
 $result = mysqli_query($connect,$sql);
 $order_id = mysqli_fetch_array($result)['max(id)'];
 // echo $order_id;
@@ -119,14 +120,13 @@ foreach ($cart as $each) {
 
 	$sql = "INSERT INTO `order_details`(`order_id`, `item_id`, `quantity`, `price`, `options`, `size`)
 	VALUES ('$order_id','$item_id','$quantity','$price','$options','$size')";
-	echo $sql;
+	// echo $sql;
 	$result = mysqli_query($connect,$sql);
 
 }
 require_once('../backend/delete_cart.php');
 
-$_SESSION['flash_msg'] = 'Thực hiện order thành công';
-$_SESSION['flash_msg_type'] = 'success';
+$_SESSION['flash_msg'] = 'success Order Success!';
 
 header("location:../frontend/order_details.php?id=$order_id");
 

@@ -1,22 +1,33 @@
 <?php 
+// $avatar = $_FILES['avatar'];
+// die(json_encode($avatar));
+// $path_file_avatar = '';
+// if($avatar['tmp_name']) {
+// 	$path_folder = '../../data/img/avatar/';
+// 	$file_extension = explode('.',$avatar['tmp_name'])[1];
+// 	$file_name = time() . rand(0,9999);
+// 	$path_file_avatar = '\''.$path_folder . $file_name . '.' . $file_extension.'\'';
+// 	die($path_file_avatar); 
+// 	move_uploaded_file($avatar['tmp_name'], $path_file_avatar);
+// }
 $error = '';
 
 if($_POST['username']) {
 	$username = $_POST['username'];
 } else {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 
 if($_POST['name']) {
 	$name = $_POST['name'];
 } else {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 
 if($_POST['gender'] !== null) {
 	$gender = $_POST['gender'];
 } else {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 
 $avatar = $_FILES['avatar'];
@@ -25,70 +36,70 @@ $avatar = $_FILES['avatar'];
 if($_POST['email']) {
 	$email = $_POST['email'];
 } else {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 
 if($_POST['phone']) {
 	$phone = $_POST['phone'];
 } else {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 
 if($_POST['DOB']) {
 	$DOB = $_POST['DOB'];
 } else {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 
 if($_POST['address']) {
 	$address = $_POST['address'];
 } else {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 
 if($_POST['password']) {
 	$password = $_POST['password'];
 	$hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 } else {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 
 if($error) {
-	session_start();
-	$_SESSION['flash_msg'] = $error;
-	$_SESSION['flash_msg_type'] = "error";
+	// session_start();
+	// $_SESSION['flash_msg'] = "error $error";
+	echo("error-- $error");
 	// die($error);
-	header('location:../frontend/register.php');
+	// header('location:../frontend/register.php');
 	exit;
 }
 
 $error = null;
 $regex = "/^(?=.*[a-zA-Z])[\w._]{8,20}$/";
 if(!preg_match($regex, $username)) {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 $regex = "/^[AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+(\ [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]*)+$/";
 if(!preg_match($regex, $name)) {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 $regex = "/^\w+@\w+(\.\w+)+$/";
 if(!preg_match($regex, $email)) {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 $regex = "/^[\+\-0-9]{9,15}$/";
 if(!preg_match($regex, $phone)) {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 $regex = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,}$/";
 if(!preg_match($regex, $password)) {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 
 if($error) {
 	session_start();
-	$_SESSION['flash_msg'] = $error;
-	$_SESSION['flash_msg_type'] = "error";
-	header('location:../frontend/register.php');
+	// $_SESSION['flash_msg'] = "error $error";
+	echo("error-- $error");
+	// header('location:../frontend/register.php');
 	exit;
 }
 
@@ -96,15 +107,15 @@ require_once('../../connect.php');
 
 $sql = "select count(*) from customers
 where username = '$username' or email = '$email' or phone = '$phone'";
-echo $sql;
+// echo $sql;
 $result = mysqli_query($connect,$sql);
 $each = mysqli_fetch_array($result)['count(*)'];
 
 if($each > 0) {
 	session_start();
-	$_SESSION['flash_msg'] = "username hoặc email hoặc số điện thoại đã đăng ký!";
-	$_SESSION['flash_msg_type'] = "error";
-	header('location:../frontend/register.php');
+	// $_SESSION['flash_msg'] = "error Username or Email or Phone number has been registered!";
+	echo("error-- Username or Email or Phone number has been registered!");
+	// header('location:../frontend/register.php');
 	exit;
 }
 
@@ -124,10 +135,10 @@ $id = $each+1;
 $path_file_avatar = '';
 if($avatar['tmp_name']) {
 	$path_folder = '../../data/img/avatar/';
-	$file_extension = explode('.',$avatar['tmp_name'])[1];
+	$file_extension = pathinfo($avatar['name'], PATHINFO_EXTENSION);
 	$file_name = time() . rand(0,9999);
-	$path_file_avatar = '\''.$path_folder . $file_name . '.' . $file_extension.'\'';
-	// die($path_file_avatar); 
+	$path_file_avatar = '\''.$path_folder . $file_name . '.' . $file_extension;
+	die($path_file_avatar); 
 	move_uploaded_file($avatar['tmp_name'], $path_file_avatar);
 }
 
@@ -135,13 +146,12 @@ $sql = "insert into customers(id,username,name,gender,avatar,email,phone,DOB,add
 values('$id','$username','$name','$gender',$path_file_avatar,'$email','$phone','$DOB','$address','$hashed_password')";
 
 $result = mysqli_query($connect,$sql);
-echo($sql);
+// echo($sql);
 
 mysqli_close($connect);
 
 session_start();
 
-$_SESSION['flash_msg'] = 'đăng ký thành công!';
-$_SESSION['flash_msg_type'] = 'success';
+$_SESSION['flash_msg'] = 'success Register successful!';
 
 header('location:../frontend/login.php');

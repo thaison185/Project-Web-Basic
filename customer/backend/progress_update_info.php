@@ -11,19 +11,19 @@ $id = $_SESSION['id'];
 // if( isset($_POST['username'])) {
 // 	$username = $_POST['username'];
 // } else {
-// 	$error = "đã xảy ra lỗi!";
+// 	$error = "An error occurred!";
 // }
 
 if($_POST['name']) {
 	$name = $_POST['name'];
 } else {
-	$error = "đã xảy ra lỗi!1";
+	$error = "An error occurred!";
 }
 
 if($_POST['gender'] !== null) {
 	$gender = $_POST['gender'];
 } else {
-	$error = "đã xảy ra lỗi!2";
+	$error = "An error occurred!";
 }
 
 // if( $_FILES['avatar']['name']) {
@@ -37,31 +37,31 @@ if($_POST['gender'] !== null) {
 if($_POST['email']) {
 	$email = $_POST['email'];
 } else {
-	$error = "đã xảy ra lỗi!3";
+	$error = "An error occurred!";
 }
 
 if($_POST['phone']) {
 	$phone = $_POST['phone'];
 } else {
-	$error = "đã xảy ra lỗi!4";
+	$error = "An error occurred!";
 }
 
 if($_POST['DOB']) {
 	$DOB = $_POST['DOB'];
 } else {
-	$error = "đã xảy ra lỗi!5";
+	$error = "An error occurred!";
 }
 
 if($_POST['address']) {
 	$address = $_POST['address'];
 } else {
-	$error = "đã xảy ra lỗi!6";
+	$error = "An error occurred!";
 }
 
 if($_POST['old_password']) {
 	$old_password = $_POST['old_password'];
 } else {
-	$error = "đã xảy ra lỗi!7";
+	$error = "An error occurred!";
 }
 
 $hashed_new_password_str = '';
@@ -73,8 +73,7 @@ if($_POST['new_password']) {
 }
 
 if($error) {
-	$_SESSION['flash_msg'] = $error . '1';
-	$_SESSION['flash_msg_type'] = "error";
+	$_SESSION['flash_msg'] = "error-- $error";
 	header('location:../frontend/update_info.php');
 	exit;
 }
@@ -82,30 +81,29 @@ if($error) {
 
 // $regex = "/^(?=.*[a-zA-Z])[\w._]{8,20}$/";
 // if(!preg_match($regex, $username)) {
-// 	$error = "đã xảy ra lỗi!";
+// 	$error = "An error occurred!";
 // }
 $regex = "/^[AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+(\ [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]*)+$/";
 if(!preg_match($regex, $name)) {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 $regex = "/^\w+@\w+(\.\w+)+$/";
 if(!preg_match($regex, $email)) {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 $regex = "/^[\+\-0-9]{9,15}$/";
 if(!preg_match($regex, $phone)) {
-	$error = "đã xảy ra lỗi!";
+	$error = "An error occurred!";
 }
 if($new_password) {
 	$regex = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,}$/";
 	if(!preg_match($regex, $new_password)) {
-		$error = "đã xảy ra lỗi!";
+		$error = "An error occurred!";
 	}
 }
 
 if($error) {
-	$_SESSION['flash_msg'] = $error . '2';
-	$_SESSION['flash_msg_type'] = "error";
+	$_SESSION['flash_msg'] = "error-- $error";
 	header('location:update_info.php');
 	exit;
 }
@@ -121,9 +119,9 @@ $each = mysqli_fetch_array($result)['count(*)'];
 echo(json_encode($each));
 
 if($each > 0) {
-	$_SESSION['flash_msg'] = "email hoặc số điện thoại đã đăng ký!";
-	$_SESSION['flash_msg_type'] = "error";
-	header('location:../frontend/update_info.php');
+	// $_SESSION['flash_msg'] = "error-- Email or Phone number has been registered!";
+	echo("error-- Email or Phone number has been registered!");
+	// header('location:../frontend/update_info.php');
 	exit;
 }
 
@@ -133,9 +131,9 @@ $result = mysqli_query($connect,$sql);
 $each = mysqli_fetch_array($result);
 
 if (!password_verify($old_password, $each['hashed_password'])) {
-	$_SESSION['flash_msg'] = 'sai mật khẩu!';
-	$_SESSION['flash_msg_type'] = "error";
-	header('location:../frontend/update_info.php');
+	// $_SESSION['flash_msg'] = 'error-- Incorrect account or password!';
+	echo("error-- Incorrect account or password!");
+	// header('location:../frontend/update_info.php');
 	exit;
 }
 
@@ -171,7 +169,6 @@ $result = mysqli_query($connect,$sql);
 
 require('refresh_session.php');
 
-$_SESSION['flash_msg'] = 'update info thành công!';
-$_SESSION['flash_msg_type'] = 'success';
+$_SESSION['flash_msg'] = 'success Update info thành công!';
 
 header('location:../frontend/update_info.php');

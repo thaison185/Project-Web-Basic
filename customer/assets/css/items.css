@@ -1,103 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&display=swap');
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-
-/*common*/
-
-#error {
-    color: red !important;
-}
-
-input {
-    display: none;
-}
-
-
-/*body*/
-
-body {}
-
-
-/*slider start*/
-
-#slider {
-    width: 1000px;
-    height: 500px;
-    border-radius: 10px;
-    position: relative;
-    margin: 70px auto 20px auto;
-    overflow: hidden;
-}
-
-#slider .slides {
-    width: 1000px;
-    display: flex;
-    margin-left: 0%;
-    transition: 1s;
-}
-
-#slider .slides .slide img {
-    width: 1000px;
-    height: 500px;
-}
-
-#slider .radio-box {
-    position: absolute;
-    top: 470px;
-    left: 30px;
-    z-index: 1;
-}
-
-#slider .radio-box .radio-btn {
-    width: 10px;
-    height: 10px;
-    border: 2px solid #2d1902;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-#slider .radio-box .radio-btn:hover {
-    cursor: pointer;
-}
-
-
-/*
-#slider .radio-box input:checked + label {
-	background: #2d1902;
-}*/
-
-#slider #radio-btn-1:checked~.slides {
-    margin-left: -0%;
-}
-
-#slider #radio-btn-2:checked~.slides {
-    margin-left: -100%;
-}
-
-#slider #radio-btn-3:checked~.slides {
-    margin-left: -200%;
-}
-
-#slider #radio-btn-1:checked~.radio-box .radio-btn-1 {
-    background: #2d1902;
-}
-
-#slider #radio-btn-2:checked~.radio-box .radio-btn-2 {
-    background: #2d1902;
-}
-
-#slider #radio-btn-3:checked~.radio-box .radio-btn-3 {
-    background: #2d1902;
-}
-
-
-/*slider end*/
-
 #items {
     width: 1000px;
     font-family: 'Readex Pro', sans-serif;
@@ -105,9 +5,6 @@ body {}
     margin: 50px auto;
     overflow: auto;
 }
-
-
-/*item start*/
 
 .item {
     width: 290px;
@@ -177,11 +74,6 @@ body {}
 	top: -60px;
 }*/
 
-
-/*.item .item-body input:checked.price-s + span.price-s {
-	display: block;
-}*/
-
 .item .item-body .radio-box {
     border-radius: 50px;
     background: #CACFD2;
@@ -236,5 +128,6 @@ body {}
     margin-right: 1px;
 }
 
-
-/*item end*/
+.item .btn:active label {
+    background: #95A5A6;
+}

@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="../assests/css/footer.css">
-<link rel="stylesheet" type="text/css" href="../assests/font/themify-icons/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/footer.css">
+<link rel="stylesheet" type="text/css" href="../assets/font/themify-icons/themify-icons.css">
 
 <div id="footer">
 	<div class="about-us">

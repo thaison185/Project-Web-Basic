@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 
-	<link rel="stylesheet" type="text/css" href="../assests/css/order_details.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/order_details.css">
 </head>
 <body>
 	<?php include('header.php'); ?>
@@ -54,12 +54,20 @@
 				<td><?php echo $each_item['size']; ?></td>
 				<td><?php echo $each_item['options']; ?></td>
 				<td><?php echo $each_item['quantity']; ?></td>
-				<td>$<?php echo $each_item['price']; ?></td>
+				<td>
+					<h3>
+						$<?php echo $each_item['price']; ?>
+					</h3>
+				</td>
 			</tr>
 		<?php } ?>
 		<tr>
 			<td colspan="5" style="text-align: center;">Total:</td>
-			<td><h2>$<?php echo $each['price']; ?></h2></td>
+			<td>
+				<h1>
+					$<?php echo $each['price']; ?>
+				</h1>
+			</td>
 		</tr>
 	</table>
 </body>

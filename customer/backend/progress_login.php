@@ -13,9 +13,9 @@ $each = mysqli_fetch_array($result);
 // die($sql);
 // die(json_encode($each));
 if (!$each) {
-	$_SESSION['flash_msg'] = "không tìm thấy tài khoản!";
-	$_SESSION['flash_msg_type'] = "error";
-	header('location:../frontend/login.php');
+	// $_SESSION['flash_msg'] = "error Account not found!";
+	echo("error-- Account not found!");
+	// header('location:../frontend/login.php');
 	// die('ktt');
 	exit;
 }
@@ -34,10 +34,10 @@ if(password_verify($password,$each['hashed_password'])) {
 	// die('tt');
 	exit;
 } else {
-	$_SESSION['flash_msg'] = "mật khẩu không trùng khớp!";
-	$_SESSION['flash_msg_type'] = "error";
+	// $_SESSION['flash_msg'] = "error Password does not match!";
+	echo("error-- Password does not match!");
 	// die($each['hashed_password']);
-	header('location:../frontend/login.php');
+	// header('location:../frontend/login.php');
 	exit;
 }
 

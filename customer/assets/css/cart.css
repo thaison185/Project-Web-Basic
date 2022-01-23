@@ -20,7 +20,7 @@ table tr td[onclick] {
 	cursor: pointer;
 }
 
-table .img {
+table .item_img {
 	width: 100px; 
 	/*height: 100%;*/
 	padding: 0;
@@ -72,18 +72,8 @@ table td:nth-child(7) {
     width: 100px;
 }
 
-table a {
-	width: 20px;
-	height: 20px;
-	color: blue;
-	text-decoration: none;
-	border-radius: 10px;
-	padding: 5px;
-}
-
-table a:hover {
-	background: #F8F9F9;
-	border-radius: 50%;
+.trash_icon {
+	color: red;
 }
 
 .empty_cart {
@@ -96,17 +86,26 @@ table a:hover {
 form {
 	width: 50%;
 	position: relative;
+	margin: 20px;
 }
 
 input[type=radio] {
 	display: none;
 }
 
-#reciever_0:checked ~ table .reciever_0 {
+.reciever_0 ,
+.reciever_1 {
+	background: #EBEDEF;
+	border: 1px solid #D5D8DC;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+#reciever_0:checked ~ .reciever_0 {
 	background: #ABB2B9;
 }
 
-#reciever_1:checked ~ table .reciever_1 {
+#reciever_1:checked ~ .reciever_1 {
 	background: #ABB2B9;
 }
 
@@ -124,12 +123,12 @@ form label {
 }
 
 form button {
-	width: 100px;
-	height: 50px;
+	width: 200px;
+	height: 100px;
 	background: #ABEBC6;
-	font-size: 25px;
+	font-size: 50px;
 	font-weight: bold;
-	position: relative; 
-	top: -50px;
-	right: -180%;
+	position: absolute; 
+	top: 50px;
+	right: -80%;
 }

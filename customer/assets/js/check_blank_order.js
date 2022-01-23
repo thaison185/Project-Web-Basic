@@ -9,6 +9,5 @@ function check_blank() {
 		document.getElementById('flash_msg').innerHTML = 'bạn cần điền đủ thông tin!';
 		return false;
 	}
-	// document.getElementById('span_regex_blank').innerHTML = '';
 	return true;
 }

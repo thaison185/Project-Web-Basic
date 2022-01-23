@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Orders</title>
 	<!-- css -->
-	<link rel="stylesheet" type="text/css" href="../assests/css/orders_log.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/orders_log.css">
 </head>
 <body>
 	<?php include('header.php'); ?>
@@ -88,13 +88,23 @@
 
 				 ?>
 				<tr>
-					<td
-					>#<?php echo $each_order['id'] ?></td>
-					<td onclick="window.location='order_details.php?id=<?php echo $each_order['id'] ?>';"><?php echo $each_order['date'] ?></td>
-					<td onclick="window.location='order_details.php?id=<?php echo $each_order['id'] ?>';"><?php echo nl2br($items_in_order) ?></td>
-					<td onclick="window.location='order_details.php?id=<?php echo $each_order['id'] ?>';"><?php echo nl2br($each_order['description']) ?></td>
-					<td onclick="window.location='order_details.php?id=<?php echo $each_order['id'] ?>';">$<?php echo $each_order['price'] ?></td>
-					<td class="<?php echo $each_order['status'] ?>" onclick="window.location='order_detail.php?id=<?php echo $each_order['id'] ?>';"><?php echo $each_order['status'] ?></td>
+					<td>
+						#<?php echo $each_order['id'] ?>
+					</td>
+					<td onclick="window.location='order_details.php?id=<?php echo $each_order['id'] ?>';">	<?php echo $each_order['date'] ?>
+					</td>
+					<td onclick="window.location='order_details.php?id=<?php echo $each_order['id'] ?>';">	<?php echo nl2br($items_in_order) ?>
+					</td>
+					<td onclick="window.location='order_details.php?id=<?php echo $each_order['id'] ?>';">	<?php echo nl2br($each_order['description']) ?>
+					</td>
+					<td onclick="window.location='order_details.php?id=<?php echo $each_order['id'] ?>';">
+						<h3>
+							$<?php echo $each_order['price'] ?>
+						</h3>
+					</td>
+					<td class="<?php echo $each_order['status'] ?>" onclick="window.location='order_details.php?id=<?php echo $each_order['id'] ?>';">
+						<?php echo $each_order['status'] ?>
+					</td>
 				</tr>
 			<?php } ?>
 		</table>

@@ -7,9 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Update info</title>
 
-	<link rel="stylesheet" type="text/css" href="../assests/css/update_info.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/update_info.css">
 
-	<script src="../assests/js/check_regex_update_info.js" type="text/javascript"></script>
+	<script src="../assets/js/validate_update_info.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -59,18 +59,24 @@ where id = '$id'";
 			<tr>
 				<td>Gender</td>
 				<td>
-					<input type="radio" name="gender" value="0" <?php if ($each['gender'] == 0) {
-																	echo ' checked';
-																} ?>>
-					Male
-					<input type="radio" name="gender" value="1" <?php if ($each['gender'] == 1) {
-																	echo ' checked';
-																} ?>>
-					Female
-					<input type="radio" name="gender" value="2" <?php if ($each['gender'] == 2) {
-																	echo ' checked';
-																} ?>>
-					Orther
+					<label>
+						<input type="radio" name="gender" value="0" <?php if ($each['gender'] == 0) {
+																		echo ' checked';
+																	} ?>>
+						Male
+					</label>
+					<label>
+						<input type="radio" name="gender" value="1" <?php if ($each['gender'] == 1) {
+																		echo ' checked';
+																	} ?>>
+						Female
+					</label>
+					<label>
+						<input type="radio" name="gender" value="2" <?php if ($each['gender'] == 2) {
+																		echo ' checked';
+																	} ?>>
+						Orther
+					</label>
 					<span id="span_regex_gender" class="error"></span>
 				</td>
 			</tr>

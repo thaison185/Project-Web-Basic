@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login</title>
 	<!-- css -->
-	<link rel="stylesheet" type="text/css" href="../assests/css/login.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/login.css">
 	<!-- scripts -->
-	<script src="../assests/js/check_blank_login.js" type="text/javascript"></script>
+	<script src="../assets/js/check_blank_login.js" type="text/javascript"></script>
 </head>
 <body>
 <?php session_start(); ?>
