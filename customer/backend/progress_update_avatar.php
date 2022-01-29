@@ -13,6 +13,7 @@ if (!$avatar['tmp_name']) {
 }
 
 $path_folder = '../../data/img/avatar/';
+// $file_extension = explode('.',$avatar['name'])[1];
 $file_extension = pathinfo($avatar['name'], PATHINFO_EXTENSION);
 $fiel_name = time() . rand(0,9999);
 $path_file_avatar = $path_folder . $fiel_name . '.' . $file_extension;

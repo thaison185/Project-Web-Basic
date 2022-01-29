@@ -45,7 +45,7 @@
 
 	<?php forEach($result as $each) { ?>
 		<!-- item start -->
-		<a id="item-<?php echo $each['id'] ?>" class="item">
+		<a id="item-<?php echo $each['id'] ?>" href="item_details.php?id=<?php echo $each['id'] ?>" class="item">
 			<input type="text" name="id" value="<?php echo $each['id'] ?>" style="display: none;">
 			<div class="img" style="background: url(../../<?php echo $each['image'];  ?>);
 background-size: cover; background-position: center center;"></div>
@@ -108,9 +108,6 @@ background-size: cover; background-position: center center;"></div>
 				<?php } ?>
 			</div>
 			<div class="btn">
-				<!-- <label>Buy now
-					<button type="submit" class="buy_now" name="action" value="buy_now"></button>
-				</label> -->
 				<label>Add to cart
 					<button class="btn_add_to_cart" name="action" data-id="<?php echo$each['id'] ?>" data-type="add_to_cart"></button>
 				</label>

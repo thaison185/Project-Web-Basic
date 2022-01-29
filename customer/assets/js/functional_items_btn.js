@@ -1,5 +1,9 @@
 $(document).ready(function($) {
-	$(".btn_add_to_cart").click(function(event) {
+	$(document).click(function(event) {
+		console.log('document');
+	})
+	$(".btn_add_to_cart").click(function(event) {console.log("btn_add");
+  		event.preventDefault();
 
 		let id = $(this).data('id');
 		let type = $(this).data('type');
@@ -19,7 +23,7 @@ $(document).ready(function($) {
 			};
 			if(response.includes('error')){
 				$("#flash_msg").html(response.substr(8));
-			}
+			};
 		})
 		
 	});

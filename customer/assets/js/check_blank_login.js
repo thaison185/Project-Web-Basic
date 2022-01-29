@@ -4,7 +4,7 @@ function check_blank() {
 	// console.log(!(username && password));
 	// return false;
 	if (!(username && password)) {
-		document.getElementById('flash_msg').html = 'bạn cần điền đủ thông tin!';
+		document.getElementById('flash_msg').html = 'Require login information!';
 		return false;
 	}
 	return true;

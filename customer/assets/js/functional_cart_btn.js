@@ -33,6 +33,9 @@ $(document).ready(function() {
 				};
 				update_price_display();
 			}
+			if(response.includes('error')){
+				$("#flash_msg").html(response.substr(8));
+			};
 		})
 		
 	});

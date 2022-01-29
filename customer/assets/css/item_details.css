@@ -9,7 +9,8 @@
 	color: red !important;
 }
 
-.item input {
+.item input ,
+.item button {
 	display: none;
 }
 

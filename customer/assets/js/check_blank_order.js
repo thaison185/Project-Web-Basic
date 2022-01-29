@@ -6,7 +6,7 @@ function check_blank() {
 	// console.log(!(name && phone && address));
 	// return false;
 	if (!(name && phone && address) && reciever_1 ) {
-		document.getElementById('flash_msg').innerHTML = 'bạn cần điền đủ thông tin!';
+		document.getElementById('flash_msg').innerHTML = 'Require delivery information!';
 		return false;
 	}
 	return true;

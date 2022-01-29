@@ -29,6 +29,13 @@
 	<div class="date"><?php echo $each['date']  ?></div>
 	<?php include('flash_msg.php'); ?>
 	<div class="status <?php echo $each['status'] ?>"><?php echo $each['status']  ?></div>
+	<?php if (isset($_SESSION['id'])) {
+		if ($_SESSION['id'] == $each['customer_id']) {?>
+	<div class="description">
+		<?php echo nl2br($each['description']) ?>
+	</div>
+	<?php	}
+	} ?>
 	<table width="100%">
 		<tr class="head">
 			<td>Name</td>

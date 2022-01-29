@@ -13,9 +13,9 @@ $each = mysqli_fetch_array($result);
 // die($sql);
 // die(json_encode($each));
 if (!$each) {
-	// $_SESSION['flash_msg'] = "error Account not found!";
-	echo("error-- Account not found!");
-	// header('location:../frontend/login.php');
+	$_SESSION['flash_msg'] = "error-- Account not found!";
+	header('location:../frontend/login.php');
+	// echo("error-- Account not found!");
 	// die('ktt');
 	exit;
 }
@@ -34,10 +34,10 @@ if(password_verify($password,$each['hashed_password'])) {
 	// die('tt');
 	exit;
 } else {
-	// $_SESSION['flash_msg'] = "error Password does not match!";
-	echo("error-- Password does not match!");
+	$_SESSION['flash_msg'] = "error-- Password does not match!";
+	header('location:../frontend/login.php');
+	// echo("error-- Password does not match!");
 	// die($each['hashed_password']);
-	// header('location:../frontend/login.php');
 	exit;
 }
 

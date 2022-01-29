@@ -155,7 +155,7 @@ $total = 0;
 </form>
 <!-- <span class="error" id="span_regex_blank"></span> -->
 <script type="text/javascript">
-	update_price_display();
+	// update_price_display();
 </script>
 </body>
 </html>

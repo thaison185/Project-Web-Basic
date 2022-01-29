@@ -1,15 +1,7 @@
 <?php 
-// $avatar = $_FILES['avatar'];
-// die(json_encode($avatar));
-// $path_file_avatar = '';
-// if($avatar['tmp_name']) {
-// 	$path_folder = '../../data/img/avatar/';
-// 	$file_extension = explode('.',$avatar['tmp_name'])[1];
-// 	$file_name = time() . rand(0,9999);
-// 	$path_file_avatar = '\''.$path_folder . $file_name . '.' . $file_extension.'\'';
-// 	die($path_file_avatar); 
-// 	move_uploaded_file($avatar['tmp_name'], $path_file_avatar);
-// }
+
+session_start();
+
 $error = '';
 
 if($_POST['username']) {
@@ -65,11 +57,10 @@ if($_POST['password']) {
 }
 
 if($error) {
-	// session_start();
-	// $_SESSION['flash_msg'] = "error $error";
-	echo("error-- $error");
+	$_SESSION['flash_msg'] = "error $error";
 	// die($error);
-	// header('location:../frontend/register.php');
+	header('location:../frontend/register.php');
+	// echo("error-- $error");
 	exit;
 }
 
@@ -96,10 +87,9 @@ if(!preg_match($regex, $password)) {
 }
 
 if($error) {
-	session_start();
-	// $_SESSION['flash_msg'] = "error $error";
-	echo("error-- $error");
-	// header('location:../frontend/register.php');
+	$_SESSION['flash_msg'] = "error $error";
+	header('location:../frontend/register.php');
+	// echo("error-- $error");
 	exit;
 }
 
@@ -112,10 +102,9 @@ $result = mysqli_query($connect,$sql);
 $each = mysqli_fetch_array($result)['count(*)'];
 
 if($each > 0) {
-	session_start();
-	// $_SESSION['flash_msg'] = "error Username or Email or Phone number has been registered!";
-	echo("error-- Username or Email or Phone number has been registered!");
-	// header('location:../frontend/register.php');
+	$_SESSION['flash_msg'] = "error Username or Email or Phone number has been registered!";
+	header('location:../frontend/register.php');
+	// echo("error-- Username or Email or Phone number has been registered!");
 	exit;
 }
 
@@ -149,8 +138,6 @@ $result = mysqli_query($connect,$sql);
 // echo($sql);
 
 mysqli_close($connect);
-
-session_start();
 
 $_SESSION['flash_msg'] = 'success Register successful!';
 
