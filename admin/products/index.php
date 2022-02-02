@@ -21,7 +21,13 @@
        include '../sidebar.php';
         include '../header.php';
         require '../../connect.php';
-        $sql="select * from items";
+         if(!isset($_GET['category'])){
+            $sql="select * from items";
+        }
+        else{
+            $category=$_GET['category'];
+            $sql="select * from items where category='$category'";
+        }
         $items=$connect->query($sql);
 ?>  
 <div class="app">
@@ -32,16 +38,35 @@
             <input type="text" class="products__search" placeholder="Quick search by ID">
             <i class="fas fa-search products__search-icon"></i>
         </div>
+        <div class="products__right-side">
         <?php
                         if ($_SESSION['role']==1){
         ?>
-        <div class="products__right-side">
             <a href="./add.php" class="products__add-product">
                 <i class="fas fa-plus"></i>
                 Add Product
             </a>
-        </div>
         <?php } ?>
+            <div class="products__category">
+                    <a href="./index.php" class="products__category-clear">
+                        <?php
+                            if(!isset($_GET['category'])){
+                                echo("Category");
+                           }
+                           else {echo($_GET['category']);}
+                        ?>
+                        <i class="fas fa-chevron-down orders__down-icon"></i>
+                    </a>
+                    <div class="products__category-menu">
+                        <ul>
+                            <li><a href="./index.php?category=Coffee">Coffee</a></li>
+                            <li><a href="./index.php?category=Tea">Tea</a></li>
+                            <li><a href="./index.php?category=Other Drink">Other Drink</a></li>
+                            <li><a href="./index.php?category=Food">Food</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
     </div>
     <div class="products__product-table">
         <div class="err">

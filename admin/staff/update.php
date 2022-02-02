@@ -69,7 +69,7 @@
                      ?>
                 </div>
 
-                <form id="myForm" action="./handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
+                <form id="myForm" action="./handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data" onsubmit=" return checkSubmit();">
                     <div>
                         <label for="username">Username: </label>
                         <input type="text" name="username"  id="username" value="<?php echo $staff['username'] ?>">
@@ -112,21 +112,18 @@
                         <?php if ($staff['avatar']==''){echo 'No Avatar';}else{?> <img src="../../<?php echo $staff['avatar']; ?>" alt="Avatar" width="200px"><?php }?>
                         <input type="file" name="photo" >
                     </div>
-                    <script>
-                            function Submit() {
-                                document.getElementById("myForm").submit();
-                            }
-                            
+                    <script>     
                             function checkSubmit() {     
-                                if (document.getElementById("admin").checked == false){Submit();}
+                                if (document.getElementById("admin").checked == false){return true;}
                                 else{
                                     if (confirm("Do you really want to give this staff Administrator permission?") == true) {
-                                        Submit();
+                                        return true;
                                     }
+                                    else {return false;}
                                 } 
                             }
                         </script>
-                    <button onclick="checkSubmit()">Update</button>
+                    <button>Update</button>
                 </form>
             <a href="./index.php" class="back"><i class="fas fa-chevron-left"></i>     Back to Staff</a>
         </div>
