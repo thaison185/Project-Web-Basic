@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/profiles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" >
-    <title>Q Coffee | Customers Control</title>
+    <title>Q Coffee | Personal Profiles</title>
 </head>
 <body>
 <?php 
@@ -42,7 +42,7 @@
             <div class="profiles__infos">
                 <div class="profiles__title">
                     <p>Your Main Informations</p>
-                    <a href="./update.php?target=infos">Edit</a>
+                    <a href="./update.php?target=informations">Edit</a>
                 </div>
                 <div class="profiles__content">
                     <p class="profiles__info-details">Username: <?php echo $profile['username']; ?></p>
