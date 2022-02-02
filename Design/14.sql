@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 02, 2022 at 07:36 AM
+-- Generation Time: Feb 02, 2022 at 09:11 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -548,8 +548,8 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`id`, `username`, `name`, `email`, `hashed_password`, `phone`, `gender`, `role`, `avatar`) VALUES
 (1, 'BigBoss', 'NguyenTS', 'assmin@qcoffee.com', '$2y$10$IRyk1M3Z2JtREnLbKCYRAu6wacWYjRlR3YIWoz0RKDcAAbosYXzEi', '+79627824127', 0, 1, './data/img/staff/1/avatar.jpg'),
-(2, 'Slave1', 'Staff no.1', 'staff1@qcoffee.com', '$2y$10$guZwF2v8ALBAqJj3fnuJSutdPCEwyqBuXjBSTE3Gh/30XFaNL.CeG', '+84987654321', 0, 0, NULL),
-(3, 'Slave 2', 'slave2', 'staff2@qcoffee.com', '$2y$10$MiiSGdpEG8g5uufqeKeJOObNTRwHwKdkq4lNnrcHzHEzwT5uyK7LC', '+84987654321', 0, 0, './data/img/staff/3/1640629705.png');
+(2, 'Slave1', 'Staff number 1', 'staff1@qcoffee.com', '$2y$10$guZwF2v8ALBAqJj3fnuJSutdPCEwyqBuXjBSTE3Gh/30XFaNL.CeG', '+84987654321', 0, 0, NULL),
+(3, 'Slave 2', 'slave2', 'staff2@qcoffee.com', '$2y$10$MiiSGdpEG8g5uufqeKeJOObNTRwHwKdkq4lNnrcHzHEzwT5uyK7LC', '+84987654321', 0, 0, './data/img/staff/3/1643793054.jpg');
 
 --
 -- Indexes for dumped tables
