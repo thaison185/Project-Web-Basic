@@ -1,0 +1,44 @@
+.container{
+    display:flex;
+    justify-content: center;
+}
+.profiles{
+    margin-top: 2rem;
+    width: 80rem;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    padding: 2rem;
+}
+
+.profiles__main-title{
+    text-align: center;
+    color:var(--primary-color);
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.profiles__title{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    color: var(--sub-color);
+}
+
+.profiles__title a{
+    text-decoration: none;
+    color: var(--blue-pastel);
+}
+
+.profiles__title a:hover{
+    color:blue;
+}
+
+.profiles__content{
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.profiles__password{
+    display: flex;
+    justify-content: flex-end;
+}

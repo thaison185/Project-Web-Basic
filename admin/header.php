@@ -24,7 +24,7 @@
                     </div>
                     <div class="header__sub-menu-body">
                         <ul>
-                            <li><a href="#"><i class="far fa-user"></i>  View Profile</a></li>
+                            <li><a href="../profiles"><i class="far fa-user"></i>  View Profile</a></li>
                             <li><a href="#"><i class="fas fa-cog"></i>  Account Settings</a></li>
                         </ul>
                     </div>

@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jan 05, 2022 at 10:15 AM
+-- Host: localhost
+-- Generation Time: Feb 02, 2022 at 07:36 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -45,7 +45,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `username`, `name`, `email`, `phone`, `DOB`, `address`, `hashed_password`, `gender`, `avatar`) VALUES
-(0, 'noneaccountcustomer', 'None Account Customer', 'noneAccountCustomer@meaning.less', '0000000000000', '2011-12-08', '143/2600/50Test street, Example city', '$2y$10$XsahU21WJc3qwOrtbiUAneDSUQM6iySiEQqjD/R3tYadyTDzehVRG', 0, NULL),
+(0, 'none', 'None Account Customer', 'none@none', '00', '2011-12-08', '', '$2y$10$XsahU21WJc3qwOrtbiUAneDSUQM6iySiEQqjD/R3tYadyTDzehVRG', 0, NULL),
 (1, 'customer1', 'Customer One', 'cus1@example.com', '+84123456789', '1987-12-01', '144/2500/50Test street, Example city', '750cca026a238a93007f65ad97b70f9a', 0, NULL),
 (2, 'customer2', 'Customer Two', 'cus2@example.com', '+84123456788', '1988-12-02', '145/14000/80Test street, Example city', '393b598879aa996c58e45abfca625048', 0, NULL),
 (3, 'chanvuuu', 'Chan Vu', 'chanvu@gg.oo', '099999999999', '2011-12-07', '146/13500/80Test street, Example city', '6f8da60e35d7077999f2dbd4c26ec203', 0, NULL),
