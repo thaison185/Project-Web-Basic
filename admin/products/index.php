@@ -21,12 +21,20 @@
        include '../sidebar.php';
         include '../header.php';
         require '../../connect.php';
+        if(isset($_GET['category'])){$category=$_GET['category']; $sql="select count(*) as 'records' from items where category='$category'";}else{$sql="select count(*) as 'records' from items";}
+        $res=$connect->query($sql)->fetch_array()['records'];
+        $step=10;
+        if($res%$step==0){$max=intdiv($res,$step);} else{$max=intdiv($res,$step)+1;}
+        if(isset($_GET['page'])){ 
+            $page=$_GET['page'];
+            if($page>$max){$page=$max;}
+        }else{$page=1;}
+        $offset=$step*($page-1);
          if(!isset($_GET['category'])){
-            $sql="select * from items";
+            $sql="select * from items limit $step offset $offset";
         }
         else{
-            $category=$_GET['category'];
-            $sql="select * from items where category='$category'";
+            $sql="select * from items where category='$category' limit $step offset $offset";
         }
         $items=$connect->query($sql);
 ?>  
@@ -140,6 +148,11 @@
                 <?php } ?>
             </tbody>
         </table>
+        <div class="paginate">
+            <?php if($page>1){?><a href="./index.php?page=<?php echo $page-1; if(isset($_GET['category'])){echo "&category=$category";}?>" class="prev"><i class="fas fa-angle-double-left"></i></a><?php } ?>
+            <input type="number" name="page" id="page" value=<?php echo $page?>>
+            <?php if($page<$max){?><a href="./index.php?page=<?php echo $page+1; if(isset($_GET['category'])){echo "&category=$category";}?>" class="next"><i class="fas fa-angle-double-right"></i></a><?php } ?>
+        </div>
     </div>
     <!-- Container End -->
     <?php include '../footer.php'; $connect->close()?>

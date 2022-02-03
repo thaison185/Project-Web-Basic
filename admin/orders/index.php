@@ -65,11 +65,23 @@
                     $err=$_SESSION['error'];
                     echo "Error: $err";
                 }
+                require '../../connect.php';
+                if(isset($_GET['status'])){$status=$_GET['status']; $sql="select count(*) as 'records' from orders where status='$status'";}
+                else{$sql="select count(*) as 'records' from orders";}
+                $res=$connect->query($sql)->fetch_array()['records'];
+                $step=10;
+                if($res%$step==0){$max=intdiv($res,$step);} else{$max=intdiv($res,$step)+1;}
+                if(isset($_GET['page'])){ 
+                    $page=$_GET['page'];
+                    if($page>$max){$page=$max;}
+                }else{$page=1;}
+                $offset=$step*($page-1);
+
                     if(!isset($_GET['status'])){
                         $sql="select orders.id,date,status,price, name
                         from orders join customers
                         on orders.customer_id=customers.id
-                        order by orders.id desc";
+                        order by orders.id desc limit $step offset $offset";
                     }
                     else{
                         $status=$_GET['status'];
@@ -77,9 +89,8 @@
                         from orders join customers
                         on orders.customer_id=customers.id
                         where status='$status'
-                        order by orders.id desc";
+                        order by orders.id desc limit $step offset $offset";
                     }
-                    require '../../connect.php';
                     $result = $connect->query($sql);
                 ?>
             </div>
@@ -189,7 +200,11 @@
              </script>'; 
              ?>
         </div>
-
+        <div class="paginate">
+            <?php if($page>1){?><a href="./index.php?page=<?php echo $page-1;  if(isset($_GET['status'])){echo "&status=$status";}?>" class="prev"><i class="fas fa-angle-double-left"></i></a><?php } ?>
+            <input type="number" name="page" id="page" value=<?php echo $page?>>
+            <?php if($page<$max){?><a href="./index.php?page=<?php echo $page+1; if(isset($_GET['status'])){echo "&status=$status";}?>" class="next"><i class="fas fa-angle-double-right"></i></a><?php } ?>
+        </div>
     </div>
     <!-- Container End -->
     <?php include '../footer.php'; $connect->close()?>

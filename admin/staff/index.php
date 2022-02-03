@@ -25,7 +25,16 @@
        include '../sidebar.php';
         include '../header.php';
         require '../../connect.php';
-        $sql="select * from staff";
+        $sql="select count(*) as 'records' from staff";
+        $res=$connect->query($sql)->fetch_array()['records'];
+        $step=10;
+        if($res%$step==0){$max=intdiv($res,$step);} else{$max=intdiv($res,$step)+1;}
+        if(isset($_GET['page'])){ 
+            $page=$_GET['page'];
+            if($page>$max){$page=$max;}
+        }else{$page=1;}
+        $offset=$step*($page-1);
+        $sql="select * from staff order by id limit $step offset $offset";
         $staff=$connect->query($sql);
 
 ?>  
@@ -127,6 +136,11 @@
                 <?php } ?>
             </tbody>
         </table>
+    </div>
+    <div class="paginate">
+            <?php if($page>1){?><a href="./index.php?page=<?php echo $page-1;?>" class="prev"><i class="fas fa-angle-double-left"></i></a><?php } ?>
+            <input type="number" name="page" id="page" value=<?php echo $page?>>
+            <?php if($page<$max){?><a href="./index.php?page=<?php echo $page+1;?>" class="next"><i class="fas fa-angle-double-right"></i></a><?php } ?>
     </div>
     <!-- Container End -->
 </div>

@@ -220,3 +220,29 @@
     font-size: 5rem;
 }
 
+.paginate{
+    margin: 4rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.paginate input{
+    width: 5rem;
+    text-align: center;
+    margin: 0 3rem;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    padding:.5rem;
+}
+
+.paginate a{
+    text-decoration: none;
+    font-size: 4rem;
+    line-height: 4rem;
+    color: var(--sub-color);
+    transition: all .3s ease;
+}
+
+.paginate a:hover{
+    color: var(--dark-color);
+}
