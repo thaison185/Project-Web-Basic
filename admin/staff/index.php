@@ -160,6 +160,7 @@
     function paginate(){
         let numPage=page.value;
         if(numPage><?php echo $max;?>){numPage=<?php echo $max;?>}
+        if(numPage===""){numPage="1";}
         window.location.replace("./index.php?page="+numPage);
     }
 </script>
