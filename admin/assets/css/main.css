@@ -261,4 +261,9 @@
     border: none;
     cursor: pointer;
     opacity: .8;
+    transition: all .3s ease;
+}
+
+.paginate #go:hover{
+    background-color: var(--dark-color);
 }

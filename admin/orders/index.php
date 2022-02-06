@@ -224,7 +224,9 @@
         let numPage=page.value;
         if(numPage><?php echo $max;?>){numPage=<?php echo $max;?>}
         if(numPage===""){numPage="1";}
-        window.location.replace("./index.php?page="+numPage<?php if(isset($_GET['status'])){echo "+'&status=$status'";} ?>);
+        if(numPage!=<?php echo $page;?>){
+            window.location.replace("./index.php?page="+numPage<?php if(isset($_GET['status'])){echo "+'&status=$status'";} ?>);
+        }
     }
 </script>
 </body>
