@@ -202,12 +202,29 @@
         </div>
         <div class="paginate">
             <?php if($page>1){?><a href="./index.php?page=<?php echo $page-1;  if(isset($_GET['status'])){echo "&status=$status";}?>" class="prev"><i class="fas fa-angle-double-left"></i></a><?php } ?>
-            <input type="number" name="page" id="page" value=<?php echo $page?>>
+            <div class="input">
+                <input type="number" name="page" id="page" min="1" max="<?php echo $max; ?>" value=<?php echo $page?>>
+                <button id="go" onclick="paginate();">Go</button>
+            </div>
             <?php if($page<$max){?><a href="./index.php?page=<?php echo $page+1; if(isset($_GET['status'])){echo "&status=$status";}?>" class="next"><i class="fas fa-angle-double-right"></i></a><?php } ?>
         </div>
     </div>
     <!-- Container End -->
     <?php include '../footer.php'; $connect->close()?>
 </div>
+<script>
+    let page=document.getElementById("page");
+    page.addEventListener("keyup",function(e){
+        if(e.keyCode=== 13){
+            e.preventDefault();
+            document.getElementById("go").click();
+        }
+    });
+    function paginate(){
+        let numPage=page.value;
+        if(numPage><?php echo $max;?>){numPage=<?php echo $max;?>}
+        window.location.replace("./index.php?page="+numPage<?php if(isset($_GET['status'])){echo "+'&status=$status'";} ?>);
+    }
+</script>
 </body>
 </html>
