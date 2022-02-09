@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/profiles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" >
+ <link rel="icon" type="image/x-icon" href="../../data/img/favicon.png">
     <title>Q Coffee | Personal Profiles</title>
 </head>
 <body>
