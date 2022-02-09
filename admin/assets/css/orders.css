@@ -188,8 +188,8 @@
 }
 
 .orders__status--Pending{
-    background-color:#ccc;
-    color: #333;
+    background-color:#c8e8ff;
+    color: deepskyblue;
 }
 
 .orders__more-btn{
@@ -224,6 +224,19 @@ tbody .orders__more-btn:hover{
 }
 
 .confirm,
+.orders__table-sub-menu button{
+    display: block;
+    color:var(--primary-color);
+    text-decoration: none;
+    line-height: 4rem;
+    padding: 0 2.4rem;
+    transition: all 0.2s ease;
+    text-align: left;
+    border: none;
+    background-color: var(--background);   
+    width: 100%;
+}
+
 .orders__table-sub-menu a{
     display: block;
     color:var(--primary-color);
@@ -234,7 +247,8 @@ tbody .orders__more-btn:hover{
     text-align: left;
 }
 
-.orders__table-sub-menu li:hover a{
+.orders__table-sub-menu li:hover a,
+.orders__table-sub-menu li:hover button{
     background-color: var(--primary-color);
     color: var(--text-color);
 }

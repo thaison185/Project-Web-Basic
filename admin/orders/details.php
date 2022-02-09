@@ -38,9 +38,9 @@
     <div class="container">
         <div class="orders__details">
             <div class="details">
-            <a href="./index.php" class="back"><i class="fas fa-chevron-left"></i> Back to Orders</a>
+            <a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="back"><i class="fas fa-chevron-left"></i> Back to Orders</a>
             <h1>Details of Order #<?php echo $id;?></h1>
-            <?php
+            <?php 
                 $sql="select orders.*,customers.name,customers.address, customers.phone 
                 from orders join customers on orders.customer_id= customers.id
                 where orders.id=$id";
@@ -79,7 +79,7 @@
                                 $total=$row['price'];
                         ?>
                         <tr>
-                            <td><img src="../../<?php echo $img;?>" alt="Item Image" width="100px"></td>
+                            <td><img src="../../<?php echo $img;?>" alt="Item Image" width="100px" height="100px"></td>
                             <td><?php echo $name;?></td>
                             <td><?php echo $option;?></td>
                             <td><?php echo $size;?></td>

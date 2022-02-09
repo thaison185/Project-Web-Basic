@@ -103,7 +103,7 @@
                     <td><?php echo $phone; ?></td>
                     <td><?php echo $gender; ?></td>
                     <td><?php echo $role; ?></td>
-                    <td><?php if ($avatar==''){echo 'No Avatar';}else{?> <img src="../../<?php echo $avatar; ?>" alt="Avatar" width="100px"><?php }?></td>
+                    <td><?php if ($avatar==''){echo 'No Avatar';}else{?> <img src="../../<?php echo $avatar; ?>" alt="Avatar" width="100px" height="100px"><?php }?></td>
                     <td class="actions">
                     <?php
                         if ($role=='Staff'){

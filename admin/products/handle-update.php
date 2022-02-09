@@ -18,7 +18,7 @@ if($_SESSION['role']==1){
     $description=addslashes($_POST['description']);
     $ice=$_POST['ice'];
     $sugar=$_POST['sugar'];
-
+    $category=$_POST['category'];
     require '../../connect.php';
     $sql="update items
     set
@@ -28,7 +28,8 @@ if($_SESSION['role']==1){
     l_price=$l_price,
     description='$description',
     ice='$ice',
-    sugar='$sugar'
+    sugar='$sugar',
+    category='$category'
     where id=$id";
     $res=$connect->query($sql);
     if($connect->error != '') {$_SESSION['error'] = $connect->error;}

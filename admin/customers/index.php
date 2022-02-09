@@ -100,7 +100,7 @@
                     <td><?php echo $DOB; ?></td>
                     <td><?php echo $address; ?></td>
                     <td><?php echo $gender; ?></td>
-                    <td><?php if ($avatar==''){echo 'No Avatar';}else{?> <img src="../../<?php echo $avatar; ?>" alt="Avatar" width="100px"><?php }?></td>
+                    <td><?php if ($avatar==''){echo 'No Avatar';}else{?> <img src="../../<?php echo $avatar; ?>" alt="Avatar" width="100px" height="100px"><?php }?></td>
                     <?php
                         if ($_SESSION['role']==1){
                     ?>

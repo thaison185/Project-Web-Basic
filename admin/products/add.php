@@ -6,6 +6,9 @@
         exit;
     }
     $_SESSION['cur']="Products";
+    require_once '../../connect.php';
+    $sql="select distinct(category) from items";
+    $res=$connect->query($sql);
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +49,7 @@
                     }
                      ?>
                 </div>
-                <form action="./handle-add.php" method="post" enctype="multipart/form-data">
+                <form id="add-form" action="./handle-add.php" method="post" enctype="multipart/form-data">
                     <div>
                         <label for="name">Name: </label>
                         <input type="text" name="name"  id="name" required>
@@ -79,14 +82,45 @@
                         <input type="radio" name="sugar" value="0" checked>Disable
                         <input type="radio" name="sugar" value="1">Enable
                     </div>
-                    <button type="submit">Insert</button>
+                    <div>
+                        <label>Category:  </label>
+                        <select name="category">
+                            <?php while($category=$res->fetch_array()['category']){ ?>
+                            <option value="<?php echo $category; ?>"><?php echo $category; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <button class="form-submit" type="submit">Insert</button>
                 </form>
             </div>
-            <a href="./index.php" class="back"><i class="fas fa-chevron-left"></i>     Back to Products</a>
+            <a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="back"><i class="fas fa-chevron-left"></i>     Back to Products</a>
         </div>
     </div>
     <!-- Container End -->
     <?php include '../footer.php'; ?>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#add-form").submit(function (e) { 
+            e.preventDefault();
+            let actURL=$(this).attr("action");
+            var formData = new FormData(this);
+            $.ajax({
+                type: "POST",
+                url: actURL,
+                data: formData,
+                // dataType: "dataType",
+                success: function (response) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    alert("Product has been Added")
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        });
+    });
+</script>
 </body>
 </html>

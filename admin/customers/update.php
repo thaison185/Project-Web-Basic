@@ -63,7 +63,7 @@
                      ?>
                 </div>
 
-                <form action="./handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
+                <form id="update-form"action="./handle-update.php?id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
                     <div>
                         <label for="username">Username: </label>
                         <input type="text" name="username"  id="username" value="<?php echo $customer['username'] ?>">
@@ -111,13 +111,36 @@
                     </div>
                     <button type="submit">Update</button>
                 </form>
-            <a href="./index.php" class="back"><i class="fas fa-chevron-left"></i>     Back to Customers</a>
+            <a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="back"><i class="fas fa-chevron-left"></i>     Back to Customers</a>
         </div>
    
     <!-- Container End -->
 </div>
 </div>
 <?php include '../footer.php'; $connect->close()?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#update-form").submit(function (e) { 
+            e.preventDefault();
+            let actURL=$(this).attr("action");
+            var formData = new FormData(this);
+            $.ajax({
+                type: "POST",
+                url: actURL,
+                data: formData,
+                // dataType: "dataType",
+                success: function (response) {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        alert("Customer <?php echo $id?> has been Updated!");
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        });
+    });
+</script>
 </body>
 </html>
 

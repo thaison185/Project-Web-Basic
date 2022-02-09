@@ -31,7 +31,7 @@
             </div>
             <div class="orders__right-side">
                 <div class="orders__status">
-                    <div class="orders__status-clear">
+                    <a href="./index.php" class="orders__status-clear">
                         <?php
                             if(!isset($_GET['status'])){
                                 echo("Status");
@@ -39,21 +39,13 @@
                            else {echo($_GET['status']);}
                         ?>
                         <i class="fas fa-chevron-down orders__down-icon"></i>
-                    </div>
+                    </a>
                     <div class="orders__status-menu">
                         <ul>
-                            <?php if(isset($_GET['status'])){?>
-                            <?php if($_GET['status']!="Pending"){?><li><a href="./index.php?status=Pending">Pending</a></li><?php } ?>
-                            <?php if($_GET['status']!="Accepted"){?><li><a href="./index.php?status=Accepted">Accepted</a></li><?php } ?>
-                            <?php if($_GET['status']!="Delivered"){?><li><a href="./index.php?status=Delivered">Delivered</a></li><?php } ?>
-                            <?php if($_GET['status']!="Rejected"){?><li><a href="./index.php?status=Rejected">Rejected</a></li><?php } ?>
-                            <li><a href="./index.php">All Status</a></li>
-                            <?php } else {?>
-                                <li><a href="./index.php?status=Pending">Pending</a></li>
-                                <li><a href="./index.php?status=Accepted">Accepted</a></li>
-                                <li><a href="./index.php?status=Delivered">Delivered</a></li>
-                                <li><a href="./index.php?status=Rejected">Rejected</a></li>
-                            <?php } ?>
+                            <li><a href="./index.php?status=Pending">Pending</a></li>
+                            <li><a href="./index.php?status=Accepted">Accepted</a></li>
+                            <li><a href="./index.php?status=Delivered">Delivered</a></li>
+                            <li><a href="./index.php?status=Rejected">Rejected</a></li>
                         </ul>
                     </div>
                 </div>
@@ -136,23 +128,21 @@
                                         <ul class="orders__table-sub-menu hidden">
                                             <li><a href="./details.php?id=<?php echo $id; ?>"><i class="fas fa-eye"></i></i> Order Details</a></li>
                                             <?php
-                                            if ($row['status']!="Rejected"&&$row['status']!="Delivered"){
+                                            if ($row['status']!="Rejected"){
                                             ?>
                                             <li>
-                                                <button  
-                                                    class="status-update"
-                                                    data-status="<?php
-                                                        switch ($row['status']){
-                                                            case "Pending":
-                                                                echo "Accepted";
-                                                                break;
-                                                            case "Accepted":
-                                                                echo "Delivered";
-                                                                break;
-                                                        }
-                                                    ?>"
-                                                    data-id="<?php echo $row['id']; ?>" 
-                                                 >
+                                                <a href="<?php
+                                                    switch ($row['status']){
+                                                        case "Pending":
+                                                            echo "./update.php?id='$id'&status=Accepted";
+                                                            break;
+                                                        case "Accepted":
+                                                            echo "./update.php?id='$id'&status=Delivered";
+                                                            break;
+                                                        default:
+                                                            echo '#';
+                                                    }
+                                                 ?>">
                                                 <i class="fas fa-truck"></i>
                                                  <?php
                                                     switch ($row['status']){
@@ -163,13 +153,23 @@
                                                             echo 'Mark as Delivered'; 
                                                     }
                                                  ?>
-                                                </button>
+                                                </a>
                                             </li>
-                                            <li><button class="status-update" data-id="<?php echo($id);?>" data-status="Rejected"><i class="fas fa-money-bill-wave-alt"></i> Reject Order</button></li>
+                                            <li><a href="./update.php?id=<?php echo($id);?>&status=Rejected"><i class="fas fa-money-bill-wave-alt"></i> Reject Order</a></li>
                                             <?php } 
                                                 if ($_SESSION['role'] == 1){
                                             ?>
-                                            <button class="confirm" data-id="<?php echo $id; ?>"><i class="fas fa-trash-alt"></i> Remove Order</button>
+                                            <script>
+                                                function Delete(id) {
+                                                    window.location.href="./delete.php?id="+id;
+                                                }
+                                                function confirmDelete(id) {
+                                                    if (confirm("Do you really want to delete this order?") == true) {
+                                                        Delete(id);
+                                                    }
+                                                }
+                                            </script>
+                                            <li class="confirm" onclick="confirmDelete(<?php echo $id; ?>)"><i class="fas fa-trash-alt"></i> Remove Order</li>
                                             <?php } ?>
                                      </ul>
                             </td>
@@ -228,39 +228,6 @@
             window.location.replace("./index.php?page="+numPage<?php if(isset($_GET['status'])){echo "+'&status=$status'";} ?>);
         }
     }
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".status-update").click(function (e) { 
-            let id=$(this).data('id');
-            let status=$(this).data('status');
-            $.ajax({
-                type: "GET",
-                url: "./update.php",
-                data: {id,status},
-                // dataType: "dataType",
-                success: function (response) { 
-                    location.reload();
-                }
-            });
-        });
-
-        $(".confirm").click(function (e) {
-            let id=$(this).data('id'); 
-                if (confirm("Do you really want to delete this order?") == true) {
-                    $.ajax({
-                        type: "GET",
-                        url: "./delete.php",
-                        data: {id},
-                        // dataType: "dataType",
-                        success: function (response) {
-                            location.reload();
-                        }
-                    });
-                }
-        });
-    });
 </script>
 </body>
 </html>

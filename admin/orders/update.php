@@ -18,7 +18,6 @@
         where id=$id";
         $res=$connect->query($sql);
         mysqli_close($connect);
-        header('location:index.php');
     }
     else{
         mysqli_close($connect);

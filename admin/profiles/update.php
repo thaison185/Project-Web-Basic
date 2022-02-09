@@ -120,7 +120,7 @@
                     ?>
                     <button type="submit">Update</button>
                 </form>
-            <a href="./index.php" class="back"><i class="fas fa-chevron-left"></i>     Back to Profiles</a>
+            <a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="back"><i class="fas fa-chevron-left"></i>     Back</a>
         </div>
    
     <!-- Container End -->

@@ -12,6 +12,7 @@
     $description=addslashes($_POST['description']);
     $ice=$_POST['ice'];
     $sugar=$_POST['sugar'];
+    $category=$_POST['category'];
 
     $photo=$_FILES['photo'];
     $folder="./data/img/items/";
@@ -22,8 +23,8 @@
     move_uploaded_file($photo['tmp_name'],'../../'.$image);
 
     require '../../connect.php';
-    $sql="insert into items(name,image,s_price,m_price,l_price,description,ice,sugar)
-    values ('$name','$image',$s_price,$m_price,$l_price,'$description','$ice','$sugar')";
+    $sql="insert into items(name,image,s_price,m_price,l_price,description,ice,sugar,category)
+    values ('$name','$image',$s_price,$m_price,$l_price,'$description','$ice','$sugar','$category')";
     $res=$connect->query($sql);
     if($connect->error != '') {$_SESSION['error'] = $connect->error;}
     else {unset($_SESSION['error']);}

@@ -56,7 +56,7 @@
             </a>
         <?php } ?>
             <div class="products__category">
-                    <a href="./index.php" class="products__category-clear">
+                    <div class="products__category-clear">
                         <?php
                             if(!isset($_GET['category'])){
                                 echo("Category");
@@ -64,13 +64,21 @@
                            else {echo($_GET['category']);}
                         ?>
                         <i class="fas fa-chevron-down orders__down-icon"></i>
-                    </a>
+                    </div>
                     <div class="products__category-menu">
                         <ul>
-                            <li><a href="./index.php?category=Coffee">Coffee</a></li>
-                            <li><a href="./index.php?category=Tea">Tea</a></li>
-                            <li><a href="./index.php?category=Other Drink">Other Drink</a></li>
-                            <li><a href="./index.php?category=Food">Food</a></li>
+                            <?php if(isset($_GET['category'])){?>
+                                <?php if($_GET['category']!="Coffee"){?><li><a href="./index.php?category=Coffee">Coffee</a></li><?php } ?>
+                                <?php if($_GET['category']!="Tea"){?><li><a href="./index.php?category=Tea">Tea</a></li><?php } ?>
+                                <?php if($_GET['category']!="Other Drink"){?><li><a href="./index.php?category=Other Drink">Other Drink</a></li><?php } ?>
+                                <?php if($_GET['category']!="Food"){?><li><a href="./index.php?category=Food">Food</a></li><?php } ?>
+                                <li><a href="./index.php">All Categories</a></li>
+                            <?php } else {?>
+                                <li><a href="./index.php?category=Coffee">Coffee</a></li>
+                                <li><a href="./index.php?category=Tea">Tea</a></li>
+                                <li><a href="./index.php?category=Other Drink">Other Drink</a></li>
+                                <li><a href="./index.php?category=Food">Food</a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -119,7 +127,7 @@
                         $option= "Ice: " .  $ice . " - Sugar: " . $sugar;        
                 ?>
                 <tr class="float-z">
-                    <td><?php if ($image==''){echo 'No Image';} else{ ?><img src="../../<?php echo $image; ?>" alt="Product Image" width="100px"><?php } ?></td>
+                    <td><?php if ($image==''){echo 'No Image';} else{ ?><img src="../../<?php echo $image; ?>" alt="Product Image" width="100px" height="100px"><?php } ?></td>
                     <td><?php echo $id; ?></td>
                     <td><?php echo $name; ?></td>
                     <td><span>$ <?php echo $price; ?></span></td>
@@ -141,7 +149,7 @@
                                 }
                             }
                         </script>
-                        <button class="confirm" onclick="confirmDelete(<?php echo $id?>)">Delete</button>
+                        <button class="confirm" data-id="<?php echo $id?>">Delete</button>
                     <?php } ?>
                     </td>
                 </tr>
@@ -176,6 +184,25 @@
             window.location.replace("./index.php?page="+numPage<?php if(isset($_GET['category'])){echo "+'&category=$category'";} ?>);
         }
     }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".confirm").click(function (e) { 
+            let id=$(this).data('id'); 
+            if (confirm("All orders include this product will be deleted too, do you want to continue?") == true) {
+                $.ajax({
+                        type: "GET",
+                        url: "./delete.php",
+                        data: {id},
+                        // dataType: "dataType",
+                        success: function (response) {
+                            location.reload();
+                        }
+                    });
+            }
+        });
+    });
 </script>
 </body>
 </html>

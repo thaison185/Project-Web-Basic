@@ -99,7 +99,7 @@
                         </script>
                     <button onclick="checkSubmit()">Create Account</button>
                 </form>
-            <a href="./index.php" class="back"><i class="fas fa-chevron-left"></i>     Back to Staff</a>
+            <a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="back"><i class="fas fa-chevron-left"></i>     Back to Staff</a>
         </div>
    
     <!-- Container End -->
