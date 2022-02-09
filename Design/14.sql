@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 02, 2022 at 09:11 AM
+-- Generation Time: Feb 09, 2022 at 09:29 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -62,7 +62,7 @@ INSERT INTO `customers` (`id`, `username`, `name`, `email`, `phone`, `DOB`, `add
 (14, 'Faviet_Daniel', 'Faviet Daniel', 'Faviet@example.com', '1099000100', '1992-08-17', '108/12008/100 Test street, Example city', '$2y$10$.UTq353gU/9.XB8ySXS75.ANbVquqEkZW9mRCg1om5ZS2FW5G2qe2', 0, NULL),
 (15, 'Chen_John', 'Chen John', 'Chen@example.com', '1108200100', '1992-08-16', '109/9000/100 Test street, Example city', '$2y$10$.UTq353gU/9.XB8ySXS75.ANbVquqEkZW9mRCg1om5ZS2FW5G2qe2', 0, NULL),
 (16, 'Sciarra_Ismael', 'Sciarra Ismael', 'Sciarra@example.com', '1117700100', '1995-09-28', '110/8200/100 Test street, Example city', '$2y$10$.UTq353gU/9.XB8ySXS75.ANbVquqEkZW9mRCg1om5ZS2FW5G2qe2', 0, NULL),
-(17, 'Urman_Jose_Manuel', 'Urman Jose Manuel', 'Urman@example.com', '1127800100', '1995-09-30', '111/7700/100 Test street, Example city', '$2y$10$MUmw8d26aWR/WnUuVRm4SuCkf7gT3y7zWl8dgdG/GLaXvy62gAcbK', 0, '../../data/img/avatar/16412297594435.'),
+(17, 'Urman_Jose_Manuel', 'Urman Jose Manuel', 'Urman@example.com', '1127800100', '1995-09-30', '111/7700/100 Test street, Example city', '$2y$10$MUmw8d26aWR/WnUuVRm4SuCkf7gT3y7zWl8dgdG/GLaXvy62gAcbK', 0, NULL),
 (18, 'Popp_Luis', 'Popp Luis', 'Popp@example.com', '1136900100', '1996-03-07', '112/7800/100 Test street, Example city', '$2y$10$.UTq353gU/9.XB8ySXS75.ANbVquqEkZW9mRCg1om5ZS2FW5G2qe2', 0, NULL),
 (19, 'Raphaely_Den', 'Raphaely Den', 'Raphaely@example.com', '1141100030', '1997-12-07', '113/6900/100 Test street, Example city', '$2y$10$.UTq353gU/9.XB8ySXS75.ANbVquqEkZW9mRCg1om5ZS2FW5G2qe2', 0, NULL),
 (20, 'Khoo_Alexander', 'Khoo Alexander', 'Khoo@example.com', '115310030', '1992-12-07', '114/11000/30 Test street, Example city', '$2y$10$.UTq353gU/9.XB8ySXS75.ANbVquqEkZW9mRCg1om5ZS2FW5G2qe2', 0, NULL),
@@ -191,7 +191,7 @@ INSERT INTO `items` (`id`, `name`, `image`, `s_price`, `m_price`, `l_price`, `de
 (11, 'Chai Tea Latte', './data/img/items/1641145393.webp', 2, 3, 4, NULL, 'Tea', 1, 0),
 (12, 'Earl Grey', './data/img/items/1641145434.jpg', 0, 2, 3, NULL, 'Tea', 1, 0),
 (13, 'Matcha Latte', './data/img/items/1641145477.jpg', 3, 5, 6, NULL, 'Tea', 1, 0),
-(14, 'Lipton', './data/img/items/1641145562.jpg', 0, 1, 2, NULL, 'Tea', 1, 0),
+(14, 'Lipton', './data/img/items/1641145562.jpg', 0, 1, 2, '', 'Tea', 1, 0),
 (15, 'Tra Dao Cam Sa', './data/img/items/1641145606.jpg', 1, 2, 3, NULL, 'Tea', 1, 0),
 (16, 'Oolong Tea', './data/img/items/1641145697.jpg', 1, 0, 3, NULL, 'Tea', 1, 0),
 (17, 'Hot Chocolate', './data/img/items/1641145761.jpg', 0, 3, 5, NULL, 'Other Drink', 0, 1),
@@ -218,9 +218,9 @@ INSERT INTO `items` (`id`, `name`, `image`, `s_price`, `m_price`, `l_price`, `de
 (38, 'Chocolate Brownie', './data/img/items/1641146759.jpg', 0, 4, 0, NULL, 'Food', 0, 0),
 (39, 'Chocolate Chip Cookie', './data/img/items/1641146784.jpg', 1, 0, 0, NULL, 'Food', 0, 0),
 (40, 'Croissant', './data/img/items/1641146834.png', 2, 3, 0, NULL, 'Food', 0, 0),
-(41, 'Chocolate Croissant', './data/img/items/1641146899.jpg', 0, 4, 5, NULL, 'Food', 0, 0),
+(41, 'Chocolate Croissant', './data/img/items/1641146899.jpg', 0, 4, 5, '', 'Food', 0, 0),
 (42, 'Blue Berry Muffin', './data/img/items/1641146953.jpg', 0, 3, 0, NULL, 'Food', 0, 0),
-(43, 'Bong Lan Trung Muoi Cha Bong', './data/img/items/1641147020.jpg', 0, 3, 0, NULL, 'Food', 0, 0);
+(43, 'Bong Lan Trung Muoi Cha Bong', './data/img/items/1641147020.jpg', 0, 3, 0, '', 'Food', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -270,29 +270,29 @@ INSERT INTO `orders` (`id`, `customer_id`, `date`, `description`, `price`, `stat
 (26, 27, '2022-01-03 18:05:45', 'Name: Kaufling Payam\nPhone: 122790050\nAddress: 121/8200/50 Test street, Example city', 43, 'Pending'),
 (27, 28, '2022-01-03 18:06:22', 'Name: Vollman Shanta\nPhone: 123650050\nAddress: 122/7900/50 Test street, Example city', 32, 'Pending'),
 (28, 29, '2022-01-03 18:06:47', 'Name: Mourgos Kevin\nPhone: 124580050\nAddress: 123/6500/50 Test street, Example city', 9, 'Pending'),
-(29, 30, '2022-01-03 18:07:27', 'Name: Nayer Julia\nPhone: 125320050\nAddress: 124/5800/50 Test street, Example city', 7, 'Pending'),
-(30, 31, '2022-01-03 18:08:04', 'Name: Mikkilineni Irene\nPhone: 126270050\nAddress: 125/3200/50 Test street, Example city', 27, 'Pending'),
-(31, 32, '2022-01-03 18:08:50', 'Name: Landry James\nPhone: 127240050\nAddress: 126/2700/50 Test street, Example city', 42, 'Pending'),
-(32, 33, '2022-01-03 18:09:13', 'Name: Markle Steven\nPhone: 128220050\nAddress: 127/2400/50 Test street, Example city', 19, 'Pending'),
+(29, 30, '2022-01-03 18:07:27', 'Name: Nayer Julia\nPhone: 125320050\nAddress: 124/5800/50 Test street, Example city', 7, 'Rejected'),
+(30, 31, '2022-01-03 18:08:04', 'Name: Mikkilineni Irene\nPhone: 126270050\nAddress: 125/3200/50 Test street, Example city', 27, 'Rejected'),
+(31, 32, '2022-01-03 18:08:50', 'Name: Landry James\nPhone: 127240050\nAddress: 126/2700/50 Test street, Example city', 42, 'Accepted'),
+(32, 33, '2022-01-03 18:09:13', 'Name: Markle Steven\nPhone: 128220050\nAddress: 127/2400/50 Test street, Example city', 19, 'Accepted'),
 (33, 33, '2022-01-03 18:12:09', 'Name: Markle Steven\nPhone: 128220050\nAddress: 127/2400/50 Test street, Example city', 6, 'Pending'),
 (34, 0, '2022-01-03 18:14:46', 'Name: \nPhone : \nAddress: ', 10, 'Pending'),
 (35, 34, '2022-01-03 18:15:26', 'Name: Bissot Laura\nPhone: 129330050\nAddress: 128/2200/50 Test street, Example city', 11, 'Pending'),
 (36, 35, '2022-01-03 18:16:47', 'Name: Atkinson Mozhe\nPhone: 130280050\nAddress: 129/3300/50 Test street, Example city', 9, 'Pending'),
 (37, 36, '2022-01-03 18:17:33', 'Name: Marlow James\nPhone: 131250050\nAddress: 130/2800/50 Test street, Example city', 5, 'Pending'),
-(38, 37, '2022-01-03 18:17:55', 'Name: Olson TJ\nPhone: 132210050\nAddress: 131/2500/50 Test street, Example city', 6, 'Pending'),
-(39, 38, '2022-01-03 18:18:22', 'Name: Mallin Jason\nPhone: 133330050\nAddress: 132/2100/50 Test street, Example city', 2, 'Pending'),
-(40, 39, '2022-01-03 18:18:51', 'Name: Rogers Michael\nPhone: 134290050\nAddress: 133/3300/50 Test street, Example city', 13, 'Pending'),
+(38, 37, '2022-01-03 18:17:55', 'Name: Olson TJ\nPhone: 132210050\nAddress: 131/2500/50 Test street, Example city', 6, 'Accepted'),
+(39, 38, '2022-01-03 18:18:22', 'Name: Mallin Jason\nPhone: 133330050\nAddress: 132/2100/50 Test street, Example city', 2, 'Accepted'),
+(40, 39, '2022-01-03 18:18:51', 'Name: Rogers Michael\nPhone: 134290050\nAddress: 133/3300/50 Test street, Example city', 13, 'Accepted'),
 (41, 40, '2022-01-03 18:19:12', 'Name: Gee Ki\nPhone: 135240050\nAddress: 134/2900/50 Test street, Example city', 12, 'Pending'),
 (42, 41, '2022-01-03 18:19:37', 'Name: Philtanker Hazel\nPhone: 136220050\nAddress: 135/2400/50 Test street, Example city', 9, 'Pending'),
 (43, 42, '2022-01-03 18:20:14', 'Name: Ladwig Renske\nPhone: 137360050\nAddress: 136/2200/50 Test street, Example city', 13, 'Pending'),
 (44, 43, '2022-01-03 18:20:40', 'Name: Stiles Stephen\nPhone: 138320050\nAddress: 137/3600/50 Test street, Example city', 4, 'Pending'),
 (45, 44, '2022-01-03 18:21:38', 'Name: Seo John\nPhone: 139270050\nAddress: 138/3200/50 Test street, Example city', 33, 'Pending'),
 (46, 45, '2022-01-03 18:22:30', 'Name: Patel Joshua\nPhone: 140250050\nAddress: 139/2700/50 Test street, Example city', 49, 'Pending'),
-(47, 46, '2022-01-03 18:23:20', 'Name: Rajs Trenna\nPhone: 141350050\nAddress: 140/2500/50 Test street, Example city', 29, 'Pending'),
-(48, 47, '2022-01-03 18:24:00', 'Name: Davies Curtis\nPhone: 142310050\nAddress: 141/3500/50 Test street, Example city', 24, 'Pending'),
-(49, 48, '2022-01-03 18:24:51', 'Name: Matos Randall\nPhone: 143260050\nAddress: 142/3100/50 Test street, Example city', 45, 'Pending'),
-(50, 49, '2022-01-03 18:26:32', 'Name: Vargas Peter\nPhone: 144250050\nAddress: 143/2600/50 Test street, Example city', 56, 'Pending'),
-(51, 50, '2022-01-03 18:27:43', 'Name: Russell John\nPhone: 1451400080\nAddress: 144/2500/50 Test street, Example city', 64, 'Pending');
+(47, 46, '2022-01-03 18:23:20', 'Name: Rajs Trenna\nPhone: 141350050\nAddress: 140/2500/50 Test street, Example city', 29, 'Delivered'),
+(48, 47, '2022-01-03 18:24:00', 'Name: Davies Curtis\nPhone: 142310050\nAddress: 141/3500/50 Test street, Example city', 24, 'Accepted'),
+(49, 48, '2022-01-03 18:24:51', 'Name: Matos Randall\nPhone: 143260050\nAddress: 142/3100/50 Test street, Example city', 45, 'Delivered'),
+(50, 49, '2022-01-03 18:26:32', 'Name: Vargas Peter\nPhone: 144250050\nAddress: 143/2600/50 Test street, Example city', 56, 'Rejected'),
+(51, 50, '2022-01-03 18:27:43', 'Name: Russell John\nPhone: 1451400080\nAddress: 144/2500/50 Test street, Example city', 64, 'Rejected');
 
 -- --------------------------------------------------------
 
@@ -604,13 +604,13 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `staff`
