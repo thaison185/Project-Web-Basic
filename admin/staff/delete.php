@@ -30,6 +30,10 @@
         exit;
     }
 
+    $res=$connect->query("select avatar from staff where id=$id");
+    $old='../../'.$res->fetch_array()['avatar'];
+    if (is_file($old)&&file_exists($old)){if(!unlink($old)){die("$old error");}}
+
     $sql="delete from staff where id=$id";
     $res=$connect->query($sql);
     if($connect->error != '') {$_SESSION['error'] = $connect->error;}

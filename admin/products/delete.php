@@ -28,7 +28,9 @@
         $res=$connect->query($sql);
         if($connect->error != '') {$_SESSION['error'] = $connect->error;  mysqli_close($connect); header("location:index.php"); exit;}
     }
-
+    $res=$connect->query("select image from items where id=$id");
+    $old='../../'.$res->fetch_array()['image'];
+        if (is_file($old)&&file_exists($old)){if(!unlink($old)){die("$old error");}}
     $sql="delete from items where id=$id";
     $res=$connect->query($sql);
     if($connect->error != '') {$_SESSION['error'] = $connect->error;}

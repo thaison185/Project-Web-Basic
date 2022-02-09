@@ -29,6 +29,10 @@
         if($connect->error != '') {$_SESSION['error'] = $connect->error;  mysqli_close($connect); header("location:index.php"); exit;}
     }
 
+    $res=$connect->query("select avatar from customers where id=$id");
+    $old='../../'.$res->fetch_array()['avatar'];
+        if (is_file($old)&&file_exists($old)){if(!unlink($old)){die("$old error");}}
+        
     $sql="delete from customers where id=$id";
     $res=$connect->query($sql);
     if($connect->error != '') {$_SESSION['error'] = $connect->error;}
