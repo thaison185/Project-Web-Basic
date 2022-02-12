@@ -36,7 +36,7 @@ where id = '$id'";
 		<button onclick="document.querySelector('#form_change_avatar').style.display = 'flex';"><i class="ti-camera"></i></button>
 		<img src="<?php if ($each['avatar']) {
 						echo $each['avatar'];
-					} else echo "../../data/img/avatar/default.jpg" ?>">
+					} else echo "../../data/img/customers/default.jpg" ?>">
 	</div>
 	<form id="update_info" method="post" action="../backend/progress_update_info.php">
 		<h1>Update info</h1>

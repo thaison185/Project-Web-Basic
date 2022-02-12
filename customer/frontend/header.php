@@ -26,7 +26,7 @@
 	<div class="login-register">
 		<?php if (isset($_SESSION['id'])) {?>
 			<div class="avatar">
-				<img src="<?php if ($_SESSION['avatar']) { echo $_SESSION['avatar'];} else { echo "../../data/img/avatar/default.jpg";}?>">
+				<img src="<?php if ($_SESSION['avatar']) { echo $_SESSION['avatar'];} else { echo "../../data/img/customers/default.jpg";}?>">
 			</div>
 			<span class="name">
 				<?php echo $_SESSION['name'] ?>

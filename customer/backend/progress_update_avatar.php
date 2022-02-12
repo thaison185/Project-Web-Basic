@@ -12,7 +12,7 @@ if (!$avatar['tmp_name']) {
 	exit;
 }
 
-$path_folder = '../../data/img/avatar/';
+$path_folder = '../../data/img/customers/';
 // $file_extension = explode('.',$avatar['name'])[1];
 $file_extension = pathinfo($avatar['name'], PATHINFO_EXTENSION);
 $fiel_name = time() . rand(0,9999);
