@@ -40,7 +40,7 @@
     <div class="container">
     <div class="customers__menu">
         <div class="customers__search">
-            <input type="text" class="customers__search" placeholder="Quick search by ID">
+            <input type="text" class="customers__search" id="search" placeholder="Quick search by ID">
             <i class="fas fa-search customers__search-icon"></i>
         </div>
     </div>

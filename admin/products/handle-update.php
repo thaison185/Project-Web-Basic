@@ -9,6 +9,9 @@
     }
     unset($_SESSION['error']);
 
+    if (!isset($result)) 
+    $result = new stdClass();
+
 if($_SESSION['role']==1){
     $id=$_GET['id'];
     $name=addslashes($_POST['name']);
@@ -32,7 +35,7 @@ if($_SESSION['role']==1){
     category='$category'
     where id=$id";
     $res=$connect->query($sql);
-    if($connect->error != '') {$_SESSION['error'] = $connect->error;}
+     if($connect->error != '') {$_SESSION['error'] = $connect->error;  $result->status="error"; $result->message=$connect->error;echo json_encode($result); mysqli_close($connect);  exit;}
     else {unset($_SESSION['error']);}
     
     if ($_FILES['photo']['error'] != UPLOAD_ERR_NO_FILE){
@@ -51,7 +54,7 @@ if($_SESSION['role']==1){
         image='$image'
         where id=$id";
         $res=$connect->query($sql);
-        if($connect->error != '') {$_SESSION['error'] = $connect->error;}
+        if($connect->error != '') {$_SESSION['error'] = $connect->error;  $result->status="error"; $result->message=$connect->error;echo json_encode($result); mysqli_close($connect);  exit;}
     }
 }
 else{
@@ -67,9 +70,12 @@ else{
     l_price=$l_price,
     where id=$id";
     $res=$connect->query($sql);
-    if($connect->error != '') {$_SESSION['error'] = $connect->error;}
+    if($connect->error != '') {$_SESSION['error'] = $connect->error;  $result->status="error"; $result->message=$connect->error;echo json_encode($result); mysqli_close($connect);  exit;}
     else {unset($_SESSION['error']);}
 }
     $_SESSION['success']="Product #$id has been Updated!";
+    $result->status="success"; 
+    $result->message="Product #$id has been Updated!";
+    echo json_encode($result);
     mysqli_close($connect);
-    header("location:update.php?id=$id");
+    // header("location:update.php?id=$id");

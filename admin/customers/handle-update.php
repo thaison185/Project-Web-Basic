@@ -21,6 +21,9 @@
     $address=addslashes($_POST['address']);
     $gender=$_POST['gender'];
 
+    if (!isset($result)) 
+    $result = new stdClass();
+
     require '../../connect.php';
     $sql="update customers
     set
@@ -33,7 +36,7 @@
     gender='$gender'
     where id=$id";
     $res=$connect->query($sql);
-    if($connect->error != '') {$_SESSION['error'] = $connect->error; mysqli_close($connect); header("location:update.php?id=$id"); exit;}
+    if($connect->error != '') {$_SESSION['error'] = $connect->error;  $result->status="error"; $result->message=$connect->error;echo json_encode($result); mysqli_close($connect);  exit;}
     else {unset($_SESSION['error']);}
     
     if ($_FILES['photo']['error'] != UPLOAD_ERR_NO_FILE){
@@ -52,9 +55,11 @@
         avatar='$image'
         where id=$id";
         $res=$connect->query($sql);
-        if($connect->error != '') {$_SESSION['error'] = $connect->error;}
+        if($connect->error != '') {$_SESSION['error'] = $connect->error; $result->status="error"; $result->message=$connect->error;echo json_encode($result);mysqli_close($connect); exit;}
     }
 
     mysqli_close($connect);
-    $_SESSION['success']="Customer #$id has been Updated!";
-    header("location:update.php?id=$id");
+    $result->status="success"; 
+    $result->message="Customer #$id has been Updated!";
+    echo json_encode($result);
+    // header("location:update.php?id=$id");

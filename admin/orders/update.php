@@ -10,6 +10,8 @@
     unset($_SESSION['error']);
     $id=$_GET['id'];
     require '../../connect.php';
+    if (!isset($result)) 
+    $result = new stdClass();
     if(isset($_GET['status'])){
         $stat=$_GET['status'];
         $sql="update orders
@@ -17,10 +19,12 @@
         status='$stat'
         where id=$id";
         $res=$connect->query($sql);
+        $result->status="success"; $result->message="Order #$id: Status has been changed to $stat!";echo json_encode($result);
         mysqli_close($connect);
     }
     else{
+        $result->status="error"; $result->message="No status found!";echo json_encode($result);
         mysqli_close($connect);
-        header('location:index.php');
+        // header('location:index.php');
     } 
  ?>

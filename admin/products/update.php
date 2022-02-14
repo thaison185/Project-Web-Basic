@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/products.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
  <link rel="icon" type="image/x-icon" href="../../data/img/favicon.png">
     <title>Q Coffee | Products Control</title>
 </head>
@@ -155,6 +156,7 @@
     <?php include '../footer.php'; $connect->close()?>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#update-form").submit(function (e) { 
@@ -168,7 +170,29 @@
                 // dataType: "dataType",
                 success: function (response) {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                        alert("Product <?php echo $id?> has been Updated!");
+                        var result = $.parseJSON(response);
+
+                            toastr.options = {
+                                "closeButton": true,
+                                "progressBar": true,
+                                "positionClass": "toast-bottom-right",
+                            }
+                            
+                            if(result.status=="success"){
+                                toastr.success(result.message, "Success!");
+                            }else{
+                                toastr.error(result.message, "Something Wrong!");
+                            }
+                            
+                            $(".toast-title").css({
+                                "font-size": "1.6rem",
+                                "line-height": "1.8rem"
+                            });
+
+                            $(".toast-message").css({
+                                "font-size": "1.4rem",
+                                "line-height": "1.6rem"
+                            });
                 },
                 cache: false,
                 contentType: false,
