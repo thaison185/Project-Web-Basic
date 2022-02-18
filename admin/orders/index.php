@@ -30,8 +30,8 @@ $_SESSION['cur'] = "Shipping Orders";
         <div class="container">
             <div class="orders__menu">
                 <div class="orders__search">
-                    <input type="text" class="orders__search" placeholder="Quick search by ID">
-                    <i class="fas fa-search orders__search-icon"></i>
+                    <input type="text" class="orders__search orders__search-input" placeholder="Quick search by ID">
+                    <div class="orders__search-icon"><i class="fas fa-search"></i></div>
                 </div>
                 <div class="orders__right-side">
                     <div class="orders__status">
@@ -79,11 +79,16 @@ $_SESSION['cur'] = "Shipping Orders";
                         echo "Error: $err";
                     }
                     require '../../connect.php';
+                    if(!isset($_GET['search'])){
+                        $search="";
+                    }else{
+                        $search=$_GET['search'];
+                    }
                     if (isset($_GET['status'])) {
                         $status = $_GET['status'];
-                        $sql = "select count(*) as 'records' from orders where status='$status'";
+                        $sql = "select count(*) as 'records' from orders where status='$status' and id like '%$search%'";
                     } else {
-                        $sql = "select count(*) as 'records' from orders";
+                        $sql = "select count(*) as 'records' from orders where id like '%$search%'";
                     }
                     $res = $connect->query($sql)->fetch_array()['records'];
                     $step = 10;
@@ -92,6 +97,7 @@ $_SESSION['cur'] = "Shipping Orders";
                     } else {
                         $max = intdiv($res, $step) + 1;
                     }
+                    if($max==0) $max=1;
                     if (isset($_GET['page'])) {
                         $page = $_GET['page'];
                         if ($page > $max) {
@@ -102,17 +108,19 @@ $_SESSION['cur'] = "Shipping Orders";
                     }
                     $offset = $step * ($page - 1);
 
+
                     if (!isset($_GET['status'])) {
                         $sql = "select orders.id,date,status,price, name
                         from orders join customers
                         on orders.customer_id=customers.id
+                        where orders.id like '%$search%'
                         order by orders.id desc limit $step offset $offset";
                     } else {
                         $status = $_GET['status'];
                         $sql = "select orders.id,date,status,price,name
                         from orders join customers
                         on orders.customer_id=customers.id
-                        where status='$status'
+                        where status='$status' and orders.id like '%$search%'
                         order by orders.id desc limit $step offset $offset";
                     }
                     $result = $connect->query($sql);
@@ -131,6 +139,7 @@ $_SESSION['cur'] = "Shipping Orders";
                     </thead>
                     <tbody>
                         <?php
+                        if(!empty($result)){
                         while ($row = mysqli_fetch_array($result)) {
                             $stat = $row['status'];
                             $id = $row['id'];
@@ -186,14 +195,13 @@ $_SESSION['cur'] = "Shipping Orders";
                                     </ul>
                                 </td>
                             </tr>
-                        <?php } ?>
+                        <?php }} ?>
                     </tbody>
                 </table>
                 <?php
                 echo '<script type="text/javascript">
                 let moreBtns=document.querySelectorAll("tbody .orders__more-btn");
                 document.addEventListener(\'click\',function(e){
-                    console.log(e.target)
                     for (let moreBtn of moreBtns){
                         let menu=moreBtn.querySelector(".orders__table-sub-menu");
                         let displayStyle = window.getComputedStyle(menu).getPropertyValue("display");
@@ -216,7 +224,7 @@ $_SESSION['cur'] = "Shipping Orders";
                 <?php if ($page > 1) { ?><a href="./index.php?page=<?php echo $page - 1;
                                                                     if (isset($_GET['status'])) {
                                                                         echo "&status=$status";
-                                                                    } ?>" class="prev"><i class="fas fa-angle-double-left"></i></a><?php } ?>
+                                                                    }if($search!=""){echo "&search=$search";} ?>" class="prev"><i class="fas fa-angle-double-left"></i></a><?php } ?>
                 <div class="input">
                     <input type="number" name="page" id="page" min="1" max="<?php echo $max; ?>" value=<?php echo $page ?>>
                     <button id="go" onclick="paginate();">Go</button>
@@ -224,7 +232,7 @@ $_SESSION['cur'] = "Shipping Orders";
                 <?php if ($page < $max) { ?><a href="./index.php?page=<?php echo $page + 1;
                                                                         if (isset($_GET['status'])) {
                                                                             echo "&status=$status";
-                                                                        } ?>" class="next"><i class="fas fa-angle-double-right"></i></a><?php } ?>
+                                                                        }if($search!=""){echo "&search=$search";} ?>" class="next"><i class="fas fa-angle-double-right"></i></a><?php } ?>
             </div>
         </div>
         <!-- Container End -->
@@ -249,9 +257,7 @@ $_SESSION['cur'] = "Shipping Orders";
                 numPage = "1";
             }
             if (numPage != <?php echo $page; ?>) {
-                window.location.replace("./index.php?page=" + numPage<?php if (isset($_GET['status'])) {
-                                                                            echo "+'&status=$status'";
-                                                                        } ?>);
+                window.location.replace("./index.php?page=" + numPage<?php if (isset($_GET['status'])) {echo "+'&status=$status'";} if($search!=""){echo "+'&search=$search'";}?>);
             }
         }
     </script>
@@ -265,6 +271,22 @@ $_SESSION['cur'] = "Shipping Orders";
                 "progressBar": true,
                 "positionClass": "toast-bottom-right",
             };
+
+
+            $(".orders__search-input").keyup(function (e) { 
+                if(e.keyCode==13){
+                    $(".orders__search-icon").click();
+                }
+            });
+
+            $(".orders__search-icon").click(function (e) { 
+                e.preventDefault();
+                let searchVal=$(".orders__search-input").val();
+                let numPage = $("#page").val();
+                if(searchVal!="")
+                location.replace("./index.php?page="+ numPage<?php if (isset($_GET['status'])) {echo "+'&status=$status'";}?>+"&search="+searchVal);
+            });
+
 
             $(".status-update").click(function(e) {
                 let id = $(this).data('id');

@@ -26,16 +26,21 @@
        include '../sidebar.php';
         include '../header.php';
         require '../../connect.php';
-        $sql="select count(*) as 'records' from staff";
+        if(!isset($_GET['search'])){
+            $search="";
+        }else{
+            $search=$_GET['search'];
+        }
+        $sql="select count(*) as 'records' from staff where id like '%$search%'";
         $res=$connect->query($sql)->fetch_array()['records'];
         $step=10;
-        if($res%$step==0){$max=intdiv($res,$step);} else{$max=intdiv($res,$step)+1;}
+        if($res%$step==0){$max=intdiv($res,$step);} else{$max=intdiv($res,$step)+1;} if($max==0) $max=1;
         if(isset($_GET['page'])){ 
             $page=$_GET['page'];
             if($page>$max){$page=$max;}
         }else{$page=1;}
         $offset=$step*($page-1);
-        $sql="select * from staff order by id limit $step offset $offset";
+        $sql="select * from staff where id like '%$search%' order by id limit $step offset $offset";
         $staff=$connect->query($sql);
 
 ?>  
@@ -44,8 +49,8 @@
     <div class="container">
     <div class="customers__menu">
         <div class="customers__search">
-            <input type="text" class="customers__search" placeholder="Quick search by ID">
-            <i class="fas fa-search customers__search-icon"></i>
+            <input type="text" class="customers__search customers__search-input" placeholder="Quick search by ID">
+            <div class="customers__search-icon"><i class="fas fa-search"></i></div>
         </div>
         <div class="staff__right-side">
             <a href="./add.php" class="staff__add-staff">
@@ -139,12 +144,12 @@
         </table>
     </div>
     <div class="paginate">
-            <?php if($page>1){?><a href="./index.php?page=<?php echo $page-1;?>" class="prev"><i class="fas fa-angle-double-left"></i></a><?php } ?>
+            <?php if($page>1){?><a href="./index.php?page=<?php echo $page-1; if($search!=""){echo "&search=$search";}?>" class="prev"><i class="fas fa-angle-double-left"></i></a><?php } ?>
             <div class="input">
                 <input type="number" name="page" id="page" min="1" max="<?php echo $max; ?>" value=<?php echo $page?>>
                 <button id="go" onclick="paginate();">Go</button>
             </div>
-            <?php if($page<$max){?><a href="./index.php?page=<?php echo $page+1;?>" class="next"><i class="fas fa-angle-double-right"></i></a><?php } ?>
+            <?php if($page<$max){?><a href="./index.php?page=<?php echo $page+1; if($search!=""){echo "&search=$search";}?>" class="next"><i class="fas fa-angle-double-right"></i></a><?php } ?>
     </div>
     <!-- Container End -->
 </div>
@@ -163,9 +168,27 @@
         if(numPage><?php echo $max;?>){numPage=<?php echo $max;?>}
         if(numPage===""){numPage="1";}
         if(numPage!=<?php echo $page;?>){
-            window.location.replace("./index.php?page="+numPage);
+            window.location.replace("./index.php?page="+numPage<?php if($search!=""){echo "+'&search=$search'";}?>);
         }
     }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".customers__search-input").keyup(function (e) { 
+                if(e.keyCode==13){
+                    $(".customers__search-icon").click();
+                }
+            });
+
+            $(".customers__search-icon").click(function (e) { 
+                e.preventDefault();
+                let searchVal=$(".customers__search-input").val();
+                let numPage = $("#page").val();
+                if(searchVal!="")
+                location.replace("./index.php?page="+ numPage+"&search="+searchVal);
+            });
+    });
 </script>
 </body>
 </html>

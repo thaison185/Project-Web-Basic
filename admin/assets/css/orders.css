@@ -14,11 +14,20 @@
     line-height: 4rem;
 }
 
+
 .orders__search-icon{
     position: absolute;
-    padding:1.5rem;
     top:0;
     right:4rem;
+    padding: .2rem 1.5rem;
+    cursor: pointer;
+    border-radius: 0 .5rem .5rem 0;
+    transition: all .3s ease;
+}
+
+.orders__search-icon:hover{
+    background-color: var(--primary-color);
+    color:#fff;
 }
 
 .orders__right-side{
@@ -320,11 +329,38 @@ tbody .orders__more-btn:hover{
     line-height: 2rem;
 }
 
+.p-status{
+    padding: 0 .5rem 0 1rem;
+    line-height: 3rem;
+    border-radius: 10rem;
+    max-width: 14rem;
+    font-weight: 500;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
 .p__price{
     padding-top: 2rem;
     font-size: 2.2rem!important;
     font-weight: bolder;
     color: var(--dark-color);
+}
+
+.details-status-update{
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.details-status-update:hover{
+    background-color: var(--dark-color);
 }
 
 a.back{

@@ -16,9 +16,17 @@
 
 .customers__search-icon{
     position: absolute;
-    padding:1.5rem;
     top:0;
     right:4rem;
+    padding: .2rem 1.5rem;
+    cursor: pointer;
+    border-radius: 0 .5rem .5rem 0;
+    transition: all .3s ease;
+}
+
+.customers__search-icon:hover{
+    background-color: var(--primary-color);
+    color:#fff;
 }
 
 .staff__right-side{

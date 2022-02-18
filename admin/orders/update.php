@@ -19,7 +19,9 @@
         status='$stat'
         where id=$id";
         $res=$connect->query($sql);
-        $result->status="success"; $result->message="Order #$id: Status has been changed to $stat!";echo json_encode($result);
+        if($connect->error==''){
+        $result->status="success"; $result->message="Order #$id: Status has been changed to $stat!";echo json_encode($result);}
+        else echo $connect->error;
         mysqli_close($connect);
     }
     else{

@@ -22,20 +22,26 @@
        include '../sidebar.php';
         include '../header.php';
         require '../../connect.php';
-        if(isset($_GET['category'])){$category=$_GET['category']; $sql="select count(*) as 'records' from items where category='$category'";}else{$sql="select count(*) as 'records' from items";}
+        if(!isset($_GET['search'])){
+            $search="";
+        }else{
+            $search=$_GET['search'];
+        }
+        if(isset($_GET['category'])){$category=$_GET['category']; $sql="select count(*) as 'records' from items where category='$category' and id like '%$search%'";}else{$sql="select count(*) as 'records' from items where id like '%$search%'";}
         $res=$connect->query($sql)->fetch_array()['records'];
         $step=10;
-        if($res%$step==0){$max=intdiv($res,$step);} else{$max=intdiv($res,$step)+1;}
+        if($res%$step==0){$max=intdiv($res,$step);} else{$max=intdiv($res,$step)+1;} if($max==0) $max=1;
         if(isset($_GET['page'])){ 
             $page=$_GET['page'];
             if($page>$max){$page=$max;}
         }else{$page=1;}
         $offset=$step*($page-1);
-         if(!isset($_GET['category'])){
-            $sql="select * from items limit $step offset $offset";
+         
+        if(!isset($_GET['category'])){
+            $sql="select * from items where id like '%$search%' limit $step offset $offset";
         }
         else{
-            $sql="select * from items where category='$category' limit $step offset $offset";
+            $sql="select * from items where category='$category' and id like '%$search%' limit $step offset $offset";
         }
         $items=$connect->query($sql);
 ?>  
@@ -44,8 +50,8 @@
     <div class="container">
     <div class="products__menu">
         <div class="products__search">
-            <input type="text" class="products__search" placeholder="Quick search by ID">
-            <i class="fas fa-search products__search-icon"></i>
+            <input type="text" class="products__search products__search-input" placeholder="Quick search by ID">
+            <div class="products__search-icon"><i class="fas fa-search "></i></div>
         </div>
         <div class="products__right-side">
         <?php
@@ -158,12 +164,12 @@
             </tbody>
         </table>
         <div class="paginate">
-            <?php if($page>1){?><a href="./index.php?page=<?php echo $page-1; if(isset($_GET['category'])){echo "&category=$category";}?>" class="prev"><i class="fas fa-angle-double-left"></i></a><?php } ?>
+            <?php if($page>1){?><a href="./index.php?page=<?php echo $page-1; if(isset($_GET['category'])){echo "&category=$category";}if($search!=""){echo "&search=$search";}?>" class="prev"><i class="fas fa-angle-double-left"></i></a><?php } ?>
             <div class="input">
                 <input type="number" name="page" id="page" min="1" max="<?php echo $max; ?>" value=<?php echo $page?>>  
                 <button id="go" onclick="paginate();">Go</button>
             </div>
-            <?php if($page<$max){?><a href="./index.php?page=<?php echo $page+1; if(isset($_GET['category'])){echo "&category=$category";}?>" class="next"><i class="fas fa-angle-double-right"></i></a><?php } ?>
+            <?php if($page<$max){?><a href="./index.php?page=<?php echo $page+1; if(isset($_GET['category'])){echo "&category=$category";}if($search!=""){echo "&search=$search";}?>" class="next"><i class="fas fa-angle-double-right"></i></a><?php } ?>
         </div>
     </div>
     <!-- Container End -->
@@ -182,13 +188,26 @@
         if(numPage><?php echo $max;?>){numPage=<?php echo $max;?>}
         if(numPage===""){numPage="1";}
         if(numPage!=<?php echo $page;?>){
-            window.location.replace("./index.php?page="+numPage<?php if(isset($_GET['category'])){echo "+'&category=$category'";} ?>);
+            window.location.replace("./index.php?page="+numPage<?php if(isset($_GET['category'])){echo "+'&category=$category'";}if($search!=""){echo "+'&search=$search'";}?>);
         }
     }
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        $(".products__search-input").keyup(function (e) { 
+                if(e.keyCode==13){
+                    $(".products__search-icon").click();
+                }
+            });
+
+            $(".products__search-icon").click(function (e) { 
+                e.preventDefault();
+                let searchVal=$(".products__search-input").val();
+                let numPage = $("#page").val();
+                if(searchVal!="")
+                location.replace("./index.php?page="+ numPage<?php if (isset($_GET['category'])) {echo "+'&category=$category'";}?>+"&search="+searchVal);
+            });
         $(".confirm").click(function (e) { 
             let id=$(this).data('id'); 
             if (confirm("All orders include this product will be deleted too, do you want to continue?") == true) {
