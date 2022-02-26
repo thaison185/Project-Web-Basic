@@ -77,6 +77,7 @@ $_SESSION['cur'] = "Shipping Orders";
                     if (isset($_SESSION['error'])) {
                         $err = $_SESSION['error'];
                         echo "Error: $err";
+                        unset($_SESSION['error']);
                     }
                     require '../../connect.php';
                     if(!isset($_GET['search'])){
@@ -188,7 +189,7 @@ $_SESSION['cur'] = "Shipping Orders";
                                             </li>
                                             <li><button class="status-update" data-id="<?php echo ($id); ?>" data-status="Rejected"><i class="fas fa-money-bill-wave-alt"></i> Reject Order</button></li>
                                         <?php }
-                                        if ($_SESSION['role'] == 1) {
+                                        if ($_SESSION['role'] == 1 && $row['status']=='Rejected') {
                                         ?>
                                             <button class="confirm" data-id="<?php echo $id; ?>"><i class="fas fa-trash-alt"></i> Remove Order</button>
                                         <?php } ?>

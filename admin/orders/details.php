@@ -22,16 +22,23 @@ $_SESSION['cur'] = "Shipping Orders";
 
 <body>
     <?php
+    require '../../connect.php';
     if (!isset($_GET['id'])) {
         $_SESSION['error'] = "No order selected!";
+        header('location:index.php');
+        exit;
+    }
+    $id = $_GET['id'];
+    $sql = "select * from orders where id=$id";
+    $res = $connect->query($sql)->fetch_array();
+    if (empty($res)) {
+        $_SESSION['error'] = "Order id=$id not exist!";
         header('location:index.php');
         exit;
     }
     unset($_SESSION['error']);
     include '../sidebar.php';
     include '../header.php';
-    require '../../connect.php';
-    $id = $_GET['id'];
     $sql = "select order_details.*, items.image,items.name 
         from order_details join items on items.id= order_details.item_id
         where order_id=$id";

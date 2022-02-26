@@ -11,10 +11,17 @@
         header('location:index.php');
         exit;
     }
-    unset($_SESSION['error']);
     $id=$_GET['id'];
-
     require '../../connect.php';
+    $sql = "select * from customers where id=$id";
+    $res = $connect->query($sql)->fetch_array();
+    if (empty($res)) {
+        $_SESSION['error'] = "Customer id=$id not exist!";
+        header('location:index.php');
+        exit;
+    }
+
+    unset($_SESSION['error']);
     $sql= "select id from orders where customer_id=$id";
     $arr=$connect->query($sql);
 

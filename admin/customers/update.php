@@ -11,9 +11,16 @@ if (!isset($_GET['id'])) {
     header('location:index.php');
     exit;
 }
-unset($_SESSION['error']);
 $id = $_GET['id'];
 require '../../connect.php';
+$sql = "select * from customers where id=$id";
+$res = $connect->query($sql)->fetch_array();
+if (empty($res)) {
+    $_SESSION['error'] = "Customer id=$id not exist!";
+    header('location:index.php');
+    exit;
+}
+unset($_SESSION['error']);
 $sql = "select * from customers where id=$id";
 $res = $connect->query($sql);
 if (!$res->num_rows > 0) {
@@ -63,6 +70,7 @@ $customer = $res->fetch_array();
                         if (isset($_SESSION['error'])) {
                             $err = $_SESSION['error'];
                             echo "Error: $err";
+                            unset($_SESSION['error']);
                         }
                         ?>
                     </div>

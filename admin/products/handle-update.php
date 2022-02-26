@@ -7,13 +7,20 @@
         header('location:index.php');
         exit;
     }
+    $id=$_GET['id'];
+    $sql = "select * from items where id=$id";
+    $res = $connect->query($sql)->fetch_array();
+    if (empty($res)) {
+        $_SESSION['error'] = "Product id=$id not exist!";
+        header('location:index.php');
+        exit;
+    }
     unset($_SESSION['error']);
 
     if (!isset($result)) 
     $result = new stdClass();
 
 if($_SESSION['role']==1){
-    $id=$_GET['id'];
     $name=addslashes($_POST['name']);
     $s_price=$_POST['s_price']==''?0:$_POST['s_price'];
     $m_price=$_POST['m_price']==''?0:$_POST['m_price'];

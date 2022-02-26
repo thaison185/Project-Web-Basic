@@ -11,8 +11,16 @@
         header('location:index.php');
         exit;
     }
-    unset($_SESSION['error']);
     $id=$_GET['id'];
+    require '../../connect.php';
+    $sql = "select * from customers where id=$id";
+    $res = $connect->query($sql)->fetch_array();
+    if (empty($res)) {
+        $_SESSION['error'] = "Customer id=$id not exist!";
+        header('location:index.php');
+        exit;
+    }
+    unset($_SESSION['error']);
     $username=addslashes($_POST['username']);
     $name=addslashes($_POST['name']);
     $email=addslashes($_POST['email']);
@@ -24,7 +32,6 @@
     if (!isset($result)) 
     $result = new stdClass();
 
-    require '../../connect.php';
     $sql="update customers
     set
     username='$username',

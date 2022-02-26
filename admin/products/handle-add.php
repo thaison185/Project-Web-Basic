@@ -32,7 +32,6 @@
     if($connect->error != '') {$_SESSION['error'] = $connect->error; $result->status="error"; $result->message=$connect->error;echo json_encode($result);mysqli_close($connect); exit;}
     else {unset($_SESSION['error']);}
     mysqli_close($connect);
-    $_SESSION['success']="Product has been Added!";
     $result->status="success"; 
     $result->message="Product has been Added!";
     echo json_encode($result);
