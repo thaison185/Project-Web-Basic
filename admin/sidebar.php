@@ -13,7 +13,7 @@
                         </a>
                     </li>
                     <li class="<?php echo($_SESSION['cur'] =="Shipping Orders"?"checked":""); ?>">
-                        <a href="../orders">
+                        <a href="../orders/index.php?status=Pending">
                             <i class="fas fa-shipping-fast"></i>
                             <span class="sidebar__func-name">Shipping orders</span>
                         </a>

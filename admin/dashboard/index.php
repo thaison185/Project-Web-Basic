@@ -29,7 +29,7 @@
                 <p>Welcome back, <?php echo($_SESSION['username']);?>!</p>
             </div>
             <div class="dashboard__items">
-                <a href="../orders">
+                <a href="../orders/index.php?status=Pending">
                     <div class="dashboard__part">
                         Shipping orders
                     </div>
