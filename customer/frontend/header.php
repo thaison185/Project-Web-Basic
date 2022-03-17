@@ -34,11 +34,11 @@
 			<div class="sub-menu">
 				<a href="update_info.php">Update info</a>
 				<a href="orders_log.php">Orders</a>
-				<a href="../backend/logout.php">Đăng xuất!</a>
+				<a href="../backend/logout.php">Log out</a>
 			</div>
 		<?php } else { ?>
-		<a class="login-btn" href="login.php">login</a>
-		<a class="register-btn" href="register.php">register</a>
+		<a class="login-btn" href="login.php">Login</a>
+		<a class="register-btn" href="register.php">Register</a>
 		<?php }; ?>
 	</div>
 	<div class="cart">

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php require_once('../backend/check_login.php'); ?>
 <!DOCTYPE html>
 <html>

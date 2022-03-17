@@ -96,7 +96,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="submit" onclick="return check_regex()" name="">
+				<input type="submit" onclick="return check_regex()" name="" value="Register">
 			</td>
 		</tr>
 	</table>

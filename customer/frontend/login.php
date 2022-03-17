@@ -12,11 +12,11 @@
 <body>
 <?php session_start(); ?>
 <?php include('back.php') ?>
-<div id="temp" style="position: fixed; color:red; font-size: 50px;">
+<!-- <div id="temp" style="position: fixed; color:red; font-size: 50px;">
 	tk: <a href="../../data/username.php" style="color:yellow;text-decoration:none;">username.php</a>
 	<br>
 	mk: Default1
-</div>
+</div> -->
 <form method="post" action="../backend/progress_login.php">
 	<h1>Login</h1>
 	<table>
@@ -37,13 +37,13 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2">
+			<td>
 				<?php include('flash_msg.php'); ?>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2">
-				<input type="submit" onclick="return check_blank()" name="">
+			<td>
+				<input type="submit" onclick="return check_blank()" name="" value="Login">
 			</td>
 		</tr>
 	</table>

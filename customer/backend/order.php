@@ -1,19 +1,31 @@
 <?php 
 session_start();
 
+// die($_POST['name'] == '1');
 // die(isset($_POST['notes']));
 
+// kiem tra gio hang trong
 if (!isset(json_decode($_COOKIE['cart'])['0'])) {
-	// header('location:../frontend/index.php');
-	echo("error-- empty cart!");
+	// echo("error-- empty cart!");
+	header('location:../frontend/index.php');
+	$_SESSION['flash_msg'] = 'error-- Empty cart!';
 	exit;
 }
 
+// kiem tra id
 if(isset($_SESSION['id']))
 	$customer_id = $_SESSION['id'];
 else
 	$customer_id = 0;
 // die($id);
+
+if ($customer_id == 0)
+	if($_POST['name'] == '' || $_POST['phone'] == '' || $_POST['address'] == '') {
+		// echo("error-- Delivery info required!");
+		header('location:../frontend/cart.php');
+		$_SESSION['flash_msg'] = 'error-- Delivery info required!';
+		exit;
+	}
 
 $reciever = $_POST['reciever'];
 if ($reciever == 0) {

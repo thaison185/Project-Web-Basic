@@ -113,21 +113,16 @@ $result = mysqli_query($connect,$sql);
 $each = mysqli_fetch_array($result)['max(id)'];
 $id = $each+1;
 // die($each);
-// if (!$id) {
-// 	$id = 1;
-// }
-// else
-// 	$id++;
 // echo json_encode($avatar);
 // die(!!$avatar);
 
-$path_file_avatar = '';
+$path_file_avatar = 'null';
 if($avatar['tmp_name']) {
 	$path_folder = '../../data/img/avatar/';
 	$file_extension = pathinfo($avatar['name'], PATHINFO_EXTENSION);
 	$file_name = time() . rand(0,9999);
 	$path_file_avatar = '\''.$path_folder . $file_name . '.' . $file_extension;
-	die($path_file_avatar); 
+	// die($path_file_avatar); 
 	move_uploaded_file($avatar['tmp_name'], $path_file_avatar);
 }
 

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php require_once('../backend/check_login.php'); ?>
 <!DOCTYPE html>
 <html>
@@ -29,7 +30,7 @@ where id = '$id'";
 		<form method="post" action="../backend/progress_update_avatar.php" enctype="multipart/form-data">
 			<h1>Select image to change avatar</h1><br>
 			<input type="file" name="avatar">
-			<input type="submit" name="">
+			<input type="submit" name="" value="Update">
 		</form>
 	</div>
 	<div id="avatar">
@@ -141,7 +142,7 @@ where id = '$id'";
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" onclick="return check_regex()" name="">
+					<input type="submit" onclick="return check_regex()" name="" value="Update">
 				</td>
 			</tr>
 		</table>

@@ -1,8 +1,5 @@
 $(document).ready(function($) {
-	$(document).click(function(event) {
-		console.log('document');
-	})
-	$(".btn_add_to_cart").click(function(event) {console.log("btn_add");
+	$(".btn_add_to_cart").click(function(event) {//console.log("btn_add");
   		event.preventDefault();
 
 		let id = $(this).data('id');
@@ -12,10 +9,10 @@ $(document).ready(function($) {
 		let sugar = $("#item-" + id +" .item-sugar input:checked").val();
 		
 		$.ajax({
-			url: '../backend/progress_update_cart.php',
+			url: '../backend/progress_add_to_cart.php',
 			type: 'GET',
 			dataType: 'html',
-			data: {id, type, size, ice, sugar},
+			data: {id, size, ice, sugar},
 		})
 		.done(function(response) {
 			if(response.includes('success')){
